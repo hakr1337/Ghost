@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{88E6CB86-0BDB-3263-788C-BB14C7875AA1}</ProjectGuid>
+	<ProjectGuid>{17B8BC32-FDAF-FA3D-1486-BFC427C6F3C2}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -46,13 +46,20 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AI.cs" />
+     <Compile Include="Assets\Scripts\DetectScary.cs" />
      <Compile Include="Assets\Scripts\Posessable.cs" />
+     <Compile Include="Assets\Scripts\ball.cs" />
+     <Compile Include="Assets\Scripts\ballControl.cs" />
+     <Compile Include="Assets\Scripts\cameraStuff.cs" />
+     <Compile Include="Assets\Scripts\ceilingLight.cs" />
+     <Compile Include="Assets\Scripts\lamp.cs" />
+     <Compile Include="Assets\Scripts\plane.cs" />
+     <Compile Include="Assets\Scripts\planeControl.cs" />
      <Compile Include="Assets\Scripts\posess.cs" />
-     <Compile Include="Assets\ball.cs" />
-     <Compile Include="Assets\ballControl.cs" />
-     <Compile Include="Assets\cameraStuff.cs" />
-     <Compile Include="Assets\lamp.cs" />
-     <Compile Include="Assets\tv.cs" />
+     <Compile Include="Assets\Scripts\radio.cs" />
+     <Compile Include="Assets\Scripts\thoughtBubble.cs" />
+     <Compile Include="Assets\Scripts\tv.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -155,7 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{B554EB96-F692-9949-BCE3-B4E595A50CE0}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{79BC3CB5-C672-B8A0-26A1-BBCF24C1E28F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
