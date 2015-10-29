@@ -7,8 +7,12 @@ public class cameraStuff : MonoBehaviour {
 
 	public bool visionOn = false;
 
-	// Use this for initialization
-	void Start () {
+    public float moveSpeedZ = 4f;
+    public float moveThresholdZ = .8f;
+
+
+    // Use this for initialization
+    void Start () {
 		p = GameObject.Find("Player");
 		x = GameObject.FindGameObjectsWithTag("Particles");
 
@@ -22,8 +26,7 @@ public class cameraStuff : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.E)) {
 			this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !this.gameObject.GetComponentInChildren<MeshRenderer>().enabled;
 			visionOn = !visionOn;
-			//p.SetActive(!p.activeSelf);
-			//GameObject.Find("visable vision").GetComponent<MeshRenderer>().enabled = !GameObject.Find("visable vision").GetComponent<MeshRenderer>().enabled;
+
 			GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled = !GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled;
 
 			foreach(GameObject o in x){
@@ -31,14 +34,46 @@ public class cameraStuff : MonoBehaviour {
 				o.GetComponentInChildren<ParticleSystem>().Clear();
 			}
 		}
-	}
 
+        //move left and right
+        if (this.transform.localPosition.z > p.transform.localPosition.z + moveThresholdZ || this.transform.localPosition.z < p.transform.localPosition.z - moveThresholdZ) {
+            if (this.transform.localPosition.z < p.transform.localPosition.z) {
+                this.transform.localPosition = new Vector3(this.transform.localPosition.x,
+                                                            this.transform.localPosition.y,
+                                                            this.transform.localPosition.z + Time.deltaTime * moveSpeedZ);
+            } else {
+                this.transform.localPosition = new Vector3(this.transform.localPosition.x,
+                                                            this.transform.localPosition.y,
+                                                            this.transform.localPosition.z - Time.deltaTime * moveSpeedZ);
+            }
+        }
+        
+        //move forward
+        if ( this.transform.localPosition.x < p.transform.localPosition.x - 3) {
+            
+                this.transform.localPosition = new Vector3(this.transform.localPosition.x + Time.deltaTime * 4,
+                                                            this.transform.localPosition.y,
+                                                            this.transform.localPosition.z);
+           
+        }
+
+        //move backward
+        if (Input.GetKey(KeyCode.S)) {
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x - Time.deltaTime * 4,
+                                                            this.transform.localPosition.y,
+                                                            this.transform.localPosition.z);
+        }
+
+
+
+    }
+
+    //turn off ghost vision
 	public void turnOff(){
 
 		this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !this.gameObject.GetComponentInChildren<MeshRenderer>().enabled;
 		visionOn = !visionOn;
-		//p.SetActive(!p.activeSelf);
-		//GameObject.Find("visable vision").GetComponent<MeshRenderer>().enabled = !GameObject.Find("visable vision").GetComponent<MeshRenderer>().enabled;
+		
 		GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled = !GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled;
 		
 		foreach(GameObject o in x){
