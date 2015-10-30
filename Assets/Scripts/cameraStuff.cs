@@ -49,17 +49,17 @@ public class cameraStuff : MonoBehaviour {
         }
         
         //move forward
-        if ( this.transform.localPosition.x < p.transform.localPosition.x - 3) {
+        if ( this.transform.localPosition.x < p.transform.localPosition.x - 3 && this.transform.localPosition.x < 6.5f) {
             
-                this.transform.localPosition = new Vector3(this.transform.localPosition.x + Time.deltaTime * 4,
+                this.transform.localPosition = new Vector3(this.transform.localPosition.x + Time.deltaTime * 6,
                                                             this.transform.localPosition.y,
                                                             this.transform.localPosition.z);
            
         }
 
         //move backward
-        if (Input.GetKey(KeyCode.S)) {
-            this.transform.localPosition = new Vector3(this.transform.localPosition.x - Time.deltaTime * 4,
+        if (Input.GetKey(KeyCode.S) && this.transform.localPosition.x > 3.8f) {
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x - Time.deltaTime * 6,
                                                             this.transform.localPosition.y,
                                                             this.transform.localPosition.z);
         }
