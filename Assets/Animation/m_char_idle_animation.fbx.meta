@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: 743872e35b804324e9a2c2104aa879c8
+timeCreated: 1448929506
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back_L1
+    100002: Back_L2
+    100004: Back_L3
+    100006: Eyes
+    100008: Face
+    100010: Flame_1
+    100012: Flame_2
+    100014: Flame_3
+    100016: Flame_4
+    100018: Flame_Head
+    100020: Flame_Head_Skeleton
+    100022: Flame_Top
+    100024: Head
+    100026: L_Ankle
+    100028: L_Clavicle
+    100030: L_Elbow
+    100032: L_Foot
+    100034: L_Knee
+    100036: L_Shoulder
+    100038: L_Thigh
+    100040: L_Toes
+    100042: L_Wrist
+    100044: Legs
+    100046: //RootNode
+    100048: Neck
+    100050: Neck_Base
+    100052: R_Ankle
+    100054: R_Clavicle1
+    100056: R_Elbow
+    100058: R_Foot
+    100060: R_Knee
+    100062: R_Shoulder
+    100064: R_Thigh
+    100066: R_Toes
+    100068: R_Wrist
+    100070: Skeleton
+    100072: Torso
+    400000: Back_L1
+    400002: Back_L2
+    400004: Back_L3
+    400006: Eyes
+    400008: Face
+    400010: Flame_1
+    400012: Flame_2
+    400014: Flame_3
+    400016: Flame_4
+    400018: Flame_Head
+    400020: Flame_Head_Skeleton
+    400022: Flame_Top
+    400024: Head
+    400026: L_Ankle
+    400028: L_Clavicle
+    400030: L_Elbow
+    400032: L_Foot
+    400034: L_Knee
+    400036: L_Shoulder
+    400038: L_Thigh
+    400040: L_Toes
+    400042: L_Wrist
+    400044: Legs
+    400046: //RootNode
+    400048: Neck
+    400050: Neck_Base
+    400052: R_Ankle
+    400054: R_Clavicle1
+    400056: R_Elbow
+    400058: R_Foot
+    400060: R_Knee
+    400062: R_Shoulder
+    400064: R_Thigh
+    400066: R_Toes
+    400068: R_Wrist
+    400070: Skeleton
+    400072: Torso
+    2300000: Eyes
+    3300000: Eyes
+    4300000: Face
+    4300002: Eyes
+    4300004: Flame_Head
+    4300006: Neck
+    4300008: Torso
+    4300010: Legs
+    7400000: idle
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Face
+    13700002: Flame_Head
+    13700004: Legs
+    13700006: Neck
+    13700008: Torso
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Face
+        weight: 1
+      - path: Face/Eyes
+        weight: 1
+      - path: Flame_Head
+        weight: 1
+      - path: Flame_Head_Skeleton
+        weight: 1
+      - path: Flame_Head_Skeleton/Flame_1
+        weight: 1
+      - path: Flame_Head_Skeleton/Flame_1/Flame_2
+        weight: 1
+      - path: Flame_Head_Skeleton/Flame_1/Flame_2/Flame_3
+        weight: 1
+      - path: Flame_Head_Skeleton/Flame_1/Flame_2/Flame_3/Flame_4
+        weight: 1
+      - path: Flame_Head_Skeleton/Flame_1/Flame_2/Flame_3/Flame_4/Flame_Top
+        weight: 1
+      - path: Legs
+        weight: 1
+      - path: Neck
+        weight: 1
+      - path: Skeleton
+        weight: 1
+      - path: Skeleton/Back_L1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/Head
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Skeleton/L_Thigh
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot/L_Toes
+        weight: 1
+      - path: Skeleton/R_Thigh
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot/R_Toes
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5d0ef3cd795098e4ba7ac48c00b8fcfc,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -25,7 +25,7 @@ public class ball : MonoBehaviour {
 	public void deposess(){
 		Transform t = GameObject.Find("Player").transform;
 
-		t.localPosition = this.transform.localPosition;
+		t.position = this.transform.position;
 	}
 	
 }

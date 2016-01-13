@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: 13d7a71f484ace74cb1c6daf35e74f02
+timeCreated: 1448929506
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Back_L1
+    100002: Back_L2
+    100004: Back_L3
+    100006: Eyes
+    100008: Face
+    100010: //RootNode
+    100012: ikHandle1
+    100014: ikHandle2
+    100016: ikHandle3
+    100018: ikHandle4
+    100020: ikHandle5
+    100022: ikHandle7
+    100024: joint4
+    100026: L_Ankle
+    100028: L_Clavicle
+    100030: L_Elbow
+    100032: L_Foot
+    100034: L_Knee
+    100036: L_Shoulder
+    100038: L_Thigh
+    100040: L_Toes
+    100042: L_Wrist
+    100044: Legs
+    100046: mCharIsaac:Flame_Head
+    100048: mCharIsaac:joint1
+    100050: mCharIsaac:joint2
+    100052: mCharIsaac:joint3
+    100054: mCharIsaac:joint4
+    100056: mCharIsaac:joint5
+    100058: mCharIsaac:joint6
+    100060: mCharIsaac:joint7
+    100062: Neck
+    100064: Neck_Base
+    100066: R_Ankle
+    100068: R_Clavicle1
+    100070: R_Elbow
+    100072: R_Foot
+    100074: R_Knee
+    100076: R_Shoulder
+    100078: R_Thigh
+    100080: R_Toes
+    100082: R_Wrist
+    100084: Skeleton
+    100086: Torso
+    400000: Back_L1
+    400002: Back_L2
+    400004: Back_L3
+    400006: Eyes
+    400008: Face
+    400010: //RootNode
+    400012: ikHandle1
+    400014: ikHandle2
+    400016: ikHandle3
+    400018: ikHandle4
+    400020: ikHandle5
+    400022: ikHandle7
+    400024: joint4
+    400026: L_Ankle
+    400028: L_Clavicle
+    400030: L_Elbow
+    400032: L_Foot
+    400034: L_Knee
+    400036: L_Shoulder
+    400038: L_Thigh
+    400040: L_Toes
+    400042: L_Wrist
+    400044: Legs
+    400046: mCharIsaac:Flame_Head
+    400048: mCharIsaac:joint1
+    400050: mCharIsaac:joint2
+    400052: mCharIsaac:joint3
+    400054: mCharIsaac:joint4
+    400056: mCharIsaac:joint5
+    400058: mCharIsaac:joint6
+    400060: mCharIsaac:joint7
+    400062: Neck
+    400064: Neck_Base
+    400066: R_Ankle
+    400068: R_Clavicle1
+    400070: R_Elbow
+    400072: R_Foot
+    400074: R_Knee
+    400076: R_Shoulder
+    400078: R_Thigh
+    400080: R_Toes
+    400082: R_Wrist
+    400084: Skeleton
+    400086: Torso
+    2300000: Eyes
+    3300000: Eyes
+    4300000: Face
+    4300002: Neck
+    4300004: Torso
+    4300006: Legs
+    4300008: Eyes
+    4300010: mCharIsaac:Flame_Head
+    7400000: forward
+    7400002: forward_pos
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Face
+    13700002: Legs
+    13700004: mCharIsaac:Flame_Head
+    13700006: Neck
+    13700008: Torso
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: forward
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 51
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Face
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: ikHandle5
+        weight: 1
+      - path: ikHandle7
+        weight: 1
+      - path: Legs
+        weight: 1
+      - path: mCharIsaac:Flame_Head
+        weight: 1
+      - path: Neck
+        weight: 1
+      - path: Skeleton
+        weight: 1
+      - path: Skeleton/Back_L1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/joint4
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/joint4/Eyes
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5/mCharIsaac:joint6
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5/mCharIsaac:joint6/mCharIsaac:joint7
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Skeleton/L_Thigh
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot/L_Toes
+        weight: 1
+      - path: Skeleton/R_Thigh
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot/R_Toes
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: forward_pos
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 35.0999985
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Face
+        weight: 1
+      - path: ikHandle1
+        weight: 1
+      - path: ikHandle2
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: ikHandle5
+        weight: 1
+      - path: ikHandle7
+        weight: 1
+      - path: Legs
+        weight: 1
+      - path: mCharIsaac:Flame_Head
+        weight: 1
+      - path: Neck
+        weight: 1
+      - path: Skeleton
+        weight: 1
+      - path: Skeleton/Back_L1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/joint4
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/joint4/Eyes
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5/mCharIsaac:joint6
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/Neck_Base/mCharIsaac:joint1/mCharIsaac:joint2/mCharIsaac:joint3/mCharIsaac:joint4/mCharIsaac:joint5/mCharIsaac:joint6/mCharIsaac:joint7
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Skeleton/Back_L1/Back_L2/Back_L3/R_Clavicle1/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Skeleton/L_Thigh
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot
+        weight: 1
+      - path: Skeleton/L_Thigh/L_Knee/L_Ankle/L_Foot/L_Toes
+        weight: 1
+      - path: Skeleton/R_Thigh
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot
+        weight: 1
+      - path: Skeleton/R_Thigh/R_Knee/R_Ankle/R_Foot/R_Toes
+        weight: 1
+      - path: Torso
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

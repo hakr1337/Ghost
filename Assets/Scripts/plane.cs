@@ -15,7 +15,7 @@ public class plane : MonoBehaviour {
 
         if (gameObject.GetComponentInChildren<Posessable>().posessed == true)
         {
-            GameObject.FindGameObjectWithTag("plane").GetComponent<SphereCollider>().enabled = false;
+            gameObject.GetComponentInChildren<SphereCollider>().enabled = false;
             gameObject.GetComponent<planeControl>().enabled = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -23,7 +23,7 @@ public class plane : MonoBehaviour {
         else
         {
             gameObject.GetComponent<planeControl>().enabled = false;
-            GameObject.FindGameObjectWithTag("plane").GetComponent<SphereCollider>().enabled = true;
+            gameObject.GetComponentInChildren<SphereCollider>().enabled = true;
             //gameObject.GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<Rigidbody>().useGravity = true;
         }
@@ -33,6 +33,6 @@ public class plane : MonoBehaviour {
     {
         Transform t = GameObject.Find("Player").transform;
 
-        t.localPosition = this.transform.localPosition;
+        t.position = this.transform.position;
     }
 }

@@ -11,7 +11,8 @@ public class planeControl : MonoBehaviour {
     public float rise;//how much the plane will tilt up or down
     private Rigidbody rb;
     private Transform trans; 
-    
+   
+
     void Start () {
         rb = gameObject.GetComponent<Rigidbody>();
         trans = gameObject.GetComponent<Transform>();
@@ -19,11 +20,10 @@ public class planeControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
         rb.AddRelativeForce(speed, 0, 0);
         
         //bank plane left
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetAxis("Horizontal") < 0)
         {
             Quaternion target;
             Vector3 rotVector;
@@ -48,7 +48,7 @@ public class planeControl : MonoBehaviour {
        
 
         //bank right
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetAxis("Horizontal") > 0)
         {
 
             Quaternion target;
@@ -71,7 +71,7 @@ public class planeControl : MonoBehaviour {
         }
 
         //put plane right side up again
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetAxis("Vertical") < 0)
         {
             float rotPos = trans.rotation.eulerAngles.z; //current x rotation value
 
@@ -87,7 +87,7 @@ public class planeControl : MonoBehaviour {
         }
 
         //put plane right side up again
-        if (Input.GetKey(KeyCode.W) )
+        if (Input.GetAxis("Vertical") > 0)
         {
             float rotPos = trans.rotation.eulerAngles.z; //current x rotation value
             

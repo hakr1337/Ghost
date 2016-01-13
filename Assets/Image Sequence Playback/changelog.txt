@@ -1,0 +1,18 @@
+0.1.4
+- Fixed bug with non-looping playback.
+- Now using Update instead of Invoke.
+- Lowered minimum Unity version to 4.3.0
+
+0.1.3 (Sep 04,2014)
+- Fixed custom editor which didn't save data properly when the script was attached to a prefab.
+- Minor fixes.
+
+0.1.2 (Aug 24,2014)
+- Added audio functionality
+- Minor fixes
+
+0.1.1 (Aug 18,2014)
+- Added Texture mode
+- Added custom inspector
+
+0.1 (Initial Version) (Aug 12,2014)

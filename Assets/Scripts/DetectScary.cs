@@ -32,16 +32,25 @@ public class DetectScary : MonoBehaviour {
 		//print ("in");
 		if(p != null){
 			if(p.shouldScare && p.posessed){
-				if(c.name == "tvwithcolor"){
-					fromTV = true;
-				}else if(c.name == "radio"){
-					fromTV = false;
-					fromRadio = true;
-				}
-				//print (c.name);
 
-				scary += Time.deltaTime;
-				canvas.GetComponentInChildren<Text>().text = "Scare Factor\n       " + (int)scary;
+                Scare s;
+                s = c.GetComponent<Scare>();
+               
+                    if (s == null)
+                    {
+                        s = c.GetComponentInParent<Scare>();
+                    }
+                    if (s != null)
+                    {
+                        if (s.canScareNow() && !s.isGlobal())
+                        {
+                            NavAgent person = GetComponentInParent<NavAgent>();
+                            s.scareLocation(person);
+                            s.scarePerson(person);
+                            s.resetScareTimer();
+                        }
+                    }
+                
 			}
 		}
 

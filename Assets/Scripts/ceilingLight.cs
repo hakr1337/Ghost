@@ -3,13 +3,18 @@ using System.Collections;
 
 public class ceilingLight : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    public NavAgent person;
+    private Transform target;
+    void Start()
+    {
+//        person = GameObject.Find("person").GetComponent<NavAgent>();
+        target = GameObject.Find("Target").GetComponent<Transform>();
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 
@@ -23,6 +28,8 @@ public class ceilingLight : MonoBehaviour {
         if(c.name == "tvwithcolor")
         {
             GameObject[] fires = GameObject.FindGameObjectsWithTag("Fire");
+            target.position = new Vector3(11.57F, 11.568F, -4.9F);
+            //person.setTarget(target.position);
 
             foreach (GameObject o in fires)
             {
