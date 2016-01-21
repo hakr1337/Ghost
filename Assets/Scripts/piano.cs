@@ -12,7 +12,7 @@ public class piano : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (p.posessed && Input.GetButtonDown("A")) {
+		if (p.posessed && (Input.GetButtonDown("A")|| Input.GetKeyDown(KeyCode.E))) {
             march.Play();
         }
 

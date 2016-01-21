@@ -7,7 +7,7 @@ public class NavAgent : MonoBehaviour {
     
     public float RotationSpeed;
     public float walkDelay;
-	public float exitTime = 30;
+	public float exitTime = 60;
 
 	Vector3 point0;
 	Vector3 target;
