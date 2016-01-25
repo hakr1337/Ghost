@@ -7,7 +7,7 @@ public class NavAgent : MonoBehaviour {
     
     public float RotationSpeed;
     public float walkDelay;
-	public float exitTime = 60;
+	public float exitTime = 30;
 
 	Vector3 point0;
 	Vector3 target;
@@ -17,6 +17,7 @@ public class NavAgent : MonoBehaviour {
     bool idle;
     int state;
     Vector3[] pathPoints;
+    int pointCount;
     NavMeshAgent agent;
     Vector3 exit;
     Slider fearMeter; //REPLEACE WITH STATIC REFERENCE LATER BY MAKING PUBLIC
@@ -35,11 +36,14 @@ public class NavAgent : MonoBehaviour {
     bool scaredNow;
 
 	Animator anim;
+    spawnAI spawnController;
+    
 
 
     // Use this for initialization
     void Start() {
 
+        spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); ;
         agent = GetComponent<NavMeshAgent>();
         target = GetComponent<Transform>().position;
 		anim = GetComponent<Animator> ();
@@ -62,16 +66,18 @@ public class NavAgent : MonoBehaviour {
         //agentColor = 3;
         scaredNow = false;
 		anim.SetBool ("Walk", true);
-        pathPoints = new Vector3[9];
-        pathPoints[0] = GameObject.Find("AINode1").GetComponent<Transform>().position;
-        pathPoints[1] = GameObject.Find("AINode2").GetComponent<Transform>().position;
-        pathPoints[2] = GameObject.Find("AINode3").GetComponent<Transform>().position;
-        pathPoints[3] = GameObject.Find("AINode4").GetComponent<Transform>().position;
-		pathPoints[4] = GameObject.Find("AINode5").GetComponent<Transform>().position;
-		pathPoints[5] = GameObject.Find("AINode6").GetComponent<Transform>().position;
-		pathPoints[6] = GameObject.Find("AINode7").GetComponent<Transform>().position;
-		pathPoints[7] = GameObject.Find("AINode8").GetComponent<Transform>().position;
-		pathPoints[8] = GameObject.Find("AINode9").GetComponent<Transform>().position;
+ 
+
+
+        //find all AI path points and then put there transforms into an array
+        GameObject[] tempPoints = GameObject.FindGameObjectsWithTag("AI_Path");
+
+        pointCount = tempPoints.Length;
+        pathPoints = new Vector3[pointCount];
+        for (int i = 0; i < pointCount; i++)
+        {
+            pathPoints[i] = tempPoints[i].GetComponent<Transform>().position;
+        }
     }
 
     // Update is called once per frame
@@ -141,6 +147,8 @@ public class NavAgent : MonoBehaviour {
 			//this.gameObject.SetActive(false);///////////////NEW
 			active = false;///////////////NEW
 
+            spawnController.patronWasKilled();
+
 			Destroy (gameObject);
         }
        
@@ -171,12 +179,12 @@ public class NavAgent : MonoBehaviour {
 		if (idleTimer > 5 || first || walkTimer > 15) {
 			
 			first = false;
-			float fstate = Random.Range (0, 8);
+			float fstate = Random.Range (0, pointCount);
 
             state = (int)fstate;
 
 			setTarget (pathPoints [state]);
-			setView (pathPoints [(state + 1) % 9]);
+			setView (pathPoints [(state + 1) % pointCount]);
 
 			idleTimer = 0;
             walkTimer = 0;
@@ -206,17 +214,10 @@ public class NavAgent : MonoBehaviour {
         agentColor = newColor;
     }
 
-    public void scared(int scareColor) {
+    public void scared(int scareVal) {
 
-        if (scareColor == agentColor)
-        {
-            health -= 3;
-        }
-        else
-        {
-            health -= 1;
-        }
-			
+
+        health -= scareVal;
 
         healthBar.fillAmount = (float)health / (float)maxHealth;
         scaredNow = true;
