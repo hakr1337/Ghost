@@ -20,7 +20,7 @@ public class lamp : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (posessScript.posessed) {
-			if(Input.GetButtonDown("A")){
+			if((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
                 this.GetComponentInChildren<Light>().enabled = !this.GetComponentInChildren<Light>().enabled;
                     
                     //Universal Script for a scare with wide reach, should place somewhere more accessible to all things

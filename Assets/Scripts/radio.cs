@@ -16,7 +16,7 @@ public class radio : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (p.posessed) {
-			if(Input.GetButtonDown("A")){
+			if((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
 				if(aud.isPlaying){
 					aud.Stop();
 				}else{

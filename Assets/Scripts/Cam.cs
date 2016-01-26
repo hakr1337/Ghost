@@ -99,37 +99,35 @@ public class Cam : MonoBehaviour {
 				if(transform.position.z - p.transform.position.z > .7f){//move right
 					transform.position = new Vector3(transform.position.x,
 				                                     transform.position.y,
-				                                 	 transform.position.z - Time.deltaTime * 1.3f);
+				                                 	 transform.position.z - Time.deltaTime * 2.5f);
 				}else if(transform.position.z - p.transform.position.z < -.7f){ //move left
 					transform.position = new Vector3(transform.position.x,
 				                                 	 transform.position.y,
-				                                 	 transform.position.z + Time.deltaTime * 1.3f);
+				                                 	 transform.position.z + Time.deltaTime * 2.5f);
 				}
 				
 				if(transform.position.x - p.transform.position.x < -3f){//move in
-					transform.position = new Vector3(transform.position.x + Time.deltaTime * 1.3f,
+					transform.position = new Vector3(transform.position.x + Time.deltaTime * 2.5f,
 				                                 	 transform.position.y,
 				                                 	 transform.position.z);
 				}else if(transform.position.x - p.transform.position.x > -2f){//move out
-					transform.position = new Vector3(transform.position.x - Time.deltaTime * 1.3f,
+					transform.position = new Vector3(transform.position.x - Time.deltaTime * 2.5f,
 				                                 	 transform.position.y,
 				                                 	 transform.position.z);
 				}
-			/*
+
 				if(transform.position.y - p.transform.position.y < .498f){//move up
-					if(p.name == "Player"){
-						p.GetComponent<player>().speed = 4;
-					}
+				
 					//print(transform.position.y - p.transform.position.y);
 					transform.position = new Vector3(transform.position.x,
-				                                 	 transform.position.y + Time.deltaTime * 1.3f,
+				                                 	 transform.position.y + Time.deltaTime * 2.5f,
 					                                 transform.position.z);
-				}else if(transform.position.y - p.transform.position.y > 2){//move down
+				}else if(transform.position.y - p.transform.position.y > 1f){//move down
 					
 					transform.position = new Vector3(transform.position.x,
-				                                 	 transform.position.y - Time.deltaTime * 1.3f,
+				                                 	 transform.position.y - Time.deltaTime * 2.5f,
 				                                 	 transform.position.z);
-				}else{
+				}/*else{
 					if(p.name == "Player"){
 						p.GetComponent<player>().speed = 1.3f;
 					}

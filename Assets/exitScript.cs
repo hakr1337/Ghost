@@ -9,9 +9,9 @@ public class exitScript : MonoBehaviour {
 	GameOverScreen GO;
 	// Use this for initialization
 	void Start () {
-		lives = GameObject.Find ("Lives").GetComponent<Text>();
+		//lives = GameObject.Find ("Lives").GetComponent<Text>();
 		lives_left = tot_lives;
-		GO = GameObject.Find ("gameover").GetComponent<GameOverScreen>();
+		//GO = GameObject.Find ("gameover").GetComponent<GameOverScreen>();
 	}
 	
 	// Update is called once per frame
