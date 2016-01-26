@@ -6,27 +6,31 @@ public class Scare : MonoBehaviour {
     // Use this for initialization
     public int scareVal;
     private Transform target;
-    float timer;
+    public float timer;
+    public float usedTime;
     bool timing;
     bool moving;
-    public int color;
+    public bool used;
+    public bool usedWindow;
 
-   public float timer2;
+    public float timer2;
     public bool timing2;
     public bool global;
 
     void Start() {
-        
+        used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
-		if (this.name == "trigger" || this.name == "Trigger") {
-			color = GetComponent<Posessable> ().color;
-		}
+        usedWindow = false;
+		
         
     }
 
     // Update is called once per frame
     void Update() {
         timer += Time.deltaTime;
+
+        if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
+            wasUsed();
 
     }
 
@@ -57,8 +61,10 @@ public class Scare : MonoBehaviour {
 
     public void scarePerson(NavAgent person) {
         if ( true) {
-            person.scared(color);
+            person.scared(scareVal);
             timing = true;
+            usedTime = timer + 0.01f;
+            usedWindow = true;
         }
     }
 
@@ -69,11 +75,23 @@ public class Scare : MonoBehaviour {
 
     public bool canScareNow()
     {
-        return timer > 10;
+        return (timer > 1) && !used;
     }
 
     public void resetScareTimer()
     {
-        timer = 0;
+        //timer = 0;
+    }
+
+    public void wasUsed()
+    {
+        used = true;
+    }
+
+    public void resetUsed()
+    {
+        used = false;
+        usedWindow = false;
+        usedTime = 0;
     }
 }

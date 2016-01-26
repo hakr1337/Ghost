@@ -10,7 +10,7 @@ public class cameraStuff : MonoBehaviour {
 
 	public bool visionOn = false;
 
-    public float moveSpeedZ = 4f;
+    public float moveSpeedZ = 8f;
     public float moveThresholdZ = .8f;
 
 

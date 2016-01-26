@@ -19,12 +19,12 @@ public class Posessable : MonoBehaviour {
         //if object is posessed and activated by player is should scare (buggy)
 		if( posessed && (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0||
 		    Input.GetAxis("Vertical") > 0 || Input.GetAxis("Vertical") < 0 ||
-			Input.GetButtonDown("A") || Input.GetKey(KeyCode.E))){
+		    Input.GetButtonDown("A"))){
 			shouldScare = !shouldScare;
 		}
 
         //exit posession
-		if ((Input.GetButtonDown("B")||Input.GetKey(KeyCode.Escape)) && posessed){
+		if (Input.GetButtonDown("B") && posessed){
 
             //re-enable player
 			SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
@@ -54,4 +54,6 @@ public class Posessable : MonoBehaviour {
 		}
 
 	}
+
+
 }
