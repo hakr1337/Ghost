@@ -23,7 +23,7 @@ public class Door : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if(this.GetComponentInChildren<Posessable>().posessed && Input.GetButtonDown("A")){
+		if(this.GetComponentInChildren<Posessable>().posessed && (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
 			this.GetComponentInChildren<Posessable>().shouldScare = false;
 			if(!anim.isPlaying){
 				if(!open){

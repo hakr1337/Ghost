@@ -7,8 +7,8 @@ public class bookshelf : MonoBehaviour {
     //public int scareValue = 3;
 	// Use this for initialization
 	void Start () {
-        books = GameObject.Find("Books On Shelf");
-        shelf = GameObject.Find("bookshelf");
+		books = GameObject.Find("books (1)");
+		shelf = GameObject.Find("bookshelf (1)");
 
         Transform[] book = GetComponentsInChildren<Transform>();
         
@@ -23,7 +23,7 @@ public class bookshelf : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (shelf.GetComponentInChildren<Posessable>().posessed) {
-            if (Input.GetButtonDown("A")) {
+			if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))) {
                 Transform[] book = GetComponentsInChildren<Transform>();
                 shelf.transform.FindChild("Trigger").gameObject.GetComponent<Collider>().isTrigger = true;
                 shelf.GetComponentInChildren<Collider>().isTrigger = true;
