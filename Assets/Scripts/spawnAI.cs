@@ -3,32 +3,34 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class spawnAI : MonoBehaviour {
+    public int identifier;
 	GameObject[] AIs;
 	GameObject AI;
+    public int[] waveEnemyCount;
+    public int enemySpawnCount;
 	//Material[] colors;
-	public float timer = 0;
-    public float waveTimer = 0;
+	public float timer;
+    public float waveTimer;
 	bool timing;
     int index;
     Vector3 spawn;
     int count;
     public int waveCount;
-    int patronCount;
-    public int killedPatrons;
+    public int patronCount;
+    int killedPatrons;
     public float wavePrepTime;
     public float spawnRate;
     public float failTimer;
     Text timerText;
     Text waveText;
     GameOverScreen GO;
-    public Scare[] scareObjects;
-    public GameObject[] temp;
+    Scare[] scareObjects;
     // Use this for initialization
     void Start () {
 		AI = (GameObject)Resources.Load ("Patron");
         timerText = GameObject.Find("WaveTimeUI").GetComponent<Text>();
         waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
-        AIs = new GameObject[35];
+        //AIs = new GameObject[35];
         timing = true;
         index = 0;
         waveCount = 0;
@@ -46,7 +48,7 @@ public class spawnAI : MonoBehaviour {
         //t.GetComponentInChildren<SkinnedMeshRenderer> ().material = colors [r];
         //t.GetComponent<NavAgent> ().setColor (r);
 
-        temp = GameObject.FindGameObjectsWithTag("posessable");
+        GameObject[] temp = GameObject.FindGameObjectsWithTag("posessable");
 
         int objCount = temp.Length;
         scareObjects = new Scare[objCount];
@@ -57,7 +59,15 @@ public class spawnAI : MonoBehaviour {
 
         GO = GameObject.Find("gameover").GetComponent<GameOverScreen>();
 
+        waveEnemyCount = new int[10];
+        waveEnemyCount[1] = 3;
+        waveEnemyCount[2] = 5;
+
+        timer = -wavePrepTime;
+        waveTimer = timer;
+
         spawnNextWave();
+        
 
     }
 	
@@ -65,7 +75,7 @@ public class spawnAI : MonoBehaviour {
 	void Update () {
 
 	    // all patrons for that wave were killed, start the next one
-        if(killedPatrons >= waveCount)
+        if(killedPatrons >= enemySpawnCount)
         {
             spawnNextWave();
         }
@@ -89,7 +99,7 @@ public class spawnAI : MonoBehaviour {
 		if(timer > spawnRate){
 
 
-			if(patronCount < waveCount){
+			if(patronCount < enemySpawnCount && waveCount >= identifier){
                // for (int i = 0; i < count; i++)
                 //{
                     GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
@@ -101,9 +111,10 @@ public class spawnAI : MonoBehaviour {
                     //index++;
                 //}
                 patronCount++;
-				
-			}
-            timer = 0;
+                timer = 0;
+
+            }
+            
 		}
 
 	}
@@ -111,6 +122,7 @@ public class spawnAI : MonoBehaviour {
     public void spawnNextWave()
     {
         waveCount++;
+        enemySpawnCount = waveEnemyCount[waveCount];
         timer = -wavePrepTime;
         waveTimer = -wavePrepTime;
         killedPatrons = 0;
