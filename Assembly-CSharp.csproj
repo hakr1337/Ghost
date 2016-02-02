@@ -51,7 +51,6 @@
      <Compile Include="Assets\Image Sequence Playback\Scripts\Examples\textureMode.cs" />
      <Compile Include="Assets\Image Sequence Playback\Scripts\Examples\uGUI_Example_UI.cs" />
      <Compile Include="Assets\Image Sequence Playback\Scripts\Playback.cs" />
-     <Compile Include="Assets\Scripts\AI.cs" />
      <Compile Include="Assets\Scripts\Cam.cs" />
      <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
      <Compile Include="Assets\Scripts\DetectScary.cs" />
@@ -66,7 +65,6 @@
      <Compile Include="Assets\Scripts\ballControl.cs" />
      <Compile Include="Assets\Scripts\book.cs" />
      <Compile Include="Assets\Scripts\bookshelf.cs" />
-     <Compile Include="Assets\Scripts\cameraStuff.cs" />
      <Compile Include="Assets\Scripts\ceilingLight.cs" />
      <Compile Include="Assets\Scripts\fearMeter.cs" />
      <Compile Include="Assets\Scripts\fireplace.cs" />
@@ -78,7 +76,6 @@
      <Compile Include="Assets\Scripts\posess.cs" />
      <Compile Include="Assets\Scripts\radio.cs" />
      <Compile Include="Assets\Scripts\spawnAI.cs" />
-     <Compile Include="Assets\Scripts\thoughtBubble.cs" />
      <Compile Include="Assets\Scripts\tv.cs" />
      <Compile Include="Assets\exitScript.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />

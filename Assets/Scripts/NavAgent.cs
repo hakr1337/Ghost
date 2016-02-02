@@ -18,6 +18,8 @@ public class NavAgent : MonoBehaviour {
     int state;
     Vector3[] pathPoints;
     int pointCount;
+    Vector3[] pathPoints2;
+    int pointCount2;
     NavMeshAgent agent;
     Vector3 exit;
     Slider fearMeter; //REPLEACE WITH STATIC REFERENCE LATER BY MAKING PUBLIC
@@ -30,7 +32,7 @@ public class NavAgent : MonoBehaviour {
     float scaredTimer;
     public int agentColor;
     int health;
-    int maxHealth;
+    public int maxHealth;
     Image healthBar;
 	bool active; /////////////////NEW 
     bool scaredNow;
@@ -78,6 +80,16 @@ public class NavAgent : MonoBehaviour {
         {
             pathPoints[i] = tempPoints[i].GetComponent<Transform>().position;
         }
+
+        //find all AI path points and then put there transforms into an array
+        GameObject[] tempPoints2 = GameObject.FindGameObjectsWithTag("AI_Path2");
+
+        pointCount2 = tempPoints.Length;
+        pathPoints2 = new Vector3[pointCount];
+        for (int i = 0; i < pointCount; i++)
+        {
+            pathPoints2[i] = tempPoints[i].GetComponent<Transform>().position;
+        }
     }
 
     // Update is called once per frame
@@ -123,14 +135,7 @@ public class NavAgent : MonoBehaviour {
             }
         }
         //this is shit, change later
-    
-
-		if (totalTimer > exitTime)
-        {
-            agent.SetDestination(exit);
-            changeView();
-            active = false;
-        }
+   
 
         if(health < 1)
         {
@@ -183,8 +188,16 @@ public class NavAgent : MonoBehaviour {
 
             state = (int)fstate;
 
-			setTarget (pathPoints [state]);
-			setView (pathPoints [(state + 1) % pointCount]);
+            if (spawnController.getWaveCount() == 1)
+            {
+                setTarget(pathPoints[state]);
+                setView(pathPoints[(state + 1) % pointCount]);
+            }
+            else
+            {
+                setTarget(pathPoints2[state]);
+                setView(pathPoints2[(state + 1) % pointCount]);
+            }
 
 			idleTimer = 0;
             walkTimer = 0;
