@@ -96,7 +96,7 @@ public class Cam : MonoBehaviour {
 		switch(zoomState%1){
 			case 0: //if full zoom 
 				//print ("0");
-				if(transform.position.z - p.transform.position.z > .7f){//move right
+				/*if(transform.position.z - p.transform.position.z > .7f){//move right
 					transform.position = new Vector3(transform.position.x,
 				                                     transform.position.y,
 				                                 	 transform.position.z - Time.deltaTime * 2.5f);
