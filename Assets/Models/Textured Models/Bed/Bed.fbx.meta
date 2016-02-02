@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: a23177384f825fa448eae9aee6497f53
+timeCreated: 1454284504
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BedUV:pCube13
+    100004: BedUV:pCube14
+    100006: BedUV:pCube15
+    100008: BedUV:pCube16
+    100010: BedUV:pCube17
+    100012: BedUV:pCube18
+    100014: BedUV:pCube19
+    100016: BedUV:pCube20
+    100018: BedUV:pCube21
+    100020: BedUV:pCube22
+    100022: BedUV:pCube23
+    100024: BedUV:pCube24
+    100026: BedUV:pCube25
+    100028: BedUV:pCube5
+    100030: BedUV:pPlane2
+    400000: //RootNode
+    400002: BedUV:pCube13
+    400004: BedUV:pCube14
+    400006: BedUV:pCube15
+    400008: BedUV:pCube16
+    400010: BedUV:pCube17
+    400012: BedUV:pCube18
+    400014: BedUV:pCube19
+    400016: BedUV:pCube20
+    400018: BedUV:pCube21
+    400020: BedUV:pCube22
+    400022: BedUV:pCube23
+    400024: BedUV:pCube24
+    400026: BedUV:pCube25
+    400028: BedUV:pCube5
+    400030: BedUV:pPlane2
+    2300000: BedUV:pCube13
+    2300002: BedUV:pCube14
+    2300004: BedUV:pCube15
+    2300006: BedUV:pCube16
+    2300008: BedUV:pCube17
+    2300010: BedUV:pCube18
+    2300012: BedUV:pCube19
+    2300014: BedUV:pCube20
+    2300016: BedUV:pCube21
+    2300018: BedUV:pCube22
+    2300020: BedUV:pCube23
+    2300022: BedUV:pCube24
+    2300024: BedUV:pCube25
+    2300026: BedUV:pCube5
+    2300028: BedUV:pPlane2
+    3300000: BedUV:pCube13
+    3300002: BedUV:pCube14
+    3300004: BedUV:pCube15
+    3300006: BedUV:pCube16
+    3300008: BedUV:pCube17
+    3300010: BedUV:pCube18
+    3300012: BedUV:pCube19
+    3300014: BedUV:pCube20
+    3300016: BedUV:pCube21
+    3300018: BedUV:pCube22
+    3300020: BedUV:pCube23
+    3300022: BedUV:pCube24
+    3300024: BedUV:pCube25
+    3300026: BedUV:pCube5
+    3300028: BedUV:pPlane2
+    4300000: BedUV:pCube5
+    4300002: BedUV:pCube13
+    4300004: BedUV:pCube14
+    4300006: BedUV:pCube15
+    4300008: BedUV:pCube16
+    4300010: BedUV:pCube17
+    4300012: BedUV:pCube18
+    4300014: BedUV:pCube19
+    4300016: BedUV:pCube20
+    4300018: BedUV:pCube21
+    4300020: BedUV:pCube22
+    4300022: BedUV:pCube23
+    4300024: BedUV:pPlane2
+    4300026: BedUV:pCube24
+    4300028: BedUV:pCube25
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

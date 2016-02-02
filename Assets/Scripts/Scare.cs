@@ -10,8 +10,13 @@ public class Scare : MonoBehaviour {
     public float usedTime;
     bool timing;
     bool moving;
+<<<<<<< HEAD
     bool used;
     bool usedWindow;
+=======
+    public bool used;
+    public bool usedWindow;
+>>>>>>> master
     float cooldown;
     public int cooldownTime;
 
@@ -37,6 +42,7 @@ public class Scare : MonoBehaviour {
     void Update() {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
+<<<<<<< HEAD
         //if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
         //wasUsed();
 
@@ -72,6 +78,10 @@ public class Scare : MonoBehaviour {
 
             }
         }
+=======
+        if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
+            wasUsed();
+>>>>>>> master
 
     }
 
@@ -79,7 +89,11 @@ public class Scare : MonoBehaviour {
         if (true) {
             
             person.setTarget(target.position);
+<<<<<<< HEAD
             person.setView(this.GetComponentInParent<Transform>().position);
+=======
+            person.setView(this.GetComponent<Transform>().position);
+>>>>>>> master
         }
         
     }

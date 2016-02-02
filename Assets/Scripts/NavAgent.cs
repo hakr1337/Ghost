@@ -45,8 +45,15 @@ public class NavAgent : MonoBehaviour {
 	bool first = true;
     bool idle;
     int state;
+<<<<<<< HEAD
     public AIPath[] pathPoints;
     public int[] pointCount;
+=======
+    Vector3[] pathPoints;
+    int pointCount;
+    Vector3[] pathPoints2;
+    int pointCount2;
+>>>>>>> master
     NavMeshAgent agent;
     Vector3 exit;
     Slider fearMeter; //REPLEACE WITH STATIC REFERENCE LATER BY MAKING PUBLIC
@@ -129,8 +136,21 @@ public class NavAgent : MonoBehaviour {
             
             
         }
+<<<<<<< HEAD
         
         
+=======
+
+        //find all AI path points and then put there transforms into an array
+        GameObject[] tempPoints2 = GameObject.FindGameObjectsWithTag("AI_Path2");
+
+        pointCount2 = tempPoints.Length;
+        pathPoints2 = new Vector3[pointCount];
+        for (int i = 0; i < pointCount; i++)
+        {
+            pathPoints2[i] = tempPoints[i].GetComponent<Transform>().position;
+        }
+>>>>>>> master
     }
 
     // Update is called once per frame
@@ -226,11 +246,24 @@ public class NavAgent : MonoBehaviour {
 
             state = (int)fstate;
 
+<<<<<<< HEAD
 
             setTarget(pathPoints[waveCount].getPoint(state));
             setView(pathPoints[waveCount].getPoint(state));
             
           
+=======
+            if (spawnController.getWaveCount() == 1)
+            {
+                setTarget(pathPoints[state]);
+                setView(pathPoints[(state + 1) % pointCount]);
+            }
+            else
+            {
+                setTarget(pathPoints2[state]);
+                setView(pathPoints2[(state + 1) % pointCount]);
+            }
+>>>>>>> master
 
 			idleTimer = 0;
             walkTimer = 0;
