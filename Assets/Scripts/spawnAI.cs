@@ -15,14 +15,17 @@ public class spawnAI : MonoBehaviour {
     int index;
     Vector3 spawn;
     int count;
-    public int waveCount;
-    public int patronCount;
+    int waveCount;
+    int totalWaves;
+    int patronCount;
     int killedPatrons;
     public float wavePrepTime;
     public float spawnRate;
     public float failTimer;
     Text timerText;
     Text waveText;
+    Text scoreText;
+    int score;
     GameOverScreen GO;
     Scare[] scareObjects;
     // Use this for initialization
@@ -30,23 +33,17 @@ public class spawnAI : MonoBehaviour {
 		AI = (GameObject)Resources.Load ("Patron");
         timerText = GameObject.Find("WaveTimeUI").GetComponent<Text>();
         waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
-        //AIs = new GameObject[35];
+        scoreText = GameObject.Find("Score").GetComponent<Text>();
+
         timing = true;
         index = 0;
-        waveCount = 0;
+        waveCount = -1;
+        score = 0;
+        
         spawn = GameObject.Find("AI_spawn_point").GetComponent<Transform>().position;
-		//GameObject t = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
 
-		//colors = new Material[4];
-		//colors[0] = (Material)Resources.Load ("Red");
-		//colors[1] = (Material)Resources.Load ("Green");
-		//colors[2] = (Material)Resources.Load ("Blue");
-		//colors[3] = (Material)Resources.Load ("Yellow");
 
 		int r = Random.Range (0, 3);
-
-        //t.GetComponentInChildren<SkinnedMeshRenderer> ().material = colors [r];
-        //t.GetComponent<NavAgent> ().setColor (r);
 
         GameObject[] temp = GameObject.FindGameObjectsWithTag("posessable");
 
@@ -59,7 +56,9 @@ public class spawnAI : MonoBehaviour {
 
         GO = GameObject.Find("gameover").GetComponent<GameOverScreen>();
 
-        waveEnemyCount = new int[10];
+        totalWaves = 3;
+        waveEnemyCount = new int[totalWaves];
+        waveEnemyCount[0] = 1;
         waveEnemyCount[1] = 3;
         waveEnemyCount[2] = 5;
 
@@ -75,6 +74,11 @@ public class spawnAI : MonoBehaviour {
 	void Update () {
 
 	    // all patrons for that wave were killed, start the next one
+
+        if(waveCount > totalWaves)
+        {
+            failFunction();//replace with win function later for final scene
+        }
         if(killedPatrons >= enemySpawnCount)
         {
             spawnNextWave();
@@ -100,16 +104,9 @@ public class spawnAI : MonoBehaviour {
 
 
 			if(patronCount < enemySpawnCount && waveCount >= identifier){
-               // for (int i = 0; i < count; i++)
-                //{
-                    GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
-					//int r = Random.Range (0, 3);
-					//temp.GetComponentInChildren<SkinnedMeshRenderer> ().material = colors [r];
-					//temp.GetComponent<NavAgent> ().setColor (r);
 
-                    //AIs[index] = temp;
-                    //index++;
-                //}
+                    GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
+			
                 patronCount++;
                 timer = 0;
 
@@ -140,12 +137,19 @@ public class spawnAI : MonoBehaviour {
     public void patronWasKilled()
     {
         killedPatrons++;
+        score++;
+        scoreText.text = "Score: " + score;
     }
 
     public void failFunction()
     {
-        //spawnNextWave();
+        
         GO.Died();
+    }
+
+    public int getTotalWaves()
+    {
+        return totalWaves;
     }
 
     //reset ability to scare on each wave
