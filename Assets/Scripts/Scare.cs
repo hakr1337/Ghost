@@ -10,19 +10,30 @@ public class Scare : MonoBehaviour {
     public float usedTime;
     bool timing;
     bool moving;
+<<<<<<< HEAD
+    bool used;
+    bool usedWindow;
+=======
     public bool used;
     public bool usedWindow;
+>>>>>>> master
     float cooldown;
     public int cooldownTime;
 
-    public float timer2;
-    public bool timing2;
+    float timer2;
+    bool timing2;
     public bool global;
+
+    Posessable posessScript;
+    GameObject[] people;
+    public float scareRadius;
 
     void Start() {
         used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
+        posessScript = this.GetComponentInChildren<Posessable>();
         usedWindow = false;
+        cooldown = cooldownTime;
 		
         
     }
@@ -31,18 +42,58 @@ public class Scare : MonoBehaviour {
     void Update() {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
+<<<<<<< HEAD
+        //if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
+        //wasUsed();
+
+        if (posessScript.posessed)
+        {
+            if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space)))
+            {
+
+                if (canScareNow())
+                {
+                        //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
+                    people = GameObject.FindGameObjectsWithTag("Enemy");
+                    foreach (GameObject p in people)
+                    {
+                        NavAgent person = p.GetComponent<NavAgent>();
+                        if (person != null)
+                        {
+
+                            Transform tempLoc = p.GetComponent<Transform>();
+
+                            //set a range on how it can work
+                            if (Vector3.Distance(tempLoc.position, this.GetComponent<Transform>().position) < scareRadius)
+                            {
+                                 scareLocation(person, target);
+                                 scarePerson(person);
+                            }
+                        
+
+                        }
+                    }
+                }
+
+
+            }
+        }
+=======
         if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
             wasUsed();
+>>>>>>> master
 
     }
 
     public void scareLocation(NavAgent person) {
-        //target.position = coords;
-        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
         if (true) {
-            timing2 = true;
+            
             person.setTarget(target.position);
+<<<<<<< HEAD
+            person.setView(this.GetComponentInParent<Transform>().position);
+=======
             person.setView(this.GetComponent<Transform>().position);
+>>>>>>> master
         }
         
     }
@@ -50,13 +101,12 @@ public class Scare : MonoBehaviour {
     //overloaded version
     public void scareLocation(NavAgent person, Transform goal)
     {
-        //target.position = coords;
-        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
+
         if (true)
         {
-            timing2 = true;
+            
             person.setTarget(goal.position);
-            person.setView(goal.position);
+            person.setView(this.GetComponentInParent<Transform>().position);
         }
 
     }
