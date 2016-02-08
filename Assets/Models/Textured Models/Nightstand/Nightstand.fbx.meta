@@ -1,0 +1,124 @@
+fileFormatVersion: 2
+guid: a64398f399505db48ab7e88215f78a6b
+timeCreated: 1454285128
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: NightStand:pCube3
+    100004: NightStand:pCube4
+    100006: NightStand:pCube5
+    100008: NightStand:pCube6
+    100010: NightStand:pCube7
+    100012: NightStand:pCube8
+    100014: NightStand:pCube9
+    100016: NightStand:polySurface10
+    100018: NightStand:polySurface12
+    100020: NightStand:polySurface15
+    400000: //RootNode
+    400002: NightStand:pCube3
+    400004: NightStand:pCube4
+    400006: NightStand:pCube5
+    400008: NightStand:pCube6
+    400010: NightStand:pCube7
+    400012: NightStand:pCube8
+    400014: NightStand:pCube9
+    400016: NightStand:polySurface10
+    400018: NightStand:polySurface12
+    400020: NightStand:polySurface15
+    2300000: NightStand:pCube3
+    2300002: NightStand:pCube4
+    2300004: NightStand:pCube5
+    2300006: NightStand:pCube6
+    2300008: NightStand:pCube7
+    2300010: NightStand:pCube8
+    2300012: NightStand:pCube9
+    2300014: NightStand:polySurface10
+    2300016: NightStand:polySurface12
+    2300018: NightStand:polySurface15
+    3300000: NightStand:pCube3
+    3300002: NightStand:pCube4
+    3300004: NightStand:pCube5
+    3300006: NightStand:pCube6
+    3300008: NightStand:pCube7
+    3300010: NightStand:pCube8
+    3300012: NightStand:pCube9
+    3300014: NightStand:polySurface10
+    3300016: NightStand:polySurface12
+    3300018: NightStand:polySurface15
+    4300000: NightStand:pCube8
+    4300002: NightStand:polySurface10
+    4300004: NightStand:polySurface12
+    4300006: NightStand:polySurface15
+    4300008: NightStand:pCube5
+    4300010: NightStand:pCube3
+    4300012: NightStand:pCube4
+    4300014: NightStand:pCube7
+    4300016: NightStand:pCube6
+    4300018: NightStand:pCube9
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

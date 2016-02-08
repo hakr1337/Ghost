@@ -5,7 +5,6 @@ public class Posessable : MonoBehaviour {
 	public bool posessed = false;
 	public bool shouldScare = false;
     public bool lit = false;
-	public int color;
 
     GameObject player;
 	// Use this for initialization

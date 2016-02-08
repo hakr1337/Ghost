@@ -2,12 +2,41 @@
 using UnityEngine.UI;
 using System.Collections;
 
+[System.Serializable]
+public class AIPath
+{
+    public Vector3[] path;
+    public int v;
+
+    public AIPath()
+    {
+        path = new Vector3[10];
+        v = 0;
+    }
+
+    public AIPath(int pathSize)
+    {
+        path = new Vector3[pathSize];
+        v = pathSize;
+    }
+
+    public void setPoint(int i,Vector3 point)
+    {
+        path[i] = point;
+    }
+
+    public Vector3 getPoint(int i)
+    {
+        return path[i%v];
+    }
+}
+
+
 public class NavAgent : MonoBehaviour {
 
     
     public float RotationSpeed;
     public float walkDelay;
-	public float exitTime = 30;
 
 	Vector3 point0;
 	Vector3 target;
@@ -16,10 +45,8 @@ public class NavAgent : MonoBehaviour {
 	bool first = true;
     bool idle;
     int state;
-    Vector3[] pathPoints;
-    int pointCount;
-    Vector3[] pathPoints2;
-    int pointCount2;
+    public AIPath[] pathPoints;
+    public int[] pointCount;
     NavMeshAgent agent;
     Vector3 exit;
     Slider fearMeter; //REPLEACE WITH STATIC REFERENCE LATER BY MAKING PUBLIC
@@ -39,13 +66,18 @@ public class NavAgent : MonoBehaviour {
 
 	Animator anim;
     spawnAI spawnController;
+    int totalWaves;
+
+    public Vector3[] testing;
+    public GameObject[] test2;
+    public string[] stest;
     
 
 
     // Use this for initialization
     void Start() {
 
-        spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); ;
+        spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
         agent = GetComponent<NavMeshAgent>();
         target = GetComponent<Transform>().position;
 		anim = GetComponent<Animator> ();
@@ -57,7 +89,7 @@ public class NavAgent : MonoBehaviour {
 		}
         //healthBar = this.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
         //fearLevel = 0;
-        exit = GameObject.Find("exit").GetComponent<Transform>().position;
+        //exit = GameObject.Find("exit").GetComponent<Transform>().position;
         //fearMeter = GameObject.Find("FearSlider").GetComponent<Slider>();
         viewTarget = point0;
         idle = true;
@@ -68,28 +100,37 @@ public class NavAgent : MonoBehaviour {
         //agentColor = 3;
         scaredNow = false;
 		anim.SetBool ("Walk", true);
- 
+        totalWaves = spawnController.getTotalWaves();
 
-
-        //find all AI path points and then put there transforms into an array
-        GameObject[] tempPoints = GameObject.FindGameObjectsWithTag("AI_Path");
-
-        pointCount = tempPoints.Length;
-        pathPoints = new Vector3[pointCount];
-        for (int i = 0; i < pointCount; i++)
+        GameObject[] tempPoints;
+        pointCount = new int[totalWaves];
+        stest = new string[3];
+        
+        pathPoints = new AIPath[totalWaves];
+        for (int m = 0; m < totalWaves; m++)
         {
-            pathPoints[i] = tempPoints[i].GetComponent<Transform>().position;
-        }
+            string tag;
+            tag = "AI_Path" + m;
+            stest[m] = tag;
+            //find all AI path points and then put there transforms into an array
+            tempPoints = GameObject.FindGameObjectsWithTag(tag);
+            
 
-        //find all AI path points and then put there transforms into an array
-        GameObject[] tempPoints2 = GameObject.FindGameObjectsWithTag("AI_Path2");
 
-        pointCount2 = tempPoints.Length;
-        pathPoints2 = new Vector3[pointCount];
-        for (int i = 0; i < pointCount; i++)
-        {
-            pathPoints2[i] = tempPoints[i].GetComponent<Transform>().position;
+            pointCount[m] = tempPoints.Length;
+            pathPoints[m] = new AIPath(pointCount[m]);
+            
+
+            for (int i = 0; i < pointCount[m]; i++)
+            {
+                pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
+
+            }
+            
+            
         }
+        
+        
     }
 
     // Update is called once per frame
@@ -141,13 +182,13 @@ public class NavAgent : MonoBehaviour {
         {
             //DO DEATH STUFF HERE
 
-			GameObject bub = (GameObject)Resources.Load("Fear Bubble");///////////////NEW
+			//GameObject bub = (GameObject)Resources.Load("Fear Bubble");///////////////NEW
 
-			Vector3 dropLoc = transform.position;
+			//Vector3 dropLoc = transform.position;
 
-			dropLoc.y = dropLoc.y + .5f;
+			//dropLoc.y = dropLoc.y + .5f;
 
-			Instantiate(bub, dropLoc, Quaternion.identity);///////////////NEW
+			//Instantiate(bub, dropLoc, Quaternion.identity);///////////////NEW
 
 			//this.gameObject.SetActive(false);///////////////NEW
 			active = false;///////////////NEW
@@ -184,20 +225,16 @@ public class NavAgent : MonoBehaviour {
 		if (idleTimer > 5 || first || walkTimer > 15) {
 			
 			first = false;
-			float fstate = Random.Range (0, pointCount);
+            int waveCount = spawnController.getWaveCount();
+			float fstate = Random.Range (0, pointCount[waveCount]);
 
             state = (int)fstate;
 
-            if (spawnController.getWaveCount() == 1)
-            {
-                setTarget(pathPoints[state]);
-                setView(pathPoints[(state + 1) % pointCount]);
-            }
-            else
-            {
-                setTarget(pathPoints2[state]);
-                setView(pathPoints2[(state + 1) % pointCount]);
-            }
+
+            setTarget(pathPoints[waveCount].getPoint(state));
+            setView(pathPoints[waveCount].getPoint(state));
+            
+          
 
 			idleTimer = 0;
             walkTimer = 0;
@@ -254,4 +291,6 @@ public class NavAgent : MonoBehaviour {
     public bool isExiting() {
         return exiting;
     }
+
+     
 }

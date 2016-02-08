@@ -16,7 +16,7 @@ public class Cam : MonoBehaviour {
 
 	GameObject p;
 	Posessable[] possessables;
-	GameObject[] particles;
+	GameObject[] scareObjects;
 
 	// Use this for initialization
 	void Start () {
@@ -37,10 +37,12 @@ public class Cam : MonoBehaviour {
 		//zoomStates [1] = Zoom2;
 		//zoomStates [2] = Zoom3;
 
-		particles = GameObject.FindGameObjectsWithTag("Particles");
-		foreach(GameObject o in particles){
-			//print(o.name);
-			o.GetComponentInChildren<ParticleSystem>().enableEmission = false;	
+		scareObjects = GameObject.FindGameObjectsWithTag("posessable");
+		foreach(GameObject o in scareObjects){
+            //print(o.name);
+            shaderGlow sg = o.GetComponent<shaderGlow>();
+            if(sg != null)
+                sg.lightOff();	
 		}
 	}
 	
@@ -66,17 +68,19 @@ public class Cam : MonoBehaviour {
 			
 			//            GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled = !GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled;
 			
-			foreach (GameObject o in particles) {
+			foreach (GameObject o in scareObjects) {
 
-				if (!o.GetComponentInChildren<ParticleSystem> ().enableEmission) {
-					o.GetComponentInChildren<ParticleSystem> ().enableEmission = !o.GetComponentInChildren<ParticleSystem> ().enableEmission;
-					o.GetComponentInChildren<ParticleSystem> ().Clear ();
-				} 
+				if (visionOn) {
+                    shaderGlow sg = o.GetComponent<shaderGlow>();
+                    if (sg != null)
+                        sg.lightOn();
+                } 
 
 				if(!visionOn){
-					o.GetComponentInChildren<ParticleSystem> ().enableEmission = !o.GetComponentInChildren<ParticleSystem> ().enableEmission;
-					o.GetComponentInChildren<ParticleSystem> ().Clear ();
-				}
+                    shaderGlow sg = o.GetComponent<shaderGlow>();
+                    if (sg != null)
+                        sg.lightOff();
+                }
 				//o.GetComponentInParent<Posessable>().lit = !o.GetComponentInParent<Posessable>().lit;
 			}
 		}
@@ -231,9 +235,10 @@ public class Cam : MonoBehaviour {
 		
 		//GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled = !GameObject.Find("thought bubble").GetComponent<MeshRenderer>().enabled;
 		
-		foreach(GameObject o in particles){
-			o.GetComponentInChildren<ParticleSystem>().enableEmission = !o.GetComponentInChildren<ParticleSystem>().enableEmission;
-			o.GetComponentInChildren<ParticleSystem>().Clear();
-		}
+		foreach(GameObject o in scareObjects){
+            shaderGlow sg = o.GetComponent<shaderGlow>();
+            if (sg != null)
+                sg.lightOff();
+        }
 	}
 }

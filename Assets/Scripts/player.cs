@@ -6,9 +6,12 @@ public class player : MonoBehaviour {
 
 	public float speed = 1.3f;
 	public bool control = true;
+    public bool canFly = false;
+    public float flySpeed = 0.5f;
 	Animator anim;
 	public int score = 0;
 	Text score_text;
+    public float flyCon;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,7 @@ public class player : MonoBehaviour {
 		bool right = false;
 		bool inward = false;
 		bool outward = false;
+        flyCon = Input.GetAxis("Fly");
 
 
 		//in and out
@@ -57,6 +61,22 @@ public class player : MonoBehaviour {
 				left = true;
 				moving = true;
 			}
+
+            if(canFly)
+            {
+                if(flyCon < 0 && transform.position.y < 16.44348f)
+                    transform.position = new Vector3(transform.position.x,
+                                             transform.position.y - (flyCon*flySpeed),
+                                             transform.position.z);
+                if (flyCon > 0 && transform.position.y > 11.61123)
+                    transform.position = new Vector3(transform.position.x,
+                                             transform.position.y - (flyCon * flySpeed),
+                                             transform.position.z);
+
+
+            }
+
+
 		}
 	}
 
