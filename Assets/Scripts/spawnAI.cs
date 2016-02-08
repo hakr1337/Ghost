@@ -15,7 +15,10 @@ public class spawnAI : MonoBehaviour {
     int index;
     Vector3 spawn;
     int count;
+<<<<<<< HEAD
     int score;
+=======
+>>>>>>> origin/Max_Work
     int waveCount;
     int totalWaves;
     int patronCount;
@@ -26,6 +29,10 @@ public class spawnAI : MonoBehaviour {
     Text timerText;
     Text waveText;
     Text scoreText;
+<<<<<<< HEAD
+=======
+    int score;
+>>>>>>> origin/Max_Work
     GameOverScreen GO;
     Scare[] scareObjects;
     // Use this for initialization
@@ -34,14 +41,24 @@ public class spawnAI : MonoBehaviour {
         timerText = GameObject.Find("WaveTimeUI").GetComponent<Text>();
         waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
         scoreText = GameObject.Find("Score").GetComponent<Text>();
+<<<<<<< HEAD
         //AIs = new GameObject[35];
+=======
+
+>>>>>>> origin/Max_Work
         timing = true;
         index = 0;
         waveCount = -1;
         score = 0;
         
         spawn = GameObject.Find("AI_spawn_point").GetComponent<Transform>().position;
+<<<<<<< HEAD
 	
+=======
+
+
+		int r = Random.Range (0, 3);
+>>>>>>> origin/Max_Work
 
         GameObject[] temp = GameObject.FindGameObjectsWithTag("posessable");
 
@@ -102,9 +119,15 @@ public class spawnAI : MonoBehaviour {
 
 
 			if(patronCount < enemySpawnCount && waveCount >= identifier){
+<<<<<<< HEAD
 
                     GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
 
+=======
+
+                    GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
+			
+>>>>>>> origin/Max_Work
                 patronCount++;
                 timer = 0;
 
@@ -136,12 +159,16 @@ public class spawnAI : MonoBehaviour {
     {
         killedPatrons++;
         score++;
+<<<<<<< HEAD
         scoreText.text = "" + score;
+=======
+        scoreText.text = "Score: " + score;
+>>>>>>> origin/Max_Work
     }
 
     public void failFunction()
     {
-        //spawnNextWave();
+        
         GO.Died();
     }
 

@@ -12,7 +12,10 @@ public class Scare : MonoBehaviour {
     bool moving;
     bool used;
     bool usedWindow;
+<<<<<<< HEAD
     bool cooldownBool;
+=======
+>>>>>>> origin/Max_Work
     float cooldown;
     float coolWindow;
     public int cooldownTime = 10;
@@ -27,13 +30,20 @@ public class Scare : MonoBehaviour {
     public float scareRadius;
 
 
+    Posessable posessScript;
+    GameObject[] people;
+    public float scareRadius;
+
     void Start() {
         used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
         posessScript = this.GetComponentInChildren<Posessable>();
         usedWindow = false;
         cooldown = cooldownTime;
+<<<<<<< HEAD
         cooldownBool = false;
+=======
+>>>>>>> origin/Max_Work
 		
         
     }
@@ -42,8 +52,13 @@ public class Scare : MonoBehaviour {
     void Update() {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
+<<<<<<< HEAD
         if (cooldownBool && (timer > coolWindow))//allow window so one object can scare multiple people at once, could be cleaner
             setCooldown();
+=======
+        //if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
+        //wasUsed();
+>>>>>>> origin/Max_Work
 
         if (posessScript.posessed)
         {
@@ -65,11 +80,16 @@ public class Scare : MonoBehaviour {
                             //set a range on how it can work
                             if (Vector3.Distance(tempLoc.position, this.GetComponent<Transform>().position) < scareRadius)
                             {
+<<<<<<< HEAD
                                 //if ((upstairs && tempLoc.position.y > 2) || (!upstairs && tempLoc.position.y < 3))//check that the scare happens on the right floor
                                 //{
                                     scareLocation(person, target);
                                     scarePerson(person);
                                 //}
+=======
+                                 scareLocation(person, target);
+                                 scarePerson(person);
+>>>>>>> origin/Max_Work
                             }
                         
 
@@ -84,8 +104,6 @@ public class Scare : MonoBehaviour {
     }
 
     public void scareLocation(NavAgent person) {
-        //target.position = coords;
-        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
         if (true) {
             
             person.setTarget(target.position);
@@ -97,8 +115,7 @@ public class Scare : MonoBehaviour {
     //overloaded version
     public void scareLocation(NavAgent person, Transform goal)
     {
-        //target.position = coords;
-        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
+
         if (true)
         {
             

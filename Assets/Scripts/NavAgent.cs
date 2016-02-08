@@ -6,18 +6,30 @@ using System.Collections;
 public class AIPath
 {
     public Vector3[] path;
+<<<<<<< HEAD
     public int v;
+=======
+    
+>>>>>>> origin/Max_Work
 
     public AIPath()
     {
         path = new Vector3[10];
+<<<<<<< HEAD
         v = 0;
+=======
+       
+>>>>>>> origin/Max_Work
     }
 
     public AIPath(int pathSize)
     {
         path = new Vector3[pathSize];
+<<<<<<< HEAD
         v = pathSize;
+=======
+        
+>>>>>>> origin/Max_Work
     }
 
     public void setPoint(int i,Vector3 point)
@@ -27,7 +39,11 @@ public class AIPath
 
     public Vector3 getPoint(int i)
     {
+<<<<<<< HEAD
         return path[i%v];
+=======
+        return path[i];
+>>>>>>> origin/Max_Work
     }
 }
 
@@ -112,7 +128,11 @@ public class NavAgent : MonoBehaviour {
             string tag;
             tag = "AI_Path" + m;
             stest[m] = tag;
+<<<<<<< HEAD
             //find all AI path points and then put there transforms into an array
+=======
+            //find all AI path points and then put their transforms into an array
+>>>>>>> origin/Max_Work
             tempPoints = GameObject.FindGameObjectsWithTag(tag);
             
 
@@ -190,7 +210,6 @@ public class NavAgent : MonoBehaviour {
 
 			//Instantiate(bub, dropLoc, Quaternion.identity);///////////////NEW
 
-			//this.gameObject.SetActive(false);///////////////NEW
 			active = false;///////////////NEW
 
             spawnController.patronWasKilled();
@@ -204,12 +223,9 @@ public class NavAgent : MonoBehaviour {
 
     void idleWalk() {
 		
-        //state++;
-        //state = state % 9;
 
         totalTimer += Time.deltaTime;
         active = true;
-		//print ((transform.position.x - target.x) + " " + (transform.position.z - target.z));
 
 		if (Mathf.Abs(transform.position.x - target.x) < .001f && Mathf.Abs(transform.position.z - target.z) < .001f) {
 			scaredNow = false;
@@ -259,10 +275,6 @@ public class NavAgent : MonoBehaviour {
         target = newTarget;
     }
 
-    public void setColor(int newColor)
-    {
-        agentColor = newColor;
-    }
 
     public void scared(int scareVal) {
 
