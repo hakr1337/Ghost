@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ebfcf5f47c2dabd4ba671be14efb158f
-timeCreated: 1454284582
+timeCreated: 1454915018
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -14,6 +14,7 @@ ModelImporter:
     100012: Clock:pCylinder1
     100014: Clock:pCylinder2
     100016: Clock:pCylinder3
+    100018: Ceiling_Light_UV:pCylinder2
     400000: //RootNode
     400002: Clock:pCube1
     400004: Clock:pCube2
@@ -23,6 +24,7 @@ ModelImporter:
     400012: Clock:pCylinder1
     400014: Clock:pCylinder2
     400016: Clock:pCylinder3
+    400018: Ceiling_Light_UV:pCylinder2
     2300000: Clock:pCube1
     2300002: Clock:pCube2
     2300004: Clock:pCube3
@@ -31,6 +33,7 @@ ModelImporter:
     2300010: Clock:pCylinder1
     2300012: Clock:pCylinder2
     2300014: Clock:pCylinder3
+    2300016: Ceiling_Light_UV:pCylinder2
     3300000: Clock:pCube1
     3300002: Clock:pCube2
     3300004: Clock:pCube3
@@ -39,6 +42,7 @@ ModelImporter:
     3300010: Clock:pCylinder1
     3300012: Clock:pCylinder2
     3300014: Clock:pCylinder3
+    3300016: Ceiling_Light_UV:pCylinder2
     4300000: Clock:pCube1
     4300002: Clock:pCylinder1
     4300004: Clock:pCylinder2
@@ -47,6 +51,7 @@ ModelImporter:
     4300010: Clock:pCube3
     4300012: Clock:pCube4
     4300014: Clock:pCube5
+    4300016: Ceiling_Light_UV:pCylinder2
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -7,15 +7,13 @@ public class Scare : MonoBehaviour {
     public int scareVal;
     private Transform target;
     public float timer;
+    float animTimer;
     public float usedTime;
     bool timing;
     bool moving;
     bool used;
     bool usedWindow;
-<<<<<<< HEAD
     bool cooldownBool;
-=======
->>>>>>> origin/Max_Work
     float cooldown;
     float coolWindow;
     public int cooldownTime = 10;
@@ -29,10 +27,15 @@ public class Scare : MonoBehaviour {
     GameObject[] people;
     public float scareRadius;
 
+    int scareHash;
+    int reverseHash;
+    int idleHash;
 
-    Posessable posessScript;
-    GameObject[] people;
-    public float scareRadius;
+    Animator anim;
+
+    bool started;
+    bool reverse;
+
 
     void Start() {
         used = false;
@@ -40,34 +43,41 @@ public class Scare : MonoBehaviour {
         posessScript = this.GetComponentInChildren<Posessable>();
         usedWindow = false;
         cooldown = cooldownTime;
-<<<<<<< HEAD
         cooldownBool = false;
-=======
->>>>>>> origin/Max_Work
-		
-        
+
+        anim = GetComponentInParent<Animator>();
+        animTimer = 0;
+
+        scareHash = Animator.StringToHash("goScare");
+        reverseHash = Animator.StringToHash("goReverse");
+        idleHash = Animator.StringToHash("goIdle");
+
+        started = false;
+        reverse = false;
+
+
     }
 
     // Update is called once per frame
     void Update() {
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
-<<<<<<< HEAD
         if (cooldownBool && (timer > coolWindow))//allow window so one object can scare multiple people at once, could be cleaner
             setCooldown();
-=======
-        //if (usedWindow && (timer > usedTime))//allow window so one object can scare multiple people at once, could be cleaner
-        //wasUsed();
->>>>>>> origin/Max_Work
 
         if (posessScript.posessed)
         {
-            if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space)))
+            if (!started && !reverse && (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space)))
             {
 
                 if (canScareNow())
                 {
-                        //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
+                    if (anim != null)
+                    {
+                        anim.SetTrigger(scareHash);
+                        started = true;
+                    }
+                    //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
                     people = GameObject.FindGameObjectsWithTag("Enemy");
                     foreach (GameObject p in people)
                     {
@@ -80,16 +90,11 @@ public class Scare : MonoBehaviour {
                             //set a range on how it can work
                             if (Vector3.Distance(tempLoc.position, this.GetComponent<Transform>().position) < scareRadius)
                             {
-<<<<<<< HEAD
-                                //if ((upstairs && tempLoc.position.y > 2) || (!upstairs && tempLoc.position.y < 3))//check that the scare happens on the right floor
-                                //{
-                                    scareLocation(person, target);
+                                if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
+                                {
+                                    scareLocation(person);
                                     scarePerson(person);
-                                //}
-=======
-                                 scareLocation(person, target);
-                                 scarePerson(person);
->>>>>>> origin/Max_Work
+                                }
                             }
                         
 
@@ -99,15 +104,40 @@ public class Scare : MonoBehaviour {
 
 
             }
+            if (anim != null)
+            {
+                AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+                if (started || reverse)
+                    animTimer += Time.deltaTime;
+                //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
+                if (started && timer > stateInfo.length)
+                {
+                    started = false;
+                    reverse = true;
+                    animTimer = 0;
+                    anim.SetTrigger(reverseHash);
+                }
+
+                if (reverse && timer > stateInfo.length)
+                {
+                    started = false;
+                    reverse = false;
+                    animTimer = 0;
+                    anim.SetTrigger(idleHash);
+                }
+            }
         }
 
     }
 
     public void scareLocation(NavAgent person) {
+        //target.position = coords;
+        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
         if (true) {
             
-            person.setTarget(target.position);
-            person.setView(this.GetComponentInParent<Transform>().position);
+            person.setTarget(person.getCenter());
+            person.setView(this.GetComponent<Transform>().position);
         }
         
     }
@@ -115,12 +145,13 @@ public class Scare : MonoBehaviour {
     //overloaded version
     public void scareLocation(NavAgent person, Transform goal)
     {
-
+        //target.position = coords;
+        //target.position = new Vector3(8.18F, 11.35F, 0.59F);
         if (true)
         {
             
             person.setTarget(goal.position);
-            person.setView(this.GetComponentInParent<Transform>().position);
+            person.setView(this.GetComponent<Transform>().position);
         }
 
     }
@@ -130,7 +161,7 @@ public class Scare : MonoBehaviour {
             person.scared(scareVal);
             timing = true;
             usedTime = timer + 0.01f;
-            coolWindow = timer + 0.03f;
+            coolWindow = timer + 0.01f;
             usedWindow = true;
             cooldownBool = true;
         

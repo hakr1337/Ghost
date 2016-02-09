@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3269d13b9897d9f48bf47bc5dfd52cfa
-timeCreated: 1453344410
+timeCreated: 1454919965
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: washing_machine:Mesh
+    4300002: Washer:Mesh
     9500000: //RootNode
   materials:
     importMaterials: 1

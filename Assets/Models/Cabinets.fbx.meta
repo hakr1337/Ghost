@@ -49,6 +49,67 @@ ModelImporter:
     100082: transform2
     100084: transform3
     100086: transform4
+    100088: cabinets:pCube11
+    100090: cabinets:pCube18
+    100092: cabinets:pCube19
+    100094: cabinets:pCube21
+    100096: cabinets:pCube25
+    100098: cabinets:pCube28
+    100100: cabinets:pCube32
+    100102: cabinets:pCube33
+    100104: cabinets:pCube34
+    100106: cabinets:pCube37
+    100108: cabinets:pCube40
+    100110: cabinets:pCube41
+    100112: cabinets:pCube42
+    100114: cabinets:pCube43
+    100116: cabinets:pCube44
+    100118: cabinets:pCube45
+    100120: cabinets:pCube48
+    100122: cabinets:pCube50
+    100124: cabinets:pCube51
+    100126: cabinets:pCube52
+    100128: cabinets:pCube53
+    100130: cabinets:pCube55
+    100132: cabinets:pCube56
+    100134: cabinets:pCube57
+    100136: cabinets:pCube58
+    100138: cabinets:pCube59
+    100140: cabinets:pCube60
+    100142: cabinets:pCube61
+    100144: cabinets:pCube7
+    100146: cabinets:pCube8
+    100148: cabinets:pCube9
+    100150: cabinets:transform1
+    100152: cabinets:transform10
+    100154: cabinets:transform11
+    100156: cabinets:transform12
+    100158: cabinets:transform13
+    100160: cabinets:transform14
+    100162: cabinets:transform15
+    100164: cabinets:transform16
+    100166: cabinets:transform17
+    100168: cabinets:transform18
+    100170: cabinets:transform19
+    100172: cabinets:transform2
+    100174: cabinets:transform20
+    100176: cabinets:transform21
+    100178: cabinets:transform22
+    100180: cabinets:transform23
+    100182: cabinets:transform24
+    100184: cabinets:transform25
+    100186: cabinets:transform26
+    100188: cabinets:transform27
+    100190: cabinets:transform28
+    100192: cabinets:transform29
+    100194: cabinets:transform3
+    100196: cabinets:transform30
+    100198: cabinets:transform4
+    100200: cabinets:transform5
+    100202: cabinets:transform6
+    100204: cabinets:transform7
+    100206: cabinets:transform8
+    100208: cabinets:transform9
     400000: //RootNode
     400002: pCube1
     400004: pCube11
@@ -93,6 +154,67 @@ ModelImporter:
     400082: transform2
     400084: transform3
     400086: transform4
+    400088: cabinets:pCube11
+    400090: cabinets:pCube18
+    400092: cabinets:pCube19
+    400094: cabinets:pCube21
+    400096: cabinets:pCube25
+    400098: cabinets:pCube28
+    400100: cabinets:pCube32
+    400102: cabinets:pCube33
+    400104: cabinets:pCube34
+    400106: cabinets:pCube37
+    400108: cabinets:pCube40
+    400110: cabinets:pCube41
+    400112: cabinets:pCube42
+    400114: cabinets:pCube43
+    400116: cabinets:pCube44
+    400118: cabinets:pCube45
+    400120: cabinets:pCube48
+    400122: cabinets:pCube50
+    400124: cabinets:pCube51
+    400126: cabinets:pCube52
+    400128: cabinets:pCube53
+    400130: cabinets:pCube55
+    400132: cabinets:pCube56
+    400134: cabinets:pCube57
+    400136: cabinets:pCube58
+    400138: cabinets:pCube59
+    400140: cabinets:pCube60
+    400142: cabinets:pCube61
+    400144: cabinets:pCube7
+    400146: cabinets:pCube8
+    400148: cabinets:pCube9
+    400150: cabinets:transform1
+    400152: cabinets:transform10
+    400154: cabinets:transform11
+    400156: cabinets:transform12
+    400158: cabinets:transform13
+    400160: cabinets:transform14
+    400162: cabinets:transform15
+    400164: cabinets:transform16
+    400166: cabinets:transform17
+    400168: cabinets:transform18
+    400170: cabinets:transform19
+    400172: cabinets:transform2
+    400174: cabinets:transform20
+    400176: cabinets:transform21
+    400178: cabinets:transform22
+    400180: cabinets:transform23
+    400182: cabinets:transform24
+    400184: cabinets:transform25
+    400186: cabinets:transform26
+    400188: cabinets:transform27
+    400190: cabinets:transform28
+    400192: cabinets:transform29
+    400194: cabinets:transform3
+    400196: cabinets:transform30
+    400198: cabinets:transform4
+    400200: cabinets:transform5
+    400202: cabinets:transform6
+    400204: cabinets:transform7
+    400206: cabinets:transform8
+    400208: cabinets:transform9
     2300000: pCube1
     2300002: pCube11
     2300004: pCube12
@@ -128,6 +250,7 @@ ModelImporter:
     2300064: pCube7
     2300066: pCube8
     2300068: pCube9
+    2300070: cabinets:pCube61
     3300000: pCube1
     3300002: pCube11
     3300004: pCube12
@@ -163,6 +286,7 @@ ModelImporter:
     3300064: pCube7
     3300066: pCube8
     3300068: pCube9
+    3300070: cabinets:pCube61
     4300000: pCube1
     4300002: pCube3
     4300004: pCube4
@@ -198,6 +322,7 @@ ModelImporter:
     4300064: pCube53
     4300066: pCube54
     4300068: pCube55
+    4300070: cabinets:pCube61
     7400000: Take 001
     9500000: //RootNode
   materials:

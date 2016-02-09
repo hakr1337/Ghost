@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5781ca06880bb7b4eb4dc7e3a7f13279
-timeCreated: 1454284745
+timeCreated: 1454915005
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -42,7 +42,9 @@ ModelImporter:
     400032: Globey:transform7
     400034: Globey:transform8
     2300000: Globey:pPlane2
+    2300002: //RootNode
     3300000: Globey:pPlane2
+    3300002: //RootNode
     4300000: Globey:pPlane2
     9500000: //RootNode
   materials:

@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: f2fe9bff92aa8754f9d8b3be24965661
+timeCreated: 1454918444
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Boozey_Bottle_UV:pCylinder1
+    100002: Boozey_Bottle_UV:polySurface2
+    100004: //RootNode
+    100006: J_s_Bottle:pCylinder1
+    100008: J_s_Bottle:polySurface7
+    100010: J_s_Bottle:polySurface9
+    100012: Lemon_Bottle_UV:pCylinder1
+    100014: Lemon_Bottle_UV:polySurface17
+    100016: Lemon_Bottle_UV:polySurface3
+    100018: Moon_Shine_UV:pCylinder1
+    100020: Moon_Shine_UV:polySurface13
+    100022: Moon_Shine_UV:polySurface5
+    100024: Rum_Bottle:pCylinder1
+    100026: Rum_Bottle:pCylinder2
+    100028: Rum_Bottle:polySurface16
+    400000: Boozey_Bottle_UV:pCylinder1
+    400002: Boozey_Bottle_UV:polySurface2
+    400004: //RootNode
+    400006: J_s_Bottle:pCylinder1
+    400008: J_s_Bottle:polySurface7
+    400010: J_s_Bottle:polySurface9
+    400012: Lemon_Bottle_UV:pCylinder1
+    400014: Lemon_Bottle_UV:polySurface17
+    400016: Lemon_Bottle_UV:polySurface3
+    400018: Moon_Shine_UV:pCylinder1
+    400020: Moon_Shine_UV:polySurface13
+    400022: Moon_Shine_UV:polySurface5
+    400024: Rum_Bottle:pCylinder1
+    400026: Rum_Bottle:pCylinder2
+    400028: Rum_Bottle:polySurface16
+    2300000: Boozey_Bottle_UV:pCylinder1
+    2300002: Boozey_Bottle_UV:polySurface2
+    2300004: J_s_Bottle:pCylinder1
+    2300006: J_s_Bottle:polySurface7
+    2300008: J_s_Bottle:polySurface9
+    2300010: Lemon_Bottle_UV:pCylinder1
+    2300012: Lemon_Bottle_UV:polySurface17
+    2300014: Lemon_Bottle_UV:polySurface3
+    2300016: Moon_Shine_UV:pCylinder1
+    2300018: Moon_Shine_UV:polySurface13
+    2300020: Moon_Shine_UV:polySurface5
+    2300022: Rum_Bottle:pCylinder1
+    2300024: Rum_Bottle:pCylinder2
+    2300026: Rum_Bottle:polySurface16
+    3300000: Boozey_Bottle_UV:pCylinder1
+    3300002: Boozey_Bottle_UV:polySurface2
+    3300004: J_s_Bottle:pCylinder1
+    3300006: J_s_Bottle:polySurface7
+    3300008: J_s_Bottle:polySurface9
+    3300010: Lemon_Bottle_UV:pCylinder1
+    3300012: Lemon_Bottle_UV:polySurface17
+    3300014: Lemon_Bottle_UV:polySurface3
+    3300016: Moon_Shine_UV:pCylinder1
+    3300018: Moon_Shine_UV:polySurface13
+    3300020: Moon_Shine_UV:polySurface5
+    3300022: Rum_Bottle:pCylinder1
+    3300024: Rum_Bottle:pCylinder2
+    3300026: Rum_Bottle:polySurface16
+    4300000: Boozey_Bottle_UV:polySurface2
+    4300002: Boozey_Bottle_UV:pCylinder1
+    4300004: J_s_Bottle:polySurface9
+    4300006: J_s_Bottle:polySurface7
+    4300008: J_s_Bottle:pCylinder1
+    4300010: Lemon_Bottle_UV:polySurface17
+    4300012: Lemon_Bottle_UV:polySurface3
+    4300014: Lemon_Bottle_UV:pCylinder1
+    4300016: Moon_Shine_UV:polySurface13
+    4300018: Moon_Shine_UV:polySurface5
+    4300020: Moon_Shine_UV:pCylinder1
+    4300022: Rum_Bottle:polySurface16
+    4300024: Rum_Bottle:pCylinder2
+    4300026: Rum_Bottle:pCylinder1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

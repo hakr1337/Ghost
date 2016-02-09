@@ -6,12 +6,15 @@ public class posess : MonoBehaviour {
 	//used to make sure only one object glows and that is the possesable object
     public bool one = false;
 	Camera cam;
+    Animator anim;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 		cam = Camera.main;
-        
-	}
+        anim = GetComponent<Animator>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

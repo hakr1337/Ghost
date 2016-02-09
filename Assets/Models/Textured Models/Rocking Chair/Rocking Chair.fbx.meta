@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ebcf9c87bd77a6545bcb5fe9bd0eb7fc
-timeCreated: 1454285285
+timeCreated: 1454915017
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -18,7 +18,9 @@ ModelImporter:
     400008: Rocking_Chair_Done:transform1
     400010: Rocking_Chair_Done:transform2
     2300000: Rocking_Chair_Done:polySurface2
+    2300002: //RootNode
     3300000: Rocking_Chair_Done:polySurface2
+    3300002: //RootNode
     4300000: Rocking_Chair_Done:polySurface2
     9500000: //RootNode
   materials:

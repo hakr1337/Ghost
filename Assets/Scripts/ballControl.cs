@@ -5,6 +5,7 @@ public class ballControl : MonoBehaviour {
 	public float speed;
     public float thrust;
     private Rigidbody rb;
+    float timer;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -18,12 +19,13 @@ public class ballControl : MonoBehaviour {
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(moveVertical, 0.0f, -moveHorizontal);
-
+        timer += Time.deltaTime;
         rb.AddForce(movement*speed);
 
-        if ( Input.GetButtonDown("Jump"))
+        if ( Input.GetButtonDown("A") )
         {
             rb.AddForce(Vector3.up * thrust);
+            timer = 0;
         }
        
 	}

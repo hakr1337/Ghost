@@ -1,9 +1,9 @@
 fileFormatVersion: 2
 guid: eaddb1ed19bff4048b6b6b30f53e77f3
-timeCreated: 1442646948
+timeCreated: 1454919971
 licenseType: Free
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: pCube14
     100002: pCube3
@@ -16,6 +16,16 @@ ModelImporter:
     100016: pCylinder9
     100018: pSphere1
     100020: //RootNode
+    100022: TV1:pCube14
+    100024: TV1:pCube3
+    100026: TV1:pCube5
+    100028: TV1:pCylinder1
+    100030: TV1:pCylinder10
+    100032: TV1:pCylinder6
+    100034: TV1:pCylinder7
+    100036: TV1:pCylinder8
+    100038: TV1:pCylinder9
+    100040: TV1:pSphere1
     400000: pCube14
     400002: pCube3
     400004: pCube5
@@ -27,6 +37,16 @@ ModelImporter:
     400016: pCylinder9
     400018: pSphere1
     400020: //RootNode
+    400022: TV1:pCube14
+    400024: TV1:pCube3
+    400026: TV1:pCube5
+    400028: TV1:pCylinder1
+    400030: TV1:pCylinder10
+    400032: TV1:pCylinder6
+    400034: TV1:pCylinder7
+    400036: TV1:pCylinder8
+    400038: TV1:pCylinder9
+    400040: TV1:pSphere1
     2300000: pCube14
     2300002: pCube3
     2300004: pCube5
@@ -37,6 +57,16 @@ ModelImporter:
     2300014: pCylinder8
     2300016: pCylinder9
     2300018: pSphere1
+    2300020: TV1:pCube14
+    2300022: TV1:pCube3
+    2300024: TV1:pCube5
+    2300026: TV1:pCylinder1
+    2300028: TV1:pCylinder10
+    2300030: TV1:pCylinder6
+    2300032: TV1:pCylinder7
+    2300034: TV1:pCylinder8
+    2300036: TV1:pCylinder9
+    2300038: TV1:pSphere1
     3300000: pCube14
     3300002: pCube3
     3300004: pCube5
@@ -47,6 +77,16 @@ ModelImporter:
     3300014: pCylinder8
     3300016: pCylinder9
     3300018: pSphere1
+    3300020: TV1:pCube14
+    3300022: TV1:pCube3
+    3300024: TV1:pCube5
+    3300026: TV1:pCylinder1
+    3300028: TV1:pCylinder10
+    3300030: TV1:pCylinder6
+    3300032: TV1:pCylinder7
+    3300034: TV1:pCylinder8
+    3300036: TV1:pCylinder9
+    3300038: TV1:pSphere1
     4300000: pCube3
     4300002: pCube5
     4300004: pCylinder1
@@ -57,6 +97,16 @@ ModelImporter:
     4300014: pCylinder9
     4300016: pCylinder10
     4300018: pCube14
+    4300020: TV1:pCube3
+    4300022: TV1:pCube5
+    4300024: TV1:pCylinder1
+    4300026: TV1:pSphere1
+    4300028: TV1:pCylinder6
+    4300030: TV1:pCylinder7
+    4300032: TV1:pCylinder8
+    4300034: TV1:pCylinder9
+    4300036: TV1:pCylinder10
+    4300038: TV1:pCube14
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -65,6 +115,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -72,9 +123,9 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
@@ -98,20 +149,19 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0

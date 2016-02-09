@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: ef72e7fcb7c134840861c949e94f4a06
+timeCreated: 1454917699
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Vanity:pCube1
+    100004: Vanity:pSphere1
+    100006: Vanity:pSphere10
+    100008: Vanity:pSphere11
+    100010: Vanity:pSphere12
+    100012: Vanity:pSphere13
+    100014: Vanity:pSphere14
+    100016: Vanity:pSphere15
+    100018: Vanity:pSphere16
+    100020: Vanity:pSphere17
+    100022: Vanity:pSphere18
+    100024: Vanity:pSphere2
+    100026: Vanity:pSphere3
+    100028: Vanity:pSphere4
+    100030: Vanity:pSphere5
+    100032: Vanity:pSphere6
+    100034: Vanity:pSphere7
+    100036: Vanity:pSphere8
+    100038: Vanity:pSphere9
+    400000: //RootNode
+    400002: Vanity:pCube1
+    400004: Vanity:pSphere1
+    400006: Vanity:pSphere10
+    400008: Vanity:pSphere11
+    400010: Vanity:pSphere12
+    400012: Vanity:pSphere13
+    400014: Vanity:pSphere14
+    400016: Vanity:pSphere15
+    400018: Vanity:pSphere16
+    400020: Vanity:pSphere17
+    400022: Vanity:pSphere18
+    400024: Vanity:pSphere2
+    400026: Vanity:pSphere3
+    400028: Vanity:pSphere4
+    400030: Vanity:pSphere5
+    400032: Vanity:pSphere6
+    400034: Vanity:pSphere7
+    400036: Vanity:pSphere8
+    400038: Vanity:pSphere9
+    2300000: Vanity:pCube1
+    2300002: Vanity:pSphere1
+    2300004: Vanity:pSphere10
+    2300006: Vanity:pSphere11
+    2300008: Vanity:pSphere12
+    2300010: Vanity:pSphere13
+    2300012: Vanity:pSphere14
+    2300014: Vanity:pSphere15
+    2300016: Vanity:pSphere16
+    2300018: Vanity:pSphere17
+    2300020: Vanity:pSphere18
+    2300022: Vanity:pSphere2
+    2300024: Vanity:pSphere3
+    2300026: Vanity:pSphere4
+    2300028: Vanity:pSphere5
+    2300030: Vanity:pSphere6
+    2300032: Vanity:pSphere7
+    2300034: Vanity:pSphere8
+    2300036: Vanity:pSphere9
+    3300000: Vanity:pCube1
+    3300002: Vanity:pSphere1
+    3300004: Vanity:pSphere10
+    3300006: Vanity:pSphere11
+    3300008: Vanity:pSphere12
+    3300010: Vanity:pSphere13
+    3300012: Vanity:pSphere14
+    3300014: Vanity:pSphere15
+    3300016: Vanity:pSphere16
+    3300018: Vanity:pSphere17
+    3300020: Vanity:pSphere18
+    3300022: Vanity:pSphere2
+    3300024: Vanity:pSphere3
+    3300026: Vanity:pSphere4
+    3300028: Vanity:pSphere5
+    3300030: Vanity:pSphere6
+    3300032: Vanity:pSphere7
+    3300034: Vanity:pSphere8
+    3300036: Vanity:pSphere9
+    4300000: Vanity:pCube1
+    4300002: Vanity:pSphere1
+    4300004: Vanity:pSphere2
+    4300006: Vanity:pSphere3
+    4300008: Vanity:pSphere4
+    4300010: Vanity:pSphere5
+    4300012: Vanity:pSphere6
+    4300014: Vanity:pSphere7
+    4300016: Vanity:pSphere8
+    4300018: Vanity:pSphere9
+    4300020: Vanity:pSphere10
+    4300022: Vanity:pSphere11
+    4300024: Vanity:pSphere12
+    4300026: Vanity:pSphere13
+    4300028: Vanity:pSphere14
+    4300030: Vanity:pSphere15
+    4300032: Vanity:pSphere16
+    4300034: Vanity:pSphere17
+    4300036: Vanity:pSphere18
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

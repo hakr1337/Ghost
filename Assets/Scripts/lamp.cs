@@ -3,17 +3,24 @@ using System.Collections;
 
 public class lamp : MonoBehaviour {
 
+
+
     // Use this for initialization
-    Scare s;
-    Transform target;
-    public float scareTimer;
+
+	public AudioClip lampclick;
+	//public AudioClip bulbbreak;
+
+
+	private AudioSource source;
+
+
+
     Posessable posessScript;
     public GameObject[] people;
     void Start () {
-        s = GetComponentInChildren<Scare>();
-        scareTimer = 6;
-        target = GameObject.Find("AINode1").GetComponent<Transform>();
         posessScript = this.GetComponentInChildren<Posessable>();
+
+		source = GetComponent<AudioSource>();
 
     }
 	
@@ -21,8 +28,9 @@ public class lamp : MonoBehaviour {
 	void Update () {
 		if (posessScript.posessed) {
 			if((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
+				source.PlayOneShot(lampclick, 1f);
                 this.GetComponentInChildren<Light>().enabled = !this.GetComponentInChildren<Light>().enabled;
-                    
+
 
                 
             }

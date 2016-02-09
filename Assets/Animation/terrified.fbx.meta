@@ -167,8 +167,8 @@ ModelImporter:
     - serializedVersion: 16
       name: scared
       takeName: mixamo.com
-      firstFrame: 0
-      lastFrame: 600
+      firstFrame: 20
+      lastFrame: 203
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
