@@ -68,6 +68,7 @@ public class NavAgent : MonoBehaviour {
 
 	Animator anim;
     spawnAI spawnController;
+    spawnGlobal sg;
     int totalWaves;
 
     
@@ -77,7 +78,7 @@ public class NavAgent : MonoBehaviour {
     void Start() {
 
         cc = GetComponent<CapsuleCollider>();
-        spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
+        //spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
         agent = GetComponent<NavMeshAgent>();
         target = GetComponent<Transform>().position;
 		anim = GetComponent<Animator> ();
@@ -87,7 +88,7 @@ public class NavAgent : MonoBehaviour {
 				healthBar = i;
 			}
 		}
-
+        sg = GameObject.Find("MetaSpawn").GetComponent<spawnGlobal>();
         viewTarget = point0;
         idle = true;
         state = 0;
@@ -97,34 +98,34 @@ public class NavAgent : MonoBehaviour {
         isDead = false;
         scaredNow = false;
 		anim.SetBool ("Walk", true);
-        totalWaves = spawnController.getTotalWaves();
+        
         deathTimer = 0;
 
-        GameObject[] tempPoints;
-        pointCount = new int[totalWaves];
+        //GameObject[] tempPoints;
+        //pointCount = new int[totalWaves];
         
-        pathPoints = new AIPath[totalWaves];
-        for (int m = 0; m < totalWaves; m++)
-        {
-            string tag;
-            tag = "AI_Path" + m;
-            //find all AI path points and then put there transforms into an array
-            tempPoints = GameObject.FindGameObjectsWithTag(tag);
+        //pathPoints = new AIPath[totalWaves];
+        //for (int m = 0; m < totalWaves; m++)
+        //{
+        //    string tag;
+        //    tag = "AI_Path" + m;
+        //    //find all AI path points and then put there transforms into an array
+        //    tempPoints = GameObject.FindGameObjectsWithTag(tag);
             
 
 
-            pointCount[m] = tempPoints.Length;
-            pathPoints[m] = new AIPath(pointCount[m]);
+        //    pointCount[m] = tempPoints.Length;
+        //    pathPoints[m] = new AIPath(pointCount[m]);
             
 
-            for (int i = 0; i < pointCount[m]; i++)
-            {
-                pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
+        //    for (int i = 0; i < pointCount[m]; i++)
+        //    {
+        //        pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
 
-            }
+        //    }
             
             
-        }
+        //}
         
         
     }
@@ -208,7 +209,7 @@ public class NavAgent : MonoBehaviour {
 
             if (deathTimer > 3.05)
             {
-                spawnController.patronWasKilled();
+                sg.patronWasKilled();
                 Destroy(gameObject);
             }
         }
@@ -244,12 +245,12 @@ public class NavAgent : MonoBehaviour {
 			
 			first = false;
             scaredNow = false;
-            int waveCount = spawnController.getWaveCount();
+            int waveCount = sg.getWaveCount();
 			float fstate = Random.Range (0, pointCount[waveCount]);
 
             state = (int)fstate;
 
-
+            
             setTarget(pathPoints[waveCount].getPoint(state));
             setView(pathPoints[waveCount].getPoint(state));
 
@@ -308,6 +309,47 @@ public class NavAgent : MonoBehaviour {
 
     public bool isExiting() {
         return exiting;
+    }
+
+    public void setSpawnTag(int stag)
+    {
+
+        spawnController = GameObject.Find("AI_spawn_point"+stag+"").GetComponent<spawnAI>();
+        totalWaves = 10;
+        GameObject[] tempPoints;
+        pointCount = new int[totalWaves];
+
+        pathPoints = new AIPath[totalWaves];
+        for (int m = 0; m < totalWaves; m++)
+        {
+            string tag;
+            tag = stag+"AI_Path" + m;
+            //find all AI path points and then put there transforms into an array
+            try
+            {
+                tempPoints = GameObject.FindGameObjectsWithTag(tag);
+            }
+
+            catch
+            {
+                tag = "0AI_Path0";
+                tempPoints = GameObject.FindGameObjectsWithTag(tag);
+            }
+
+            
+
+            pointCount[m] = tempPoints.Length;
+            pathPoints[m] = new AIPath(pointCount[m]);
+
+
+            for (int i = 0; i < pointCount[m]; i++)
+            {
+                pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
+
+            }
+
+
+        }
     }
 
     public Vector3 getCenter()
