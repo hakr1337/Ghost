@@ -27,7 +27,7 @@ public class posess : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.P)) {
-            GameObject.Find("pause menu").GetComponent<PauseScreen>().PausePress();
+            GameObject.Find("pause").GetComponent<PauseScreen>().PausePress();
 		}
 
 		if ((Input.GetButtonDown ("B") || Input.GetKeyDown (KeyCode.Escape))&&playescape) {
