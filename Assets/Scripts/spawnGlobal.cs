@@ -42,6 +42,11 @@ public class spawnGlobal : MonoBehaviour {
     spawnAI ms;
     spawnAI ks;
     spawnAI ws;
+
+	public AudioClip collectfearsound;
+
+	private AudioSource source; 
+
     void Start () {
         timerText = GameObject.Find("WaveTimeUI").GetComponent<Text>();
         waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
@@ -56,7 +61,7 @@ public class spawnGlobal : MonoBehaviour {
         waveCount = -1;
         totalWaves = 10;
 
-
+		source = GetComponent<AudioSource>();
 
         timer = -wavePrepTime;
         waveTimer = timer;
@@ -100,6 +105,7 @@ public class spawnGlobal : MonoBehaviour {
         }
         if (killedPatrons >= enemySpawnCount && waveTimer > 0)
         {
+			source.PlayOneShot(collectfearsound, .5f);
             spawnNextWave();
         }
 
@@ -159,7 +165,7 @@ public class spawnGlobal : MonoBehaviour {
 
     public void spawnNextWave()
     {
-        
+		
         waveCount++;
         enemySpawnCount = waveEnemyCount[waveCount];
         killedPatrons = 0;
