@@ -8,19 +8,34 @@ public class posess : MonoBehaviour {
 	Camera cam;
     Animator anim;
 
+	public AudioClip pos;
+	public AudioClip depos;
+
+	private AudioSource source;
+
+	private float volLowRange = .5f;
+	private float volHighRange = 1.0f; // changes up the volume of posses sound fx
+	public bool playescape = false;
 
     // Use this for initialization
     void Start () {
 		cam = Camera.main;
         anim = GetComponent<Animator>();
-
+		source = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.P)) {
             GameObject.Find("pause menu").GetComponent<PauseScreen>().PausePress();
-        }
+		}
+
+		if ((Input.GetButtonDown ("B") || Input.GetKeyDown (KeyCode.Escape))&&playescape) {
+			//float vol = Random.Range (volLowRange, volHighRange);
+			source.PlayOneShot (depos, .1f);
+			playescape = false;
+		}
+
 	}
 
 
@@ -45,13 +60,11 @@ public class posess : MonoBehaviour {
                     if (Camera.main.GetComponent<Cam>().visionOn) {//if vision on turn off
                         Camera.main.GetComponent<Cam>().turnOff();
                     }
+					//float vol = Random.Range (volLowRange, volHighRange);
+					source.PlayOneShot(pos, .5f);
+					playescape = true;
 
-                    //start posession change to object being posessed
-                   // c.GetComponent<Collider>().isTrigger = false;//turn off object being posessed's trigger
-                    //c.GetComponent<Posessable>().posessed = true;//mark object as posessed
-                    //c.GetComponentInChildren<ParticleSystem>().enableEmission = false;//turn off and clear particle system
-                    //c.GetComponentInChildren<ParticleSystem>().Clear();
-
+         
                     //start posession change to player
 					SkinnedMeshRenderer[] skins = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();//turn off mesh renderer
 					//this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
@@ -74,7 +87,7 @@ public class posess : MonoBehaviour {
 
     //called when exiting a trigger
     void OnTriggerExit(Collider c) {
-
+		source = GetComponent<AudioSource>();
         //for exiting posessible triggers
 		if (c.GetComponent<Posessable>() != null  && !cam.GetComponent<Cam>().visionOn) {//if object is posessable and has particle system
             one = false;//allow possesion of another object

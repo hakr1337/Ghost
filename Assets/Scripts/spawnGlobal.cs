@@ -16,6 +16,8 @@ public class spawnGlobal : MonoBehaviour {
     float waveTimer;
     float timer;
 
+
+
     float kitchenTimer;
     float mainTimer;
     float windowTimer;
@@ -54,7 +56,7 @@ public class spawnGlobal : MonoBehaviour {
         waveCount = -1;
         totalWaves = 10;
 
-        
+
 
         timer = -wavePrepTime;
         waveTimer = timer;
@@ -143,6 +145,7 @@ public class spawnGlobal : MonoBehaviour {
 
     public void patronWasKilled()
     {
+		
         score++;
         killedPatrons++;
         scoreText.text = "" + score;
