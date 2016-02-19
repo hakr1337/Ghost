@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class player : MonoBehaviour {
 
-	public float speed = 1.3f;
+	public float speed = 1.5f;
 	public bool control = true;
     public bool canFly = false;
     public float flySpeed = 0.5f;
@@ -23,6 +23,7 @@ public class player : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		score_text = GameObject.Find("Score").GetComponent<Text>();
         headHash = Animator.StringToHash("tossHead");
+		Time.timeScale = 1;
         //stopHeadHash = Animator.StringToHash("stopHead");
     }
 	
@@ -85,14 +86,14 @@ public class player : MonoBehaviour {
                 if (flyCon < 0 && transform.position.y < 16.44348f)
                 {
                     transform.position = new Vector3(transform.position.x,
-                                             transform.position.y - (flyCon * flySpeed),
+						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
                 if (flyCon > 0 && transform.position.y > 11.61123)
                 {
                     transform.position = new Vector3(transform.position.x,
-                                             transform.position.y - (flyCon * flySpeed),
+						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
@@ -104,9 +105,33 @@ public class player : MonoBehaviour {
 		}
 	}
 
+	public bool moveCenterFromLeft = false;
+	public bool moveCenterFromRight = false;
+	public bool moveLeft = false;
+	public bool moveRight = false;
+	public bool moveUp = false;
+	public bool moveDown = false;
+
+	void OnTriggerEnter(Collider c){
+		if (c.name == "moveCenterFromLeft") {
+			moveCenterFromLeft = true;
+		} else if (c.name == "moveCenterFromRight") {
+			moveCenterFromRight = true;
+		} else if (c.name == "moveRight") {
+			moveRight = true;
+		} else if (c.name == "moveLeft") {
+			moveLeft = true;
+		}else if(c.name == "moveUp"){
+			moveUp = true;
+		}else if(c.name == "moveDown"){
+			moveDown = true;
+		}
+	}
 
 	public void CollectFear(){
 		score += 1;
 		score_text.text = "Score: " + score;
 	}
+
+
 }

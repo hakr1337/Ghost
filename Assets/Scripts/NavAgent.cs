@@ -38,6 +38,8 @@ public class NavAgent : MonoBehaviour {
     public float RotationSpeed;
     public float walkDelay;
 
+
+
 	Vector3 point0;
 	Vector3 target;
 	int fearLevel;
@@ -71,12 +73,10 @@ public class NavAgent : MonoBehaviour {
     spawnGlobal sg;
     int totalWaves;
 
-    
-
 
     // Use this for initialization
     void Start() {
-
+		
         cc = GetComponent<CapsuleCollider>();
         //spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
         agent = GetComponent<NavMeshAgent>();
@@ -199,12 +199,14 @@ public class NavAgent : MonoBehaviour {
 
             
             anim.SetBool("Death", true);
+
             isDead = true;
             
         }
 
         if(isDead)
         {
+			
             deathTimer += Time.deltaTime;
 
             if (deathTimer > 3.05)

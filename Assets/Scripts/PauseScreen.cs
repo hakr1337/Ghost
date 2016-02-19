@@ -76,10 +76,4 @@ public class PauseScreen : MonoBehaviour {
 		ControlsImage.enabled = false;
 		Time.timeScale = 1.0f;
 	}
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Start")) {
-			PausePress ();
-		}
-	}
 }

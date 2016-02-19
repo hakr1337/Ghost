@@ -6,8 +6,9 @@ public class Cam : MonoBehaviour {
 	public bool visionOn = false;
 
 	Vector3 Zoom1;
-	Vector3 Zoom2;
-	Vector3 Zoom3;
+	Vector3 Left;
+	Vector3 Center;
+	Vector3 Right;
 
 	GameObject player;
 
@@ -28,8 +29,9 @@ public class Cam : MonoBehaviour {
 		//Zoom1 = new Vector3 (-7.12f, 14.54f, player.transform.position.z);
 		//Zoom2 = new Vector3 (-.87f, 14.54f, player.transform.position.z);
 		//Zoom1 = new Vector3 (3.88f, player.transform.position.y , player.transform.position.z);
-
-
+		Left = new Vector3(3.6f, transform.position.y, 24.47f);
+		Center = new Vector3 (3.36f, transform.position.y, 17.5f);
+		Right = new Vector3 (3.36f, transform.position.y, 11.3f);
 		Zoom1 = new Vector3 (3.88f, 12.82f, 24.9f);
 		//Zoom2 = new Vector3 ();
 		zoomStates = new Vector3[3];
@@ -41,7 +43,8 @@ public class Cam : MonoBehaviour {
 		foreach(GameObject o in scareObjects){
             //print(o.name);
             shaderGlow sg = o.GetComponent<shaderGlow>();
-            if(sg != null)
+			if (sg != null)
+			//	print (sg);
                 sg.lightOff();	
 		}
 	}
@@ -62,7 +65,7 @@ public class Cam : MonoBehaviour {
 		//print (p.gameObject.name + "yy");
 
 
-		if (Input.GetButtonDown("Y")) {
+		if (Input.GetButtonDown("Y") || Input.GetKeyDown(KeyCode.C)) {
 			this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = !this.gameObject.GetComponentInChildren<MeshRenderer>().enabled;
 			visionOn = !visionOn;
 			
@@ -85,7 +88,7 @@ public class Cam : MonoBehaviour {
 			}
 		}
 
-		if(Input.GetButtonDown("RightStick")){
+		if(Input.GetButtonDown("RightStick") || Input.GetKeyDown(KeyCode.Z)){
 			//zoomState++;
 
 
@@ -100,43 +103,60 @@ public class Cam : MonoBehaviour {
 		switch(zoomState%1){
 			case 0: //if full zoom 
 				//print ("0");
-				if(transform.position.z - p.transform.position.z > .7f){//move right
-					transform.position = new Vector3(transform.position.x,
-				                                     transform.position.y,
-				                                 	 transform.position.z - Time.deltaTime * 2.5f);
-				}else if(transform.position.z - p.transform.position.z < -.7f){ //move left
-					transform.position = new Vector3(transform.position.x,
-				                                 	 transform.position.y,
-				                                 	 transform.position.z + Time.deltaTime * 2.5f);
+			if(player.GetComponent<player>().moveCenterFromLeft){
+				//print ("movefromkleft");
+				if (transform.position.z > Center.z) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y,
+						transform.position.z - Time.deltaTime * 5f);
+				} else {
+					player.GetComponent<player> ().moveCenterFromLeft = false;
 				}
-				
-				if(transform.position.x - p.transform.position.x < -3f){//move in
-					transform.position = new Vector3(transform.position.x + Time.deltaTime * 2.5f,
-				                                 	 transform.position.y,
-				                                 	 transform.position.z);
-				}else if(transform.position.x - p.transform.position.x > -2f){//move out
-					transform.position = new Vector3(transform.position.x - Time.deltaTime * 2.5f,
-				                                 	 transform.position.y,
-				                                 	 transform.position.z);
+			}else if(player.GetComponent<player>().moveRight){
+				if (transform.position.z > Right.z) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y,
+						transform.position.z - Time.deltaTime * 5f);
+				} else {
+					player.GetComponent<player> ().moveRight = false;
 				}
+			}else if(player.GetComponent<player>().moveCenterFromRight){
+				if (transform.position.z < Center.z) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y,
+						transform.position.z + Time.deltaTime * 5f);
+				} else {
+					player.GetComponent<player> ().moveCenterFromRight = false;
+				}
+			}else if(player.GetComponent<player>().moveLeft){
 
-				if(transform.position.y - p.transform.position.y < .498f){//move up
-				
-					//print(transform.position.y - p.transform.position.y);
-					transform.position = new Vector3(transform.position.x,
-				                                 	 transform.position.y + Time.deltaTime * 2.5f,
-					                                 transform.position.z);
-				}else if(transform.position.y - p.transform.position.y > 1f){//move down
-					
-					transform.position = new Vector3(transform.position.x,
-				                                 	 transform.position.y - Time.deltaTime * 2.5f,
-				                                 	 transform.position.z);
-				}/*else{
-					if(p.name == "Player"){
-						p.GetComponent<player>().speed = 1.3f;
-					}
-				}*/
-				
+				if (transform.position.z < Left.z) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y,
+						transform.position.z + Time.deltaTime * 5f);
+				} else {
+					player.GetComponent<player> ().moveLeft = false;
+				}
+			}else if(player.GetComponent<player>().moveDown){
+
+				if (transform.position.y > 13.11f) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y - Time.deltaTime * 5f,
+						transform.position.z );
+				} else {
+					player.GetComponent<player> ().moveDown = false;
+				}
+			}
+			else if(player.GetComponent<player>().moveUp){
+
+				if (transform.position.y < 16.355f) {//move right
+					transform.position = new Vector3 (transform.position.x,
+						transform.position.y + Time.deltaTime * 5f,
+						transform.position.z );
+				} else {
+					player.GetComponent<player> ().moveUp = false;
+				}
+			}
 
 				break;
 			/*case 1: //no zoom
@@ -226,6 +246,8 @@ public class Cam : MonoBehaviour {
 		}
 
 	}
+
+
 
 	//turn off ghost vision
 	public void turnOff(){
