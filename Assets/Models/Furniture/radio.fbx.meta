@@ -25,18 +25,22 @@ ModelImporter:
     2300006: Radio:pCube1
     2300008: Radio:pCylinder1
     2300010: Radio:pCylinder2
+    2300012: //RootNode
     3300000: pCube1
     3300002: pCylinder1
     3300004: pCylinder2
     3300006: Radio:pCube1
     3300008: Radio:pCylinder1
     3300010: Radio:pCylinder2
+    3300012: //RootNode
     4300000: pCube1
     4300002: pCylinder1
     4300004: pCylinder2
     4300006: Radio:pCube1
     4300008: Radio:pCylinder1
     4300010: Radio:pCylinder2
+    4300012: Radio:pCube2
+    7400000: radio scare
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -58,7 +62,37 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: radio scare
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

@@ -202,6 +202,7 @@ ModelImporter:
     4300072: ClockUV:pCube22
     4300074: ClockUV:pCube23
     4300076: ClockUV:pCube24
+    7400000: Wall Clock Scare
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -223,7 +224,115 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Wall Clock Scare
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: ClockUV:pCube2
+        weight: 1
+      - path: ClockUV:pCube3
+        weight: 1
+      - path: ClockUV:pCube13
+        weight: 1
+      - path: ClockUV:pCube14
+        weight: 1
+      - path: ClockUV:pCube15
+        weight: 1
+      - path: ClockUV:pCube16
+        weight: 1
+      - path: ClockUV:pCube17
+        weight: 1
+      - path: ClockUV:pCube18
+        weight: 1
+      - path: ClockUV:pCube19
+        weight: 1
+      - path: ClockUV:pCube20
+        weight: 1
+      - path: ClockUV:pCube21
+        weight: 1
+      - path: ClockUV:pCube22
+        weight: 1
+      - path: ClockUV:pCube23
+        weight: 1
+      - path: ClockUV:pCube24
+        weight: 1
+      - path: ClockUV:pCylinder1
+        weight: 1
+      - path: ClockUV:pCylinder2
+        weight: 1
+      - path: ClockUV:pCylinder13
+        weight: 1
+      - path: ClockUV:pCylinder14
+        weight: 1
+      - path: ClockUV:pCylinder15
+        weight: 1
+      - path: ClockUV:pCylinder16
+        weight: 1
+      - path: ClockUV:pCylinder17
+        weight: 1
+      - path: ClockUV:pCylinder18
+        weight: 1
+      - path: ClockUV:pCylinder19
+        weight: 1
+      - path: ClockUV:pCylinder20
+        weight: 1
+      - path: ClockUV:pCylinder21
+        weight: 1
+      - path: ClockUV:pCylinder22
+        weight: 1
+      - path: ClockUV:pCylinder23
+        weight: 1
+      - path: ClockUV:pSphere2
+        weight: 1
+      - path: ClockUV:pSphere3
+        weight: 1
+      - path: ClockUV:pSphere4
+        weight: 1
+      - path: ClockUV:pSphere5
+        weight: 1
+      - path: ClockUV:pSphere6
+        weight: 1
+      - path: ClockUV:pSphere7
+        weight: 1
+      - path: ClockUV:pSphere8
+        weight: 1
+      - path: ClockUV:pSphere9
+        weight: 1
+      - path: ClockUV:pSphere10
+        weight: 1
+      - path: ClockUV:pSphere11
+        weight: 1
+      - path: ClockUV:pSphere12
+        weight: 1
+      - path: ClockUV:pSphere13
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

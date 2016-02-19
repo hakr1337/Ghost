@@ -13,6 +13,37 @@ ModelImporter:
     100010: Jack:pCylinder1
     100012: Jack:pCylinder3
     100014: Jack:pSphere1
+    100016: Fridge:pCube6
+    100018: Jack:pCube6
+    100020: Jack:pCylinder4
+    100022: Jack:transform1
+    100024: Jack:transform2
+    100026: Jack:transform3
+    100028: Jack:transform4
+    100030: Jack:transform5
+    100032: joint1
+    100034: joint2
+    100036: joint3
+    100038: joint4
+    100040: joint5
+    100042: joint6
+    100044: joint7
+    100046: joint8
+    100048: polySurface1
+    100050: polySurface2
+    100052: polySurface3
+    100054: polySurface4
+    100056: Radio:pCube1
+    100058: Radio:pCylinder1
+    100060: Radio:pCylinder2
+    100062: Radio:transform1
+    100064: Radio:transform2
+    100066: Radio:transform3
+    100068: transform1
+    100070: transform2
+    100072: transform3
+    100074: transform4
+    100076: transform5
     400000: //RootNode
     400002: Jack:pCube2
     400004: Jack:pCube3
@@ -21,6 +52,37 @@ ModelImporter:
     400010: Jack:pCylinder1
     400012: Jack:pCylinder3
     400014: Jack:pSphere1
+    400016: Fridge:pCube6
+    400018: Jack:pCube6
+    400020: Jack:pCylinder4
+    400022: Jack:transform1
+    400024: Jack:transform2
+    400026: Jack:transform3
+    400028: Jack:transform4
+    400030: Jack:transform5
+    400032: joint1
+    400034: joint2
+    400036: joint3
+    400038: joint4
+    400040: joint5
+    400042: joint6
+    400044: joint7
+    400046: joint8
+    400048: polySurface1
+    400050: polySurface2
+    400052: polySurface3
+    400054: polySurface4
+    400056: Radio:pCube1
+    400058: Radio:pCylinder1
+    400060: Radio:pCylinder2
+    400062: Radio:transform1
+    400064: Radio:transform2
+    400066: Radio:transform3
+    400068: transform1
+    400070: transform2
+    400072: transform3
+    400074: transform4
+    400076: transform5
     2300000: Jack:pCube2
     2300002: Jack:pCube3
     2300004: Jack:pCube4
@@ -28,6 +90,7 @@ ModelImporter:
     2300008: Jack:pCylinder1
     2300010: Jack:pCylinder3
     2300012: Jack:pSphere1
+    2300014: Jack:pCylinder4
     3300000: Jack:pCube2
     3300002: Jack:pCube3
     3300004: Jack:pCube4
@@ -35,6 +98,7 @@ ModelImporter:
     3300008: Jack:pCylinder1
     3300010: Jack:pCylinder3
     3300012: Jack:pSphere1
+    3300014: Jack:pCylinder4
     4300000: Jack:pCylinder1
     4300002: Jack:pCube2
     4300004: Jack:pCube3
@@ -42,7 +106,11 @@ ModelImporter:
     4300008: Jack:pSphere1
     4300010: Jack:pCube4
     4300012: Jack:pCube5
+    4300014: Jack:pCylinder4
+    4300016: Jack:pCube6
+    7400000: Take 001
     9500000: //RootNode
+    13700000: Jack:pCube6
   materials:
     importMaterials: 1
     materialName: 0
