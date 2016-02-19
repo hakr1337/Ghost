@@ -52,6 +52,7 @@ ModelImporter:
     4300012: Clock:pCube4
     4300014: Clock:pCube5
     4300016: Ceiling_Light_UV:pCylinder2
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1

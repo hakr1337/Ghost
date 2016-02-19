@@ -1,46 +1,25 @@
 fileFormatVersion: 2
-guid: df09ec53c250ae14f9c6b62bacd25665
-timeCreated: 1454919971
+guid: 899fd6ef71de06f4da799feb488b1c7c
+timeCreated: 1455856049
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: pCube1
-    100002: pCylinder1
-    100004: pCylinder2
+    100000: polySurface1
+    100002: polySurface2
+    100004: transform1
     100006: //RootNode
-    100008: Radio:pCube1
-    100010: Radio:pCylinder1
-    100012: Radio:pCylinder2
-    400000: pCube1
-    400002: pCylinder1
-    400004: pCylinder2
+    400000: polySurface1
+    400002: polySurface2
+    400004: transform1
     400006: //RootNode
-    400008: Radio:pCube1
-    400010: Radio:pCylinder1
-    400012: Radio:pCylinder2
-    2300000: pCube1
-    2300002: pCylinder1
-    2300004: pCylinder2
-    2300006: Radio:pCube1
-    2300008: Radio:pCylinder1
-    2300010: Radio:pCylinder2
-    2300012: //RootNode
-    3300000: pCube1
-    3300002: pCylinder1
-    3300004: pCylinder2
-    3300006: Radio:pCube1
-    3300008: Radio:pCylinder1
-    3300010: Radio:pCylinder2
-    3300012: //RootNode
-    4300000: pCube1
-    4300002: pCylinder1
-    4300004: pCylinder2
-    4300006: Radio:pCube1
-    4300008: Radio:pCylinder1
-    4300010: Radio:pCylinder2
-    4300012: Radio:pCube2
-    7400000: radio scare
+    2300000: polySurface1
+    2300002: polySurface2
+    3300000: polySurface1
+    3300002: polySurface2
+    4300000: polySurface1
+    4300002: polySurface2
+    7400000: Washer Scare
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -64,10 +43,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: radio scare
+      name: Washer Scare
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 120
+      firstFrame: 0
+      lastFrame: 150
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -89,6 +68,12 @@ ModelImporter:
       events: []
       transformMask:
       - path: 
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: transform1
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
@@ -114,7 +99,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 4
+    tangentImportMode: 3
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
