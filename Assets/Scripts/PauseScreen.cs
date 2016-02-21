@@ -9,30 +9,51 @@ public class PauseScreen : MonoBehaviour {
 	public Button restartText;
 	public Button exitText;
 	public Button controlsText;
-	public Button exitControlsText;
+
+
+	private Image exitImage;
+	private Image resumeImage;
+	private Image ShowControlsImage;
+	private Image RestartImage;
 
 
 	// Use this for initialization
 	void Start () {
 		PauseMenu = PauseMenu.GetComponent<Canvas> ();
+
 		resumeText = resumeText.GetComponent<Button> ();
 		exitText = exitText.GetComponent<Button> ();
-		restartText = exitText.GetComponent<Button> ();
+		restartText = restartText.GetComponent<Button> ();
 		controlsText= controlsText.GetComponent<Button> ();
-		exitControlsText = exitControlsText.GetComponent<Button> ();
+
+
+		exitImage = exitText.GetComponent<Image> ();
+		resumeImage = resumeText.GetComponent<Image> ();
+		ShowControlsImage = controlsText.GetComponent<Image> ();
+		RestartImage = restartText.GetComponent<Image> ();
+
 		PauseMenu.enabled = false;
 		ControlsImage.enabled = false;
+		resumeText.Select ();
 		//exitControlsText.enabled = false;
 	}
 
 	public void PausePress()
 		
 	{
+		
+
 		PauseMenu.enabled = true;
 		resumeText.enabled = true;
 		controlsText.enabled = true;
 		exitText.enabled = true;
 		restartText.enabled = true;
+
+		exitImage.enabled = true;
+		ShowControlsImage.enabled = true;
+		RestartImage.enabled = true;
+		resumeImage.enabled = true;
+
 		Time.timeScale = 0.0f;
 		resumeText.Select ();
 	}
@@ -41,6 +62,7 @@ public class PauseScreen : MonoBehaviour {
 		
 	{
 		PauseMenu.enabled = false;
+		ControlsImage.enabled = false;
 		hideButtons ();
 		Time.timeScale = 1.0f;
 	}
@@ -67,19 +89,32 @@ public class PauseScreen : MonoBehaviour {
 	{
 
 		ControlsImage.enabled = true;
-		exitControlsText.enabled = true;
-		exitControlsText.Select ();
+		restartText.enabled = false;
+		resumeText.enabled = false;
+
+		exitImage.enabled = false;
+		ShowControlsImage.enabled = false;
+		RestartImage.enabled = false;
+		resumeImage.enabled = false;
+
 	}
 	public void HideControl()
 	{
+		resumeText.Select ();
 		PauseMenu.enabled = false;
 		ControlsImage.enabled = false;
 		Time.timeScale = 1.0f;
 	}
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown ("Start")) {
-			PausePress ();
+
+
+		if (Input.GetButtonDown ("Start")||Input.GetButtonDown ("B")) {
+
+			if (ControlsImage.enabled == true) {
+				ResumePress ();
+			}
+			else PausePress ();
 		}
 	}
 }
