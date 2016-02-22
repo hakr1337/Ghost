@@ -70,6 +70,7 @@ public class NavAgent : MonoBehaviour {
     spawnAI spawnController;
     spawnGlobal sg;
     int totalWaves;
+    public int type;
 
     
 
@@ -209,7 +210,7 @@ public class NavAgent : MonoBehaviour {
 
             if (deathTimer > 3.05)
             {
-                sg.patronWasKilled();
+                sg.patronWasKilled(type);
                 Destroy(gameObject);
             }
         }
@@ -332,7 +333,7 @@ public class NavAgent : MonoBehaviour {
 
             catch
             {
-                tag = "0AI_Path0";
+                tag = "0AI_Path1";
                 tempPoints = GameObject.FindGameObjectsWithTag(tag);
             }
 
@@ -354,7 +355,7 @@ public class NavAgent : MonoBehaviour {
 
     public Vector3 getCenter()
     {
-        return cc.center;
+        return transform.position;
     }
 
      

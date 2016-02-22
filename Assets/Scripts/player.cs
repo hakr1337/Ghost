@@ -90,7 +90,7 @@ public class player : MonoBehaviour {
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 11.61123)
+                if (flyCon > 0 && transform.position.y > 11.61123f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),

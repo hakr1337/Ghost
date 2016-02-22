@@ -32,6 +32,7 @@ public class Scare : MonoBehaviour {
     int idleHash;
 
     Animator anim;
+    public ParticleSystem parts;
 
     bool started;
     bool reverse;
@@ -40,7 +41,9 @@ public class Scare : MonoBehaviour {
     void Start() {
         used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
+        parts = GetComponentInChildren<ParticleSystem>();
         posessScript = this.GetComponentInChildren<Posessable>();
+        
         usedWindow = false;
         cooldown = cooldownTime;
         cooldownBool = false;
@@ -54,6 +57,11 @@ public class Scare : MonoBehaviour {
 
         started = false;
         reverse = false;
+
+        if (parts != null)
+        {
+            parts.gameObject.SetActive(false);
+        }
 
 
     }
@@ -76,6 +84,12 @@ public class Scare : MonoBehaviour {
                     {
                         anim.SetTrigger(scareHash);
                         started = true;
+                    }
+                    if(parts!= null)
+                    {
+                        parts.gameObject.SetActive(true);
+                        //parts.enableEmission = true;
+                        
                     }
                     //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
                     people = GameObject.FindGameObjectsWithTag("Enemy");

@@ -26,8 +26,8 @@ public class Posessable : MonoBehaviour {
 		if ((Input.GetButtonDown("B") || Input.GetKeyDown(KeyCode.Escape)) && posessed){
 
             //re-enable player
-			SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
-			foreach(SkinnedMeshRenderer s in skins){
+			MeshRenderer[] skins = player.GetComponentsInChildren<MeshRenderer>();//turn on mesh renderer
+			foreach(MeshRenderer s in skins){
 				s.enabled = true;
 			}
 			//player.GetComponentInChildren<MeshRenderer>().enabled = true;

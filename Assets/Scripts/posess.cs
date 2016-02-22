@@ -53,9 +53,9 @@ public class posess : MonoBehaviour {
                     //c.GetComponentInChildren<ParticleSystem>().Clear();
 
                     //start posession change to player
-					SkinnedMeshRenderer[] skins = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();//turn off mesh renderer
+					MeshRenderer[] skins = this.gameObject.GetComponentsInChildren<MeshRenderer>();//turn off mesh renderer
 					//this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
-					foreach(SkinnedMeshRenderer s in skins){
+					foreach(MeshRenderer s in skins){
 						s.enabled = false;
 					}
 
