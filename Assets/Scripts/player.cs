@@ -65,14 +65,14 @@ public class player : MonoBehaviour {
             }
 
 			//left and right
-			if (hori > 0) {
+			if (hori > 0 && transform.position.z > 7.3f) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z - Time.deltaTime * speed);
 				moving = true;
 				right = true;
                 idleTimer = 0;
-            } else if (hori < 0) {
+            } else if (hori < 0 && transform.position.z < 27.9f) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z + Time.deltaTime * speed);
@@ -83,14 +83,14 @@ public class player : MonoBehaviour {
 
             if(canFly)
             {
-                if (flyCon < 0 && transform.position.y < 16.44348f)
+                if (flyCon < 0 && transform.position.y < 16.72f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 11.61123f)
+                if (flyCon > 0 && transform.position.y > 12.22f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
