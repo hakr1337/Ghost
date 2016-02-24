@@ -18,8 +18,8 @@ public class posess : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            GameObject.Find("pause menu").GetComponent<PauseScreen>().PausePress();
+		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) {
+            GameObject.Find("newPause").GetComponent<PauseScreen>().PausePress();
         }
 	}
 
@@ -40,24 +40,22 @@ public class posess : MonoBehaviour {
                     c.GetComponentInParent<shaderGlow>().lightOn();
 				}
 
-				if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.E)) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
+				if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
 
                     if (Camera.main.GetComponent<Cam>().visionOn) {//if vision on turn off
                         Camera.main.GetComponent<Cam>().turnOff();
                     }
 
-                    //start posession change to object being posessed
-                   // c.GetComponent<Collider>().isTrigger = false;//turn off object being posessed's trigger
-                    //c.GetComponent<Posessable>().posessed = true;//mark object as posessed
-                    //c.GetComponentInChildren<ParticleSystem>().enableEmission = false;//turn off and clear particle system
-                    //c.GetComponentInChildren<ParticleSystem>().Clear();
-
+                 
                     //start posession change to player
 					SkinnedMeshRenderer[] skins = this.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();//turn off mesh renderer
 					//this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 					foreach(SkinnedMeshRenderer s in skins){
 						s.enabled = false;
 					}
+
+					gameObject.GetComponentInChildren<ParticleSystem> ().Pause ();
+					gameObject.GetComponentInChildren<ParticleSystem> ().Clear();
 
 					this.gameObject.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = false;//turn off player control
                     this.gameObject.GetComponent<Rigidbody>().isKinematic = true;//fix player position

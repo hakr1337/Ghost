@@ -18,7 +18,7 @@ public class fireplace : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (p.posessed && (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))) {
+		if (p.posessed && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))) {
             fire.enableEmission = true;
             timing = true;
         }

@@ -27,10 +27,15 @@ public class lamp : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (posessScript.posessed) {
-			if((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
+			if((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))){
 				source.PlayOneShot(lampclick, 1f);
-                this.GetComponentInChildren<Light>().enabled = !this.GetComponentInChildren<Light>().enabled;
 
+
+				Light[] temp = this.GetComponentsInChildren<Light> ();
+
+				foreach(Light l in temp){
+					l.enabled = !l.enabled;
+				}
 
                 
             }

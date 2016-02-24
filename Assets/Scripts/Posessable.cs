@@ -23,7 +23,7 @@ public class Posessable : MonoBehaviour {
 		}
 
         //exit posession
-		if ((Input.GetButtonDown("B") || Input.GetKeyDown(KeyCode.Escape)) && posessed){
+		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed){
 
             //re-enable player
 			SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
@@ -36,6 +36,7 @@ public class Posessable : MonoBehaviour {
 			player.GetComponent<player>().control = true;
             player.GetComponent<CapsuleCollider>().enabled = true;//turn on collider
             player.GetComponent<posess>().one = false;//enable posession of another object
+			player.GetComponentInChildren<ParticleSystem>().Play();
 
             //disable object
             this.GetComponent<Collider>().isTrigger = true;//turn trigger back on 

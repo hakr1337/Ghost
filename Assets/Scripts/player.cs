@@ -90,7 +90,7 @@ public class player : MonoBehaviour {
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 11.61123)
+                if (flyCon > 0 && transform.position.y > 11.61123f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
@@ -112,19 +112,80 @@ public class player : MonoBehaviour {
 	public bool moveUp = false;
 	public bool moveDown = false;
 
+
 	void OnTriggerEnter(Collider c){
 		if (c.name == "moveCenterFromLeft") {
 			moveCenterFromLeft = true;
+			moveLeft = false;
 		} else if (c.name == "moveCenterFromRight") {
 			moveCenterFromRight = true;
+			moveRight = false;
 		} else if (c.name == "moveRight") {
 			moveRight = true;
+			moveCenterFromRight = false;
 		} else if (c.name == "moveLeft") {
 			moveLeft = true;
+			moveCenterFromLeft = false;
 		}else if(c.name == "moveUp"){
 			moveUp = true;
+			moveDown = false;
 		}else if(c.name == "moveDown"){
 			moveDown = true;
+			moveUp = false;
+		}
+	}
+
+	public bool topLeft = false;
+	public bool topRight = false;
+	public bool bottomLeft = false;
+	public bool bottomRight = false;
+	public bool bottomCenter = false;
+	public bool topCenter = false;
+
+	void OnTriggerStay(Collider c){
+		if (c.name == "BottomLeft") {
+			bottomLeft = true;
+			topLeft = false;
+			topRight = false;
+			bottomRight = false;
+			bottomCenter = false;
+			topCenter = false;
+
+		} else if (c.name == "BottomRight") {
+			bottomLeft = false;
+			topLeft = false;
+			topRight = false;
+			bottomRight = true;
+			bottomCenter = false;
+			topCenter = false;
+		} else if (c.name == "TopRight") {
+			bottomLeft = false;
+			topLeft = false;
+			topRight = true;
+			bottomRight = false;
+			bottomCenter = false;
+			topCenter = false;
+		} else if (c.name == "TopLeft") {
+			bottomLeft = false;
+			topLeft = true;
+			topRight = false;
+			bottomRight = false;
+			bottomCenter = false;
+			topCenter = false;
+		}else if(c.name == "BottomCenter"){
+			bottomLeft = false;
+			topLeft = false;
+			topRight = false;
+			bottomRight = false;
+			bottomCenter = true;
+			topCenter = false;
+		}else if(c.name == "TopCenter"){
+			bottomLeft = false;
+			topLeft = false;
+			topRight = false;
+			bottomRight = false;
+			bottomCenter = false;
+			topCenter = true;
 		}
 	}
 
