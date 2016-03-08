@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: b635e7113534b1c4097582cee0359184
+timeCreated: 1457404441
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: fan:pCube1
+    100004: fan:pCube10
+    100006: fan:pCube11
+    100008: fan:pCube2
+    100010: fan:pCube3
+    100012: fan:pCube4
+    100014: fan:pCube5
+    100016: fan:pCube6
+    100018: fan:pCube7
+    100020: fan:pCube8
+    100022: fan:pCube9
+    100024: fan:polySurface1
+    100026: fan:polySurface2
+    100028: fan:pSphere2
+    100030: fan:transform1
+    100032: fan:transform2
+    100034: fan:transform3
+    100036: fan:transform4
+    100038: fan:transform5
+    100040: fan:transform6
+    100042: fan:transform7
+    100044: fan:transform8
+    100046: polySurface1
+    100048: polySurface2
+    100050: transform1
+    400000: //RootNode
+    400002: fan:pCube1
+    400004: fan:pCube10
+    400006: fan:pCube11
+    400008: fan:pCube2
+    400010: fan:pCube3
+    400012: fan:pCube4
+    400014: fan:pCube5
+    400016: fan:pCube6
+    400018: fan:pCube7
+    400020: fan:pCube8
+    400022: fan:pCube9
+    400024: fan:polySurface1
+    400026: fan:polySurface2
+    400028: fan:pSphere2
+    400030: fan:transform1
+    400032: fan:transform2
+    400034: fan:transform3
+    400036: fan:transform4
+    400038: fan:transform5
+    400040: fan:transform6
+    400042: fan:transform7
+    400044: fan:transform8
+    400046: polySurface1
+    400048: polySurface2
+    400050: transform1
+    2300000: fan:pCube10
+    2300002: fan:pCube11
+    2300004: fan:pCube4
+    2300006: fan:pCube5
+    2300008: fan:pCube9
+    2300010: polySurface1
+    2300012: polySurface2
+    3300000: fan:pCube10
+    3300002: fan:pCube11
+    3300004: fan:pCube4
+    3300006: fan:pCube5
+    3300008: fan:pCube9
+    3300010: polySurface1
+    3300012: polySurface2
+    4300000: fan:pCube4
+    4300002: fan:pCube5
+    4300004: fan:pCube9
+    4300006: fan:pCube10
+    4300008: fan:pCube11
+    4300010: polySurface1
+    4300012: polySurface2
+    7400000: CeilingFanScare
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
