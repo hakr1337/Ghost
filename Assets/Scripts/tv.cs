@@ -13,14 +13,14 @@ public class tv : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (this.GetComponentInChildren<Posessable> ().posessed) {
-			if((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))){
-				this.GetComponentInChildren<Light>().enabled = !this.GetComponentInChildren<Light>().enabled;
+			if((Input.GetButtonDown("A") ||Input.GetMouseButtonDown(0))){
+				//this.GetComponentInChildren<Light>().enabled = !this.GetComponentInChildren<Light>().enabled;
                 
-				if(this.GetComponentInChildren<Light>().enabled){
-					GameObject.Find("tvScreen").GetComponent<MeshRenderer>().material = (Material)Resources.Load("lambert6");
-				}else{
-					GameObject.Find("tvScreen").GetComponent<MeshRenderer>().material = (Material)Resources.Load("lambert5");
-				}
+				//if(this.GetComponentInChildren<Light>().enabled){
+				//	GameObject.Find("tvScreen").GetComponent<MeshRenderer>().material = (Material)Resources.Load("lambert6");
+				//}else{
+				//	GameObject.Find("tvScreen").GetComponent<MeshRenderer>().material = (Material)Resources.Load("lambert5");
+				//}
 			}
 		}
 	}

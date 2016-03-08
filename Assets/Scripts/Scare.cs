@@ -25,24 +25,25 @@ public class Scare : MonoBehaviour {
 
     Posessable posessScript;
     GameObject[] people;
-    public float scareRadius;
+    public int scareRadius;
 
     int scareHash;
     int reverseHash;
     int idleHash;
 
     Animator anim;
-    public ParticleSystem parts;
+    ParticleSystem parts;
 
     bool started;
     bool reverse;
 
+    public bool hasParticle;
 
     void Start() {
         used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
-        parts = GetComponentInChildren<ParticleSystem>();
-        posessScript = this.GetComponentInChildren<Posessable>();
+        //parts =  GetComponentInChildren<ParticleSystem>();
+        posessScript = this.gameObject.GetComponent<Posessable>();
         
         usedWindow = false;
         cooldown = cooldownTime;
@@ -58,16 +59,28 @@ public class Scare : MonoBehaviour {
         started = false;
         reverse = false;
 
-        if (parts != null)
-        {
-            parts.gameObject.SetActive(false);
-        }
+      
+
+        
 
 
     }
 
     // Update is called once per frame
     void Update() {
+
+        if(hasParticle)
+        {
+            //Transform t = this.gameObject.transform.parent.parent.gameObject.GetComponentInChildren<ParticleSystem>().transform;
+            //Debug.Log("Found: " + t.name);
+            parts = this.gameObject.transform.parent.parent.gameObject.GetComponentInChildren<ParticleSystem>();
+            if (parts != null)
+            {
+                parts.gameObject.SetActive(false);
+            }
+
+            hasParticle = false;
+        }
         timer += Time.deltaTime;
         cooldown += Time.deltaTime;
         if (cooldownBool && (timer > coolWindow))//allow window so one object can scare multiple people at once, could be cleaner
@@ -75,7 +88,7 @@ public class Scare : MonoBehaviour {
 
         if (posessScript.posessed)
         {
-            if (!started && !reverse && (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space)))
+			if (!started && !reverse && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)))
             {
 
                 if (canScareNow())
@@ -100,9 +113,12 @@ public class Scare : MonoBehaviour {
                         {
 
                             Transform tempLoc = p.GetComponent<Transform>();
-
+                            //weird vooddoo to get the range circle
+                            Transform radiusLocation = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
+                            
+                            
                             //set a range on how it can work
-                            if (Vector3.Distance(tempLoc.position, this.GetComponent<Transform>().position) < scareRadius)
+                            if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
                             {
                                 if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
                                 {

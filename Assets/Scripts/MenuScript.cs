@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class MenuScript : MonoBehaviour {
 	public Button startText;
@@ -39,7 +41,7 @@ public class MenuScript : MonoBehaviour {
 
 	public void StartLevel()
 	{
-		Application.LoadLevel (1);
+        SceneManager.LoadScene(2);
 
 	}
 	public void ShowControl()

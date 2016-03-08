@@ -49,9 +49,20 @@ public class spawnGlobal : MonoBehaviour {
     GameOverScreen GO;
     Image flameHealth;
 
+    Image Ready;
+    Image Wave;
+    Image waveNumber;
+    Image readyNumber;
+
+    Sprite[] num;
+    Sprite[] numDesat;
+
     public int[] waveEnemyCountKid;
     public int[] waveEnemyCountMom;
     public int[] waveEnemyCountDad;
+
+	public AudioClip collectfearsound;
+	private AudioSource source; 
 
     spawnAI ms;
     spawnAI ks;
@@ -59,14 +70,18 @@ public class spawnGlobal : MonoBehaviour {
     spawnAI bs;
     void Start () {
         timerText = GameObject.Find("WaveTimeUI").GetComponent<Text>();
-        waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
-        scoreText = GameObject.Find("Score").GetComponent<Text>();
+        //waveText = GameObject.Find("WaveCountUI").GetComponent<Text>();
+        //scoreText = GameObject.Find("Score").GetComponent<Text>();
         kidText = GameObject.Find("GirlCount").GetComponent<Text>();
         momText = GameObject.Find("MomCount").GetComponent<Text>();
         dadText = GameObject.Find("DadCount").GetComponent<Text>();
         GO = GameObject.Find("gameover").GetComponent<GameOverScreen>();
         flameHealth = GameObject.Find("SkullFlame").GetComponent<Image>();
-
+        Ready = GameObject.Find("Ready").GetComponent<Image>();
+        Wave = GameObject.Find("Wave").GetComponent<Image>();
+        waveNumber = GameObject.Find("waveNumber").GetComponent<Image>();
+        readyNumber = GameObject.Find("readyNumber").GetComponent<Image>();
+        source = GetComponent<AudioSource>();
         ms = GameObject.Find("MainSpawn").GetComponentInChildren<spawnAI>();
         ks = GameObject.Find("KitchenSpawn").GetComponentInChildren<spawnAI>();
         ws = GameObject.Find("WindowSpawn").GetComponentInChildren<spawnAI>();
@@ -107,6 +122,20 @@ public class spawnGlobal : MonoBehaviour {
             waveEnemyCountDad[i] = waveEnemyCountKid[i] / dadRatio;
         }
 
+        num = new Sprite[10];
+        numDesat = new Sprite[10];
+
+        for(int i = 0; i < 10; i++)
+        {
+            num[i] = Resources.Load<Sprite>("WaveUI/WaveUI/" + (i+1));
+            numDesat[i] = Resources.Load<Sprite>("WaveUI/WaveUI/" + (i+1) + "desat");
+
+            
+        }
+
+        //num[0] = Resources.Load<Sprite>("WaveUI/WaveUI/" + (1));
+        //numDesat[0] = Resources.Load<Sprite>("WaveUI/WaveUI/" + (1) + "desat");
+
 
 
         spawnNextWave();
@@ -124,12 +153,34 @@ public class spawnGlobal : MonoBehaviour {
         bathroomTimer += Time.deltaTime;
         //prep timer
 
+
+
         if (timer < 0)
-            timerText.text = "Timer: " + (int)timer;
+        {
+            timerText.text = "00";
+            Sprite us = num[(int)(-timer)];
+            //Debug.Log(us.name);
+            readyNumber.sprite = us;
+
+        }
         else//timer on the wave
         {
-            timerText.text = "Timer: " + (int)(failTime - waveTimer);
+            if (Wave.IsActive())
+            {
+                Wave.CrossFadeAlpha(0f, 0.2f, true);
+                Ready.CrossFadeAlpha(0f, 0.2f, true);
+                readyNumber.CrossFadeAlpha(0f, 0.2f, true);
+                waveNumber.CrossFadeAlpha(0f, 0.2f, true);
+            }
+
+
+            int curr = (int)(failTime - waveTimer);
+            if (curr > 9)
+                timerText.text = "" + curr;
+            else
+                timerText.text = "0" + curr;
             flameHealth.fillAmount = 1 - (waveTimer / failTime);
+
         }
 
         if (waveCount > totalWaves)
@@ -138,6 +189,7 @@ public class spawnGlobal : MonoBehaviour {
         }
         if (killedPatrons >= enemySpawnCount && waveTimer > 0)
         {
+			source.PlayOneShot(collectfearsound, .5f);
             spawnNextWave();
         }
 
@@ -247,7 +299,7 @@ public class spawnGlobal : MonoBehaviour {
         kidText.text = "" + kidCount;
         momText.text = "" + momCount;
         dadText.text = "" + dadCount;
-        scoreText.text = "" + score;
+        //scoreText.text = "" + score;
     }
 
     void failFunction()
@@ -274,8 +326,16 @@ public class spawnGlobal : MonoBehaviour {
         mainTimer = timer;
         windowTimer = timer;
         bathroomTimer = timer;
-        waveText.text = "Wave: " + (waveCount + 1) + "";
+        //waveText.text = "Wave: " + (waveCount + 1) + "";
         flameHealth.fillAmount = 1;
+       
+        Wave.CrossFadeAlpha(1f, 0.2f, true);
+        Ready.CrossFadeAlpha(1f, 0.2f, true);
+        readyNumber.CrossFadeAlpha(1f, 0.2f, true);
+        waveNumber.CrossFadeAlpha(1f, 0.2f, true);
+
+        waveNumber.sprite = numDesat[waveCount];
+        readyNumber.sprite = num[5];
     }
 
     public int getWaveCount()

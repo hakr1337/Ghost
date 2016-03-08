@@ -5,12 +5,16 @@ public class Posessable : MonoBehaviour {
 	public bool posessed = false;
 	public bool shouldScare = false;
     public bool lit = false;
+    Scare sr;
+    Transform radiusTrans;
 
     GameObject player;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player");
-	}
+        sr = gameObject.GetComponent<Scare>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -23,7 +27,7 @@ public class Posessable : MonoBehaviour {
 		}
 
         //exit posession
-		if ((Input.GetButtonDown("B") || Input.GetKeyDown(KeyCode.Escape)) && posessed){
+		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed){
 
             //re-enable player
 			SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
@@ -36,14 +40,22 @@ public class Posessable : MonoBehaviour {
 			player.GetComponent<player>().control = true;
             player.GetComponent<CapsuleCollider>().enabled = true;//turn on collider
             player.GetComponent<posess>().one = false;//enable posession of another object
+			player.GetComponentInChildren<ParticleSystem>().Play();
 
             //disable object
             this.GetComponent<Collider>().isTrigger = true;//turn trigger back on 
             this.lit = false;//mark unlit
 			posessed = false;
-		
+
+            //turn off and scale circle
+            radiusTrans = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
+
+     
+            
+            radiusTrans.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
             //if ball call deposess function in ball
-			if(gameObject.tag == "balltrigger"){
+            if (gameObject.tag == "balltrigger"){
 				gameObject.GetComponentInParent<ball>().deposess();
             }
             else if(gameObject.tag == "plane"){

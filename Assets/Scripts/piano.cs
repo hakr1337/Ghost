@@ -28,7 +28,7 @@ public class piano : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-		if (!started && !reverse && p.posessed && (Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))) {
+		if (!started && !reverse && p.posessed && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))) {
             march.Play();
             anim.SetTrigger(scareHash);
             started = true;

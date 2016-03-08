@@ -94,8 +94,7 @@ public class NavAgent : MonoBehaviour {
         idle = true;
         state = 0;
         active = true;
-        health = 4;
-        maxHealth = 4;
+        health = maxHealth;
         isDead = false;
         scaredNow = false;
 		anim.SetBool ("Walk", true);

@@ -18,8 +18,8 @@ public class posess : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            GameObject.Find("pause menu").GetComponent<PauseScreen>().PausePress();
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+            GameObject.Find("pause").GetComponent<PauseScreen>().PausePress();
         }
 	}
 
@@ -40,7 +40,7 @@ public class posess : MonoBehaviour {
                     c.GetComponentInParent<shaderGlow>().lightOn();
 				}
 
-				if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.E)) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
+				if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)) && c.GetComponent<Posessable>() != null) { //detect posses button (Q)
 
                     if (Camera.main.GetComponent<Cam>().visionOn) {//if vision on turn off
                         Camera.main.GetComponent<Cam>().turnOff();
@@ -58,6 +58,31 @@ public class posess : MonoBehaviour {
 					foreach(SkinnedMeshRenderer s in skins){
 						s.enabled = false;
 					}
+
+                    //bad variable use, could be cleaner
+                    Scare sc = c.GetComponent<Scare>();
+                    int sr = sc.scareRadius;
+
+                    Transform rt = c.gameObject.transform.parent.transform.parent.FindChild("Circle");
+
+
+                    switch (sr)
+                    {
+                        case 1:
+                            rt.localScale = new Vector3(32.90985f, 66.6f, 32.90985f);
+                            break;
+                        case 2:
+                            rt.localScale = new Vector3(74.35389f, 66.6f, 74.65389f);
+                            break;
+                        case 3:
+                            rt.localScale = new Vector3(103.4047f, 66.6f, 103.4047f);
+                            break;
+                    }
+
+                    rt.gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+                    gameObject.GetComponentInChildren<ParticleSystem> ().Pause ();
+					gameObject.GetComponentInChildren<ParticleSystem> ().Clear();
 
 					this.gameObject.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = false;//turn off player control
                     this.gameObject.GetComponent<Rigidbody>().isKinematic = true;//fix player position

@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: 51ef5bf0d10f64c4cbe0d1cc5229bf96
+timeCreated: 1456797357
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: group
+    100004: group1
+    100006: joint1
+    100008: joint10
+    100010: joint11
+    100012: joint12
+    100014: joint13
+    100016: joint14
+    100018: joint2
+    100020: joint3
+    100022: joint4
+    100024: joint5
+    100026: joint6
+    100028: joint7
+    100030: joint8
+    100032: joint9
+    100034: pasted__joint10
+    100036: pasted__joint11
+    100038: pasted__joint12
+    100040: pasted__joint13
+    100042: pasted__joint14
+    100044: pasted__joint7
+    100046: pasted__joint8
+    100048: pasted__joint9
+    100050: pCube1
+    100052: polySurface27
+    400000: //RootNode
+    400002: group
+    400004: group1
+    400006: joint1
+    400008: joint10
+    400010: joint11
+    400012: joint12
+    400014: joint13
+    400016: joint14
+    400018: joint2
+    400020: joint3
+    400022: joint4
+    400024: joint5
+    400026: joint6
+    400028: joint7
+    400030: joint8
+    400032: joint9
+    400034: pasted__joint10
+    400036: pasted__joint11
+    400038: pasted__joint12
+    400040: pasted__joint13
+    400042: pasted__joint14
+    400044: pasted__joint7
+    400046: pasted__joint8
+    400048: pasted__joint9
+    400050: pCube1
+    400052: polySurface27
+    2300000: pCube1
+    3300000: pCube1
+    4300000: polySurface27
+    4300002: pCube1
+    7400000: GhoulKid_Moving
+    9500000: //RootNode
+    11100000: polySurface27
+    11100002: //RootNode
+    13700000: polySurface27
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: GhoulKid_Moving
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint3/joint11
+        weight: 1
+      - path: joint1/joint2/joint3/joint11/joint12
+        weight: 1
+      - path: joint1/joint2/joint3/joint11/joint12/joint13
+        weight: 1
+      - path: joint1/joint2/joint3/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint1/joint2/joint3/pasted__joint11
+        weight: 1
+      - path: joint1/joint2/joint3/pasted__joint11/pasted__joint12
+        weight: 1
+      - path: joint1/joint2/joint3/pasted__joint11/pasted__joint12/pasted__joint13
+        weight: 1
+      - path: joint1/joint2/joint3/pasted__joint11/pasted__joint12/pasted__joint13/pasted__joint14
+        weight: 1
+      - path: joint1/joint7
+        weight: 1
+      - path: joint1/joint7/joint8
+        weight: 1
+      - path: joint1/joint7/joint8/joint9
+        weight: 1
+      - path: joint1/joint7/joint8/joint9/joint10
+        weight: 1
+      - path: joint1/pasted__joint7
+        weight: 1
+      - path: joint1/pasted__joint7/pasted__joint8
+        weight: 1
+      - path: joint1/pasted__joint7/pasted__joint8/pasted__joint9
+        weight: 1
+      - path: joint1/pasted__joint7/pasted__joint8/pasted__joint9/pasted__joint10
+        weight: 1
+      - path: pCube1
+        weight: 1
+      - path: polySurface27
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

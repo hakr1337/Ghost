@@ -23,7 +23,7 @@ public class bookshelf : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (shelf.GetComponentInChildren<Posessable>().posessed) {
-			if ((Input.GetButtonDown("A") || Input.GetKeyDown(KeyCode.Space))) {
+			if ((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))) {
                 Transform[] book = GetComponentsInChildren<Transform>();
                 shelf.transform.FindChild("Trigger").gameObject.GetComponent<Collider>().isTrigger = true;
                 shelf.GetComponentInChildren<Collider>().isTrigger = true;
