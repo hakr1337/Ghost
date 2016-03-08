@@ -83,14 +83,14 @@ public class player : MonoBehaviour {
 
             if(canFly)
             {
-                if (flyCon < 0 && transform.position.y < 16.72f)
+                if (flyCon < 0 && transform.position.y < 17f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 12.22f)
+                if (flyCon > 0 && transform.position.y > 12.32f)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),

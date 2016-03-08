@@ -100,6 +100,8 @@ public class NavAgent : MonoBehaviour {
 		anim.SetBool ("Walk", true);
         
         deathTimer = 0;
+        
+        agent.avoidancePriority = Random.Range(1, 100);
 
         //GameObject[] tempPoints;
         //pointCount = new int[totalWaves];

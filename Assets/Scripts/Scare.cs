@@ -20,7 +20,6 @@ public class Scare : MonoBehaviour {
 
     float timer2;
     bool timing2;
-    public bool global;
     public bool upstairs;
 
     Posessable posessScript;
@@ -197,10 +196,6 @@ public class Scare : MonoBehaviour {
         
     }
 
-    public bool isGlobal()
-    {
-        return global;
-    }
 
     void setCooldown()
     {
