@@ -218,36 +218,36 @@ public class Cam : MonoBehaviour {
 
 
 	public void pause(bool p){
-		paused = p;
-		if (p) {
-			if (ps.bottomCenter) {
-				start = Center;
-				cb = true;
-			} else if (ps.topCenter) {
-				start = new Vector3 (Center.x, 16.355f, Center.z);
-				ct = true;
-			} else if (ps.topLeft) {
-				start = new Vector3 (Left.x, 16.355f, Left.z);
-				lt = true;
-			} else if (ps.topRight) {
-				start = new Vector3 (Right.x, 16.355f, Right.z);
-				rt = true;
-			} else if (ps.bottomLeft) {
-				start = Left;
-				lb = true;
-			} else if (ps.bottomRight) {
-				start = Right;
-				rb = true;
-			}
-		} else {
-			this.transform.position = start;
-			lt = false;
-			lb = false;
-			ct = false;
-			rt = false;
-			rb = false;
-			cb = false;
-		}
+		//paused = p;
+		//if (p) {
+		//	if (ps.bottomCenter) {
+		//		start = Center;
+		//		cb = true;
+		//	} else if (ps.topCenter) {
+		//		start = new Vector3 (Center.x, 16.355f, Center.z);
+		//		ct = true;
+		//	} else if (ps.topLeft) {
+		//		start = new Vector3 (Left.x, 16.355f, Left.z);
+		//		lt = true;
+		//	} else if (ps.topRight) {
+		//		start = new Vector3 (Right.x, 16.355f, Right.z);
+		//		rt = true;
+		//	} else if (ps.bottomLeft) {
+		//		start = Left;
+		//		lb = true;
+		//	} else if (ps.bottomRight) {
+		//		start = Right;
+		//		rb = true;
+		//	}
+		//} else {
+		//	this.transform.position = start;
+		//	lt = false;
+		//	lb = false;
+		//	ct = false;
+		//	rt = false;
+		//	rb = false;
+		//	cb = false;
+		//}
 	}
 
 	public bool lt = false;
@@ -260,47 +260,47 @@ public class Cam : MonoBehaviour {
 	Vector3 start;
 	void pauseMovement(){
 
-		if (lb) {
-			if (transform.position.y < 16.355f) {//move up
-				transform.position = new Vector3 (transform.position.x,
-					transform.position.y + .02f,
-					transform.position.z);
-			} else {
-				lb = false;
-				lt = true;
-			}
-		}
-		if(ct||lt){
-			if (transform.position.z > Right.z) {//move right
-				transform.position = new Vector3 (transform.position.x,
-					transform.position.y,
-					transform.position.z - .02f);
-			} else {
-				ct = false;
-				lt = false;
-				rt = true;
-			}
-		}
-		if(rt){
-			if (transform.position.y > 13.11f) {//move down
-				transform.position = new Vector3 (transform.position.x,
-					transform.position.y - .02f,
-					transform.position.z);
-			} else {
-				rt = false;
-				rb = true;
-			}
-		}
-		if(rb||cb){
-			if (transform.position.z < Left.z) {//move left
-				transform.position = new Vector3 (transform.position.x,
-					transform.position.y,
-					transform.position.z + .02f);
-			} else {
-				rb = false;
-				cb = false;
-				lb = true;
-			}
-		}
+		//if (lb) {
+		//	if (transform.position.y < 16.355f) {//move up
+		//		transform.position = new Vector3 (transform.position.x,
+		//			transform.position.y + .02f,
+		//			transform.position.z);
+		//	} else {
+		//		lb = false;
+		//		lt = true;
+		//	}
+		//}
+		//if(ct||lt){
+		//	if (transform.position.z > Right.z) {//move right
+		//		transform.position = new Vector3 (transform.position.x,
+		//			transform.position.y,
+		//			transform.position.z - .02f);
+		//	} else {
+		//		ct = false;
+		//		lt = false;
+		//		rt = true;
+		//	}
+		//}
+		//if(rt){
+		//	if (transform.position.y > 13.11f) {//move down
+		//		transform.position = new Vector3 (transform.position.x,
+		//			transform.position.y - .02f,
+		//			transform.position.z);
+		//	} else {
+		//		rt = false;
+		//		rb = true;
+		//	}
+		//}
+		//if(rb||cb){
+		//	if (transform.position.z < Left.z) {//move left
+		//		transform.position = new Vector3 (transform.position.x,
+		//			transform.position.y,
+		//			transform.position.z + .02f);
+		//	} else {
+		//		rb = false;
+		//		cb = false;
+		//		lb = true;
+		//	}
+		//}
 	}
 }

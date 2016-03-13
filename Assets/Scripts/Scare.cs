@@ -35,8 +35,14 @@ public class Scare : MonoBehaviour {
 
     bool started;
     bool reverse;
+    
 
     public bool hasParticle;
+
+    //variable when scare tirggered
+    //use to change th shader glow to gray and then blue 
+    //again when scare is available
+    bool change;
 
     void Start() {
         used = false;
@@ -58,7 +64,7 @@ public class Scare : MonoBehaviour {
         started = false;
         reverse = false;
 
-      
+        change = false;
 
         
 
@@ -84,6 +90,16 @@ public class Scare : MonoBehaviour {
         cooldown += Time.deltaTime;
         if (cooldownBool && (timer > coolWindow))//allow window so one object can scare multiple people at once, could be cleaner
             setCooldown();
+        //changes glow color back to blue when cooldown is done
+        if (cooldown > cooldownTime && change)
+        {
+            shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
+            sg.glowColor = Color.blue;
+            sg.lightOff();
+            change = false;
+            if(posessScript.posessed)
+                sg.lightOn();
+        }
 
         if (posessScript.posessed)
         {
@@ -123,6 +139,12 @@ public class Scare : MonoBehaviour {
                                 {
                                     scareLocation(person);
                                     scarePerson(person);
+                                    //change outline color
+                                    shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
+                                    sg.changeColor(Color.grey);
+                                    sg.lightOff();
+                                    sg.lightOn();
+                                    change = true;
                                 }
                             }
                         
@@ -140,7 +162,7 @@ public class Scare : MonoBehaviour {
                 if (started || reverse)
                     animTimer += Time.deltaTime;
                 //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
-                if (started && timer > stateInfo.length)
+                if (started && animTimer > stateInfo.length)
                 {
                     started = false;
                     reverse = true;
@@ -148,7 +170,7 @@ public class Scare : MonoBehaviour {
                     anim.SetTrigger(reverseHash);
                 }
 
-                if (reverse && timer > stateInfo.length)
+                if (reverse && animTimer > stateInfo.length)
                 {
                     started = false;
                     reverse = false;

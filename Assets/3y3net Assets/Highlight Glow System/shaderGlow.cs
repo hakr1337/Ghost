@@ -291,4 +291,9 @@ public class shaderGlow : MonoBehaviour {
 			}
 		}
 	}
+
+    public void changeColor(Color c)
+    {
+        glowColor = c;
+    }
 }

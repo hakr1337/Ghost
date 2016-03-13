@@ -18,10 +18,10 @@ public class posess : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Escape) && !paused) {
+		if ((Input.GetKeyDown (KeyCode.Escape)|| Input.GetButtonDown("Start")) && !paused && Time.timeScale != 0) {
 			GameObject.Find ("pause").GetComponent<PauseScreen> ().PausePress ();
 			paused = true;
-		} else if(Input.GetKeyDown (KeyCode.Escape) && paused) {
+		} else if((Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start")) && paused) {
 			GameObject.Find ("pause").GetComponent<PauseScreen> ().ResumePress ();
 			paused = false;
 		}
@@ -85,9 +85,9 @@ public class posess : MonoBehaviour {
 
 					rt.gameObject.GetComponent<MeshRenderer>().enabled = true;
 
-
-					gameObject.GetComponentInChildren<ParticleSystem> ().Pause ();
-					gameObject.GetComponentInChildren<ParticleSystem> ().Clear();
+                    //turn off head flame on posessions
+					//gameObject.GetComponentInChildren<ParticleSystem> ().Pause ();
+					//gameObject.GetComponentInChildren<ParticleSystem> ().Clear();
 
 					this.gameObject.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = false;//turn off player control
 					this.gameObject.GetComponent<Rigidbody>().isKinematic = true;//fix player position

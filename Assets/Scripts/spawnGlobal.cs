@@ -22,6 +22,8 @@ public class spawnGlobal : MonoBehaviour {
     public float wavePrepTime;
     float waveTimer;
     float timer;
+    float deathTimer;
+    bool dead = false;
 
     float kitchenTimer;
     float mainTimer;
@@ -178,7 +180,12 @@ public class spawnGlobal : MonoBehaviour {
             if (curr > 9)
                 timerText.text = "" + curr;
             else
-                timerText.text = "0" + curr;
+            {
+                if(curr > 0)
+                    timerText.text = "0" + curr;
+                else
+                    timerText.text = "00";
+            }
             flameHealth.fillAmount = 1 - (waveTimer / failTime);
 
         }
@@ -195,7 +202,31 @@ public class spawnGlobal : MonoBehaviour {
 
         if (waveTimer >= failTime)
         {
-            failFunction();
+            if (deathTimer == 0)
+            {
+                GameObject player = GameObject.Find("Player");
+                player.GetComponent<player>().killPlayer();
+                //re-enable player
+                SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
+                foreach (SkinnedMeshRenderer s in skins)
+                {
+                    s.enabled = true;
+                }
+                //player.GetComponentInChildren<MeshRenderer>().enabled = true;
+                player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = true;//turn on control
+                player.GetComponent<Rigidbody>().isKinematic = false;//unfix
+                player.GetComponent<player>().control = true;
+                player.GetComponent<CapsuleCollider>().enabled = true;//turn on collider
+                player.GetComponent<posess>().one = false;//enable posession of another object
+
+            }
+            deathTimer += Time.deltaTime;
+            AnimatorStateInfo state = GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+            if (deathTimer > 4 && !dead)
+            {
+                failFunction();
+                dead = true;
+            }
         }
 
         if (totalPatrons < enemySpawnCount)

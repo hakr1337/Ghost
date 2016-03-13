@@ -14,7 +14,9 @@ public class player : MonoBehaviour {
     float flyCon;
     float idleTimer;
     bool isIdle;
+    bool dead = false;
     int headHash;
+    Light deathLight;
     //int stopHeadHash;
 
 
@@ -23,6 +25,8 @@ public class player : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		//score_text = GameObject.Find("Score").GetComponent<Text>();
         headHash = Animator.StringToHash("tossHead");
+        deathLight = gameObject.GetComponentInChildren<Light>();
+        deathLight.enabled = false;
 		Time.timeScale = 1;
         //stopHeadHash = Animator.StringToHash("stopHead");
     }
@@ -48,14 +52,14 @@ public class player : MonoBehaviour {
 
 		//in and out
 		if (control) {
-			if (vert > 0) {
+			if (vert > 0 && !dead) {
 				transform.position = new Vector3 (transform.position.x + Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
 				moving = true;
 				inward = true;
                 idleTimer = 0;
-			} else if (vert < 0) {
+			} else if (vert < 0 && !dead) {
 				transform.position = new Vector3 (transform.position.x - Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
@@ -65,14 +69,14 @@ public class player : MonoBehaviour {
             }
 
 			//left and right
-			if (hori > 0 && transform.position.z > 7.3f) {
+			if (hori > 0 && transform.position.z > 7.3f && !dead) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z - Time.deltaTime * speed);
 				moving = true;
 				right = true;
                 idleTimer = 0;
-            } else if (hori < 0 && transform.position.z < 27.9f) {
+            } else if (hori < 0 && transform.position.z < 27.9f && !dead) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z + Time.deltaTime * speed);
@@ -83,14 +87,14 @@ public class player : MonoBehaviour {
 
             if(canFly)
             {
-                if (flyCon < 0 && transform.position.y < 17f)
+                if (flyCon < 0 && transform.position.y < 17f && !dead)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 12.32f)
+                if (flyCon > 0 && transform.position.y > 12.32f && !dead)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
@@ -193,6 +197,14 @@ public class player : MonoBehaviour {
 		//score += 1;
 		//score_text.text = "Score: " + score;
 	}
+
+    public void killPlayer()
+    {
+        dead = true;
+        anim.SetBool("die", true);
+        GameObject.Find("Lights").gameObject.active = false;
+        deathLight.enabled = true;
+    }
 
 
 }

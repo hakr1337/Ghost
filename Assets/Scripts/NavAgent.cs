@@ -151,7 +151,7 @@ public class NavAgent : MonoBehaviour {
 			
 
               agent.SetDestination(target);
-              changeView();
+              //changeView();
             //if (scaredNow)
             //    active = false;
             
@@ -160,8 +160,10 @@ public class NavAgent : MonoBehaviour {
 
         if(scaredNow)
         {
+            changeView();
             scaredTimer += Time.deltaTime;
-            if(scaredTimer > 6)
+            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+            if (scaredTimer > stateInfo.length || scaredTimer > 6)
             {
                 
                 
@@ -208,8 +210,8 @@ public class NavAgent : MonoBehaviour {
         if(isDead)
         {
             deathTimer += Time.deltaTime;
-
-            if (deathTimer > 3.05)
+            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+            if (deathTimer > stateInfo.length)
             {
                 sg.patronWasKilled(type);
                 Destroy(gameObject);
@@ -298,15 +300,15 @@ public class NavAgent : MonoBehaviour {
 
         idle = false;
 		active = true;
-        
 
-		//while (time < 10) {
-		//	time += Time.deltaTime;
-		//}
+        changeView();
+        //while (time < 10) {
+        //	time += Time.deltaTime;
+        //}
 
-		//idle = true;
-		//active = true;
-        
+        //idle = true;
+        //active = true;
+
     }
 
     public bool isExiting() {
