@@ -49,6 +49,7 @@ public class spawnGlobal : MonoBehaviour {
     Text momText;
     Text dadText;
     GameOverScreen GO;
+    GameOverScreen winScreen;
     Image flameHealth;
 
     Image Ready;
@@ -78,6 +79,7 @@ public class spawnGlobal : MonoBehaviour {
         momText = GameObject.Find("MomCount").GetComponent<Text>();
         dadText = GameObject.Find("DadCount").GetComponent<Text>();
         GO = GameObject.Find("gameover").GetComponent<GameOverScreen>();
+        winScreen = GameObject.Find("WinScreen").GetComponent<GameOverScreen>();
         flameHealth = GameObject.Find("SkullFlame").GetComponent<Image>();
         Ready = GameObject.Find("Ready").GetComponent<Image>();
         Wave = GameObject.Find("Wave").GetComponent<Image>();
@@ -190,11 +192,12 @@ public class spawnGlobal : MonoBehaviour {
 
         }
 
-        if (waveCount > totalWaves)
+        if (waveCount > totalWaves && !dead)//set win condition wave
         {
-            failFunction();//replace with win function later for final scene
+            dead = true;
+            winFunction();//replace with win function later for final scene
         }
-        if (killedPatrons >= enemySpawnCount && waveTimer > 0)
+        if (killedPatrons >= enemySpawnCount && waveTimer > 0 && !dead)
         {
 			source.PlayOneShot(collectfearsound, .5f);
             spawnNextWave();
@@ -336,7 +339,15 @@ public class spawnGlobal : MonoBehaviour {
     void failFunction()
     {
         //spawnNextWave();
+        GameObject.Find("UI").gameObject.SetActive(false);
         GO.Died();
+    }
+
+    void winFunction()
+    {
+        GameObject.Find("UI").gameObject.SetActive(false);
+        winScreen.Died();
+        
     }
 
     public void spawnNextWave()

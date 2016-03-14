@@ -141,7 +141,7 @@ public class Scare : MonoBehaviour {
                                     scarePerson(person);
                                     //change outline color
                                     shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
-                                    sg.changeColor(Color.grey);
+                                    sg.changeColor(Color.red);
                                     sg.lightOff();
                                     sg.lightOn();
                                     change = true;
@@ -155,28 +155,29 @@ public class Scare : MonoBehaviour {
 
 
             }
-            if (anim != null)
+          
+        }
+        if (anim != null)
+        {
+            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+            if (started || reverse)
+                animTimer += Time.deltaTime;
+            //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
+            if (started && animTimer > stateInfo.length || animTimer > 6)
             {
-                AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+                started = false;
+                reverse = true;
+                animTimer = 0;
+                anim.SetTrigger(reverseHash);
+            }
 
-                if (started || reverse)
-                    animTimer += Time.deltaTime;
-                //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
-                if (started && animTimer > stateInfo.length)
-                {
-                    started = false;
-                    reverse = true;
-                    animTimer = 0;
-                    anim.SetTrigger(reverseHash);
-                }
-
-                if (reverse && animTimer > stateInfo.length)
-                {
-                    started = false;
-                    reverse = false;
-                    animTimer = 0;
-                    anim.SetTrigger(idleHash);
-                }
+            if (reverse && animTimer > stateInfo.length || animTimer > 6)
+            {
+                started = false;
+                reverse = false;
+                animTimer = 0;
+                anim.SetTrigger(idleHash);
             }
         }
 

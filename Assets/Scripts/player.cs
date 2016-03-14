@@ -35,11 +35,11 @@ public class player : MonoBehaviour {
 	void Update () {
 		float vert = Input.GetAxis("Vertical");
 		float hori = Input.GetAxis("Horizontal");
-        bool moving = false;
-        bool left = false;
-        bool right = false;
-        bool inward = false;
-        bool outward = false;
+        //bool moving = false;
+        //bool left = false;
+        //bool right = false;
+        //bool inward = false;
+        //bool outward = false;
         flyCon = Input.GetAxis("Fly");
 
         idleTimer += Time.deltaTime;
@@ -56,15 +56,15 @@ public class player : MonoBehaviour {
 				transform.position = new Vector3 (transform.position.x + Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
-				moving = true;
-				inward = true;
+				//moving = true;
+				//inward = true;
                 idleTimer = 0;
 			} else if (vert < 0 && !dead) {
 				transform.position = new Vector3 (transform.position.x - Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
-				moving = true;
-				outward = true;
+				//moving = true;
+				//outward = true;
                 idleTimer = 0;
             }
 
@@ -73,15 +73,15 @@ public class player : MonoBehaviour {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z - Time.deltaTime * speed);
-				moving = true;
-				right = true;
+				//moving = true;
+				//right = true;
                 idleTimer = 0;
             } else if (hori < 0 && transform.position.z < 27.9f && !dead) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z + Time.deltaTime * speed);
-				left = true;
-				moving = true;
+				//left = true;
+				//moving = true;
                 idleTimer = 0;
             }
 
