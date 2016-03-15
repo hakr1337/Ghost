@@ -111,14 +111,14 @@ public class spawnGlobal : MonoBehaviour {
         waveEnemyCountDad = new int[totalWaves];
         waveEnemyCountKid[0] = 1;
         waveEnemyCountKid[1] = 3;
-        waveEnemyCountKid[2] = 5;
-        waveEnemyCountKid[3] = 4;
-        waveEnemyCountKid[4] = 5;
-        waveEnemyCountKid[5] = 4;
-        waveEnemyCountKid[6] = 7;
-        waveEnemyCountKid[7] = 9;
-        waveEnemyCountKid[8] = 11;
-        waveEnemyCountKid[9] = 14;
+        waveEnemyCountKid[2] = 4;
+        waveEnemyCountKid[3] = 5;
+        waveEnemyCountKid[4] = 7;
+        waveEnemyCountKid[5] = 9;
+        waveEnemyCountKid[6] = 10;
+        waveEnemyCountKid[7] = 11;
+        waveEnemyCountKid[8] = 12;
+        waveEnemyCountKid[9] = 13;
 
         for(int i = 0;  i < totalWaves; i++)
         {
@@ -148,13 +148,15 @@ public class spawnGlobal : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        timer += Time.deltaTime;
-        waveTimer += Time.deltaTime;
-        kitchenTimer += Time.deltaTime;
-        mainTimer += Time.deltaTime;
-        windowTimer += Time.deltaTime;
-        bathroomTimer += Time.deltaTime;
+        if (!dead)
+        {
+            timer += Time.deltaTime;
+            waveTimer += Time.deltaTime;
+            kitchenTimer += Time.deltaTime;
+            mainTimer += Time.deltaTime;
+            windowTimer += Time.deltaTime;
+            bathroomTimer += Time.deltaTime;
+        }
         //prep timer
 
 
@@ -205,6 +207,7 @@ public class spawnGlobal : MonoBehaviour {
 
         if (waveTimer >= failTime)
         {
+            dead = true; 
             if (deathTimer == 0)
             {
                 GameObject player = GameObject.Find("Player");
@@ -225,10 +228,11 @@ public class spawnGlobal : MonoBehaviour {
             }
             deathTimer += Time.deltaTime;
             AnimatorStateInfo state = GameObject.Find("Player").GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
-            if (deathTimer > 4 && !dead)
+            if (deathTimer > 4 && dead)
             {
                 failFunction();
-                dead = true;
+                waveTimer = 0;
+                
             }
         }
 

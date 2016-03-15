@@ -53,7 +53,6 @@ public class NavAgent : MonoBehaviour {
     Quaternion _lookRotation;
     Vector3 _direction;
     Vector3 viewTarget;
-    CapsuleCollider cc;
     float idleTimer;
     float walkTimer;
     float totalTimer;
@@ -65,9 +64,9 @@ public class NavAgent : MonoBehaviour {
 	bool active; /////////////////NEW 
     bool scaredNow;
     bool isDead;
+    bool dying;
 
 	Animator anim;
-    spawnAI spawnController;
     spawnGlobal sg;
     int totalWaves;
     public int type;
@@ -78,7 +77,7 @@ public class NavAgent : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-        cc = GetComponent<CapsuleCollider>();
+
         //spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
         agent = GetComponent<NavMeshAgent>();
         target = GetComponent<Transform>().position;
@@ -97,6 +96,7 @@ public class NavAgent : MonoBehaviour {
         health = maxHealth;
         isDead = false;
         scaredNow = false;
+        dying = false;
 		anim.SetBool ("Walk", true);
         
         deathTimer = 0;
@@ -209,11 +209,16 @@ public class NavAgent : MonoBehaviour {
 
         if(isDead)
         {
+            if(!dying)
+            {
+                sg.patronWasKilled(type);
+                dying = true;
+            }
             deathTimer += Time.deltaTime;
             AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
             if (deathTimer > stateInfo.length)
             {
-                sg.patronWasKilled(type);
+                
                 Destroy(gameObject);
             }
         }
@@ -318,7 +323,7 @@ public class NavAgent : MonoBehaviour {
     public void setSpawnTag(int stag)
     {
 
-        spawnController = GameObject.Find("AI_spawn_point"+stag+"").GetComponent<spawnAI>();
+
         totalWaves = 10;
         GameObject[] tempPoints;
         pointCount = new int[totalWaves];

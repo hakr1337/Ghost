@@ -32,10 +32,10 @@ public class Cam : MonoBehaviour {
 		paused = false;
 
 
-		Left = new Vector3(3.6f, transform.position.y, 24.47f);
-		Center = new Vector3 (2.931f, transform.position.y, 17.5f);
-		Right = new Vector3 (2.931f, transform.position.y, 11.3f);
-		Zoom1 = new Vector3 (2.931f, 12.82f, 24.9f);
+        Left = new Vector3(3.78f, transform.position.y, 24.9f);
+        Center = new Vector3(3.78f, transform.position.y, 17.34f);
+        Right = new Vector3(3.78f, transform.position.y, 11.3f);
+        Zoom1 = new Vector3 (2.931f, 12.82f, 24.9f);
 		Zoom2 = new Vector3 (-5.28f, 16.13f, 18.14f);
 		zoomStates = new Vector3[2];
 		zoomStates [0] = Zoom1;

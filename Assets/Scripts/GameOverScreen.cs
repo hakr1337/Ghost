@@ -4,38 +4,38 @@ using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour {
 
-	public Canvas GameOverCanvas;
+    public Canvas GameOverCanvas;
+    public Button exitText;
+    public Button restartText;
 
-	public Button exitText;
-	public Button restartText;
+    // Use this for initialization
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
+        GameOverCanvas = GameOverCanvas.GetComponent<Canvas>();
 
-		GameOverCanvas = GameOverCanvas.GetComponent<Canvas> ();
+        exitText = exitText.GetComponent<Button>();
+        restartText = restartText.GetComponent<Button>();
 
-		exitText = exitText.GetComponent<Button> ();
-		restartText = restartText.GetComponent<Button> ();
-
-		GameOverCanvas.GetComponent<Image>().enabled = false;
+        GameOverCanvas.GetComponent<Image>().enabled = false;
         exitText.gameObject.SetActive(false);
         restartText.gameObject.SetActive(false);
 
 
     }
-	public void Died()
-		
-	{
+    public void Died()
+
+    {
         //GameObject.Find("pause").gameObject.SetActive(false);
         GameOverCanvas.GetComponent<Image>().enabled = true;
         exitText.gameObject.SetActive(true);
         restartText.gameObject.SetActive(true);
         //GameObject.Find("Player").GetComponent<player>().canFly = false;
         Time.timeScale = 0.0f;
-		restartText.Select ();
-	}
+        restartText.Select();
+    }
 
-	public void ReStartLevel()
+    public void ReStartLevel()
 	{
 		Time.timeScale = 1.0f;
 		Application.LoadLevel(1);

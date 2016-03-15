@@ -35,6 +35,7 @@ public class Scare : MonoBehaviour {
 
     bool started;
     bool reverse;
+    bool playing;
     
 
     public bool hasParticle;
@@ -57,10 +58,8 @@ public class Scare : MonoBehaviour {
         anim = GetComponentInParent<Animator>();
         animTimer = 0;
 
-        scareHash = Animator.StringToHash("goScare");
-        reverseHash = Animator.StringToHash("goReverse");
-        idleHash = Animator.StringToHash("goIdle");
 
+        playing = false;
         started = false;
         reverse = false;
 
@@ -108,15 +107,18 @@ public class Scare : MonoBehaviour {
 
                 if (canScareNow())
                 {
-                    if (anim != null)
+                    if (anim != null && !playing)
                     {
-                        anim.SetTrigger(scareHash);
+                        
                         started = true;
+                        anim.SetBool("IdleBool", false);
+                        anim.SetBool("ScareBool", true);
+                        playing = true;
                     }
                     if(parts!= null)
                     {
                         parts.gameObject.SetActive(true);
-                        //parts.enableEmission = true;
+     
                         
                     }
                     //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
@@ -155,29 +157,34 @@ public class Scare : MonoBehaviour {
 
 
             }
-          
+           
         }
-        if (anim != null)
+
+        if (anim != null && playing)
         {
             AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
             if (started || reverse)
                 animTimer += Time.deltaTime;
             //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
-            if (started && animTimer > stateInfo.length || animTimer > 6)
+            if (started && animTimer > stateInfo.length)
             {
                 started = false;
                 reverse = true;
                 animTimer = 0;
-                anim.SetTrigger(reverseHash);
+
+                anim.SetBool("ReverseBool", true);
+                anim.SetBool("ScareBool", false);
             }
 
-            if (reverse && animTimer > stateInfo.length || animTimer > 6)
+            if (reverse && animTimer > stateInfo.length)
             {
                 started = false;
                 reverse = false;
                 animTimer = 0;
-                anim.SetTrigger(idleHash);
+                anim.SetBool("IdleBool", true);
+                anim.SetBool("ReverseBool", false);
+                playing = false;
             }
         }
 
