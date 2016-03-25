@@ -19,7 +19,7 @@ public class Cam : MonoBehaviour {
 	GameObject p;
 	Posessable[] possessables;
 	shaderGlow[] scareObjects;
-
+    public float scrollSpeed;
 
 	player ps;
 
@@ -30,7 +30,7 @@ public class Cam : MonoBehaviour {
 		ps = player.GetComponent<player> ();
 		possessables = GameObject.FindObjectsOfType<Posessable>();
 		paused = false;
-
+        scrollSpeed = 17;
 
         Left = new Vector3(3.78f, transform.position.y, 24.9f);
         Center = new Vector3(3.78f, transform.position.y, 17.34f);
@@ -136,7 +136,7 @@ public class Cam : MonoBehaviour {
 					if (transform.position.z > Center.z) {//move right
 						transform.position = new Vector3 (transform.position.x,
 							transform.position.y,
-							transform.position.z - Time.deltaTime * 5f);
+							transform.position.z - Time.deltaTime * scrollSpeed);
 					} else {
 						player.GetComponent<player> ().moveCenterFromLeft = false;
 					}
@@ -144,7 +144,7 @@ public class Cam : MonoBehaviour {
 					if (transform.position.z > Right.z) {//move left
 						transform.position = new Vector3 (transform.position.x,
 							transform.position.y,
-							transform.position.z - Time.deltaTime * 5f);
+							transform.position.z - Time.deltaTime * scrollSpeed);
 					} else {
 						player.GetComponent<player> ().moveRight = false;
 					}
@@ -152,7 +152,7 @@ public class Cam : MonoBehaviour {
 					if (transform.position.z < Center.z) {//move right
 						transform.position = new Vector3 (transform.position.x,
 							transform.position.y,
-							transform.position.z + Time.deltaTime * 5f);
+							transform.position.z + Time.deltaTime * scrollSpeed);
 					} else {
 						player.GetComponent<player> ().moveCenterFromRight = false;
 					}
@@ -161,7 +161,7 @@ public class Cam : MonoBehaviour {
 					if (transform.position.z < Left.z) {//move right
 						transform.position = new Vector3 (transform.position.x,
 							transform.position.y,
-							transform.position.z + Time.deltaTime * 5f);
+							transform.position.z + Time.deltaTime * scrollSpeed);
 					} else {
 						player.GetComponent<player> ().moveLeft = false;
 					}
@@ -171,7 +171,7 @@ public class Cam : MonoBehaviour {
 
 					if (transform.position.y > 13.11f) {//move right
 						transform.position = new Vector3 (transform.position.x,
-							transform.position.y - Time.deltaTime * 5f,
+							transform.position.y - Time.deltaTime * scrollSpeed,
 							transform.position.z);
 					} else {
 						player.GetComponent<player> ().moveDown = false;
@@ -180,7 +180,7 @@ public class Cam : MonoBehaviour {
 
 					if (transform.position.y < 16.355f) {//move right
 						transform.position = new Vector3 (transform.position.x,
-							transform.position.y + Time.deltaTime * 5f,
+							transform.position.y + Time.deltaTime * scrollSpeed,
 							transform.position.z);
 					} else {
 						player.GetComponent<player> ().moveUp = false;

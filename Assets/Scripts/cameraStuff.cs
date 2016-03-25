@@ -19,9 +19,9 @@ public class cameraStuff : MonoBehaviour {
 		player = GameObject.Find("Player");
 		x = GameObject.FindGameObjectsWithTag("Particles");
         posessables = GameObject.FindObjectsOfType<Posessable>();
-		foreach(GameObject o in x){
-			o.GetComponentInChildren<ParticleSystem>().enableEmission = false;	
-		}
+		//foreach(GameObject o in x){
+		//	o.GetComponentInChildren<ParticleSystem>().enableEmission = false;	
+		//}
 	}
 
 	// Update is called once per frame

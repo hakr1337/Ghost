@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class piano : MonoBehaviour {
-    AudioSource march;
+    //AudioSource march;
     Posessable p;
     GameObject pianoRef;
     Animator anim;
@@ -15,8 +15,8 @@ public class piano : MonoBehaviour {
     int idleHash;
 	// Use this for initialization
 	void Start () {
-       p = GetComponentInChildren<Posessable>();
-       march = GetComponent<AudioSource>();
+        p = GetComponentInChildren<Posessable>();
+       //march = GetComponent<AudioSource>();
         pianoRef = GameObject.Find("coloredpiano");
         started = false;
         reverse = false;
@@ -27,10 +27,7 @@ public class piano : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 		if (!started && !reverse && p.posessed && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))) {
-            march.Play();
-            anim.SetBool("IdleBool", false);
-            anim.SetBool("ScareBool", true);
-            started = true;
+            stupidPiano();
         }
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
@@ -56,10 +53,18 @@ public class piano : MonoBehaviour {
             anim.SetBool("ReverseBool", false);
         }
 
-        if (march.isPlaying) {
-            p.shouldScare = true;
-        } else {
-            p.shouldScare = false;
-        }
+        //if (march.isPlaying) {
+        //    p.shouldScare = true;
+        //} else {
+        //    p.shouldScare = false;
+        //}
+    }
+
+    public void stupidPiano()
+    {
+        //march.Play();
+        anim.SetBool("IdleBool", false);
+        anim.SetBool("ScareBool", true);
+        started = true;
     }
 }

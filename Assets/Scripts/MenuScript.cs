@@ -10,6 +10,8 @@ public class MenuScript : MonoBehaviour {
 	//public Button exitText;
 	public Button exitMenuText;
 	public Button ControlsText;
+    public Button floodButton;
+    public Button doubleButton;
 	public Canvas ControlMenu;
 	public Canvas SplashCanvas;
 	public RectTransform splashScreen;
@@ -37,23 +39,40 @@ public class MenuScript : MonoBehaviour {
 	{
 		startText.Select (); // exits controls screen and reselects startText
 		ControlMenu.enabled = false;
-	}
+
+    }
 
 	public void StartLevel()
 	{
         SceneManager.LoadScene(2);
+        GameModeControl.mode = 0;
 
 	}
-	public void ShowControl()
+
+    public void StartFlood()
+    {
+        SceneManager.LoadScene(2);
+        GameModeControl.mode = 1;
+    }
+    public void StartDouble()
+    {
+        SceneManager.LoadScene(2);
+        GameModeControl.mode = 2;
+    }
+    public void ShowControl()
 	{
 		ControlMenu.enabled = true;
 		exitMenuText.Select ();
+        floodButton.image.enabled = false;
+        doubleButton.image.enabled = false;
 	}
 	public void HideControl()
 	{
 		ControlMenu.enabled = false;
 		startText.Select ();
-	}
+        floodButton.image.enabled = true;
+        doubleButton.image.enabled = true;
+    }
 	public void ExitGame()
 	{
 		Application.Quit ();

@@ -83,11 +83,7 @@ public class NavAgent : MonoBehaviour {
         target = GetComponent<Transform>().position;
 		anim = GetComponent<Animator> ();
 		Image[] bars = GetComponentsInChildren<Image> ();
-		foreach(Image i in bars){
-			if (i.gameObject.tag == "healthImage") {
-				healthBar = i;
-			}
-		}
+
         sg = GameObject.Find("MetaSpawn").GetComponent<spawnGlobal>();
         viewTarget = point0;
         idle = true;
@@ -170,6 +166,9 @@ public class NavAgent : MonoBehaviour {
 				anim.SetBool ("Scared", false);
 				anim.SetBool ("Walk", false);
                 anim.SetBool("Idle", false);
+                //anim.SetBool("Running", true);
+                //running = true;
+                //set nav agent speed
                 idle = true;
                 active = true;
                 scaredTimer = 0;
@@ -179,6 +178,13 @@ public class NavAgent : MonoBehaviour {
 
             }
         }
+
+        //if(runnning)
+        //{
+        //    checkProximity();
+        //    if (idle)
+        //        running = false;
+        //}
         //this is shit, change later
    
 
@@ -234,21 +240,9 @@ public class NavAgent : MonoBehaviour {
 
         totalTimer += Time.deltaTime;
         active = true;
-		//print ((transform.position.x - target.x) + " " + (transform.position.z - target.z));
+        //print ((transform.position.x - target.x) + " " + (transform.position.z - target.z));
 
-		if (Mathf.Abs(transform.position.x - target.x) < .1f && Mathf.Abs(transform.position.z - target.z) < .1f) {
-			anim.SetBool ("Walk", false);
-            anim.SetBool("Idle", true);
-            idle = true;
-            idleTimer += Time.deltaTime;
-		}
-        else
-        {
-			anim.SetBool ("Walk", true);
-            anim.SetBool("Scared", false);
-            anim.SetBool("Idle", false);
-            walkTimer += Time.deltaTime;
-        }
+        checkProximity();
 
 		if (scaredNow||idleTimer > 5 || first || walkTimer > 15) {
 			
@@ -272,6 +266,23 @@ public class NavAgent : MonoBehaviour {
         }
     }
 
+    void checkProximity()
+    {
+        if (Mathf.Abs(transform.position.x - target.x) < .1f && Mathf.Abs(transform.position.z - target.z) < .1f)
+        {
+            anim.SetBool("Walk", false);
+            anim.SetBool("Idle", true);
+            idle = true;
+            idleTimer += Time.deltaTime;
+        }
+        else
+        {
+            anim.SetBool("Walk", true);
+            anim.SetBool("Scared", false);
+            anim.SetBool("Idle", false);
+            walkTimer += Time.deltaTime;
+        }
+    }
     void changeView() {
 		
         _direction = (viewTarget - transform.position).normalized;

@@ -32,6 +32,7 @@ public class Scare : MonoBehaviour {
 
     Animator anim;
     ParticleSystem parts;
+    AudioSource scareSound;
 
     bool started;
     bool reverse;
@@ -41,7 +42,7 @@ public class Scare : MonoBehaviour {
     public bool hasParticle;
 
     //variable when scare tirggered
-    //use to change th shader glow to gray and then blue 
+    //use to change the shader glow to gray and then blue 
     //again when scare is available
     bool change;
 
@@ -50,7 +51,7 @@ public class Scare : MonoBehaviour {
         target = GameObject.Find("Target").GetComponent<Transform>();
         //parts =  GetComponentInChildren<ParticleSystem>();
         posessScript = this.gameObject.GetComponent<Posessable>();
-        
+        scareSound = this.gameObject.GetComponent<AudioSource>();
         usedWindow = false;
         cooldown = cooldownTime;
         cooldownBool = false;
@@ -107,52 +108,7 @@ public class Scare : MonoBehaviour {
 
                 if (canScareNow())
                 {
-                    if (anim != null && !playing)
-                    {
-                        
-                        started = true;
-                        anim.SetBool("IdleBool", false);
-                        anim.SetBool("ScareBool", true);
-                        playing = true;
-                    }
-                    if(parts!= null)
-                    {
-                        parts.gameObject.SetActive(true);
-     
-                        
-                    }
-                    //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
-                    people = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach (GameObject p in people)
-                    {
-                        NavAgent person = p.GetComponent<NavAgent>();
-                        if (person != null)
-                        {
-
-                            Transform tempLoc = p.GetComponent<Transform>();
-                            //weird vooddoo to get the range circle
-                            Transform radiusLocation = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
-                            
-                            
-                            //set a range on how it can work
-                            if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
-                            {
-                                if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
-                                {
-                                    scareLocation(person);
-                                    scarePerson(person);
-                                    //change outline color
-                                    shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
-                                    sg.changeColor(Color.red);
-                                    sg.lightOff();
-                                    sg.lightOn();
-                                    change = true;
-                                }
-                            }
-                        
-
-                        }
-                    }
+                    startScare();
                 }
 
 
@@ -190,6 +146,67 @@ public class Scare : MonoBehaviour {
 
     }
 
+
+    public void startScare()
+    {
+        if(scareSound != null)
+        {
+            scareSound.Play();
+        }
+        if (anim != null && !playing)
+        {
+
+            started = true;
+            anim.SetBool("IdleBool", false);
+            anim.SetBool("ScareBool", true);
+            playing = true;
+        }
+        if (parts != null)
+        {
+            parts.gameObject.SetActive(true);
+            //ensure all subparticles activate to get full effect
+            //ParticleSystem[] subp = this.transform.parent.parent.GetComponentsInChildren<ParticleSystem>();
+            //foreach (ParticleSystem ps in subp)
+            //{
+            //    //Debug.Log(ps.name);
+            //    ps.enableEmission = true;
+            //}
+
+
+        }
+        //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
+        people = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject p in people)
+        {
+            NavAgent person = p.GetComponent<NavAgent>();
+            if (person != null)
+            {
+
+                Transform tempLoc = p.GetComponent<Transform>();
+                //weird vooddoo to get the range circle
+                Transform radiusLocation = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
+
+
+                //set a range on how it can work
+                if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
+                {
+                    if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
+                    {
+                        scareLocation(person);
+                        scarePerson(person);
+                        //change outline color
+                        shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
+                        sg.changeColor(Color.red);
+                        sg.lightOff();
+                        sg.lightOn();
+                        change = true;
+                    }
+                }
+
+
+            }
+        }
+    }
     public void scareLocation(NavAgent person) {
         //target.position = coords;
         //target.position = new Vector3(8.18F, 11.35F, 0.59F);

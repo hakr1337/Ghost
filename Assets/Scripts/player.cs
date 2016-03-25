@@ -17,17 +17,19 @@ public class player : MonoBehaviour {
     bool dead = false;
     int headHash;
     Light deathLight;
+    string roomLocation;
+    spawnGlobal spawn;
     //int stopHeadHash;
 
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		//score_text = GameObject.Find("Score").GetComponent<Text>();
+        spawn = GameObject.Find("MetaSpawn").GetComponent<spawnGlobal>();
         headHash = Animator.StringToHash("tossHead");
         deathLight = gameObject.GetComponentInChildren<Light>();
         deathLight.enabled = false;
-		Time.timeScale = 1;
+		
         //stopHeadHash = Animator.StringToHash("stopHead");
     }
 	
@@ -35,6 +37,8 @@ public class player : MonoBehaviour {
 	void Update () {
 		float vert = Input.GetAxis("Vertical");
 		float hori = Input.GetAxis("Horizontal");
+        float Dx = Input.GetAxis("DPadX");
+        float Dy = Input.GetAxis("DPadY");
         bool moving = false;
         bool left = false;
         bool right = false;
@@ -105,8 +109,27 @@ public class player : MonoBehaviour {
 
             }
 
+            if(Dx > 0 && !dead)
+            {
+                //full room scare
+                if (spawn.canFullRoomScare())
+                    spawn.fullRoomScare(roomLocation);
+            }
+            if (Dx < 0 && !dead)
+            {
+                //stop time
+                if (spawn.canStopTime())
+                    spawn.stopTimer();
+            }
+            if (Dy < 0 && !dead)
+            {
+                //speed up
+                if (spawn.canSpeedUp())
+                    spawn.speedPlayer();
+            }
 
-		}
+
+        }
 	}
 
 	public bool moveCenterFromLeft = false;
@@ -154,6 +177,7 @@ public class player : MonoBehaviour {
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
+            roomLocation = c.name;
 
 		} else if (c.name == "BottomRight") {
 			bottomLeft = false;
@@ -162,35 +186,42 @@ public class player : MonoBehaviour {
 			bottomRight = true;
 			bottomCenter = false;
 			topCenter = false;
-		} else if (c.name == "TopRight") {
+            roomLocation = c.name;
+        } else if (c.name == "TopRight") {
 			bottomLeft = false;
 			topLeft = false;
 			topRight = true;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
-		} else if (c.name == "TopLeft") {
+            roomLocation = c.name;
+        } else if (c.name == "TopLeft") {
 			bottomLeft = false;
 			topLeft = true;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
-		}else if(c.name == "BottomCenter"){
+            roomLocation = c.name;
+        }
+        else if(c.name == "BottomCenter"){
 			bottomLeft = false;
 			topLeft = false;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = true;
 			topCenter = false;
-		}else if(c.name == "TopCenter"){
+            roomLocation = c.name;
+        }
+        else if(c.name == "TopCenter"){
 			bottomLeft = false;
 			topLeft = false;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = true;
-		}
+            roomLocation = c.name;
+        }
 	}
 
 	public void CollectFear(){
@@ -202,7 +233,7 @@ public class player : MonoBehaviour {
     {
         dead = true;
         anim.SetBool("die", true);
-        GameObject.Find("Lights").gameObject.active = false;
+        GameObject.Find("Lights").gameObject.SetActive(false);
         deathLight.enabled = true;
     }
 
