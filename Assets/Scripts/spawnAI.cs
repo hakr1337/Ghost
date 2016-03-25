@@ -40,21 +40,21 @@ public class spawnAI : MonoBehaviour {
     public void genAI()
     {
         GameObject temp = (GameObject)Instantiate(AI, spawn, Quaternion.identity);
-        temp.GetComponent<NavAgent>().setSpawnTag(identifier);
+        //temp.GetComponent<NavAgent>().setSpawnTag(identifier);
 
     }
 
     public void genMom()
     {
         GameObject temp = (GameObject)Instantiate(mom, spawn, Quaternion.identity);
-        temp.GetComponent<NavAgent>().setSpawnTag(identifier);
+        //temp.GetComponent<NavAgent>().setSpawnTag(identifier);
 
     }
 
     public void genDad()
     {
         GameObject temp = (GameObject)Instantiate(dad, spawn, Quaternion.identity);
-        temp.GetComponent<NavAgent>().setSpawnTag(identifier);
+        //temp.GetComponent<NavAgent>().setSpawnTag(identifier);
 
     }
 

@@ -127,6 +127,11 @@ public class player : MonoBehaviour {
                 if (spawn.canSpeedUp())
                     spawn.speedPlayer();
             }
+            if (Dy > 0 && !dead)
+            {
+                //refill power ups
+                spawn.refillPowers();
+            }
 
 
         }

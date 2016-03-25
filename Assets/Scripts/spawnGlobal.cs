@@ -281,7 +281,7 @@ public class spawnGlobal : MonoBehaviour {
     {
         if (totalPatrons < enemySpawnCount)
         {
-            if (kitchenTimer >= kitchenRate && currSpawn == 1)
+            if (kitchenTimer >= kitchenRate )
             {
                 if (waveCount >= kitchenStart)
                 {
@@ -301,7 +301,7 @@ public class spawnGlobal : MonoBehaviour {
         }
         if (totalPatrons < enemySpawnCount)
         {
-            if (mainTimer >= mainRate && currSpawn == 0)
+            if (mainTimer >= mainRate )
             {
                 if (waveCount >= mainStart)
                 {
@@ -320,7 +320,7 @@ public class spawnGlobal : MonoBehaviour {
         }
         if (totalPatrons < enemySpawnCount)
         {
-            if (windowTimer >= windowRate && currSpawn == 2)
+            if (windowTimer >= windowRate )
             {
                 if (waveCount >= windowStart)
                 {
@@ -339,7 +339,7 @@ public class spawnGlobal : MonoBehaviour {
 
         if (totalPatrons < enemySpawnCount)
         {
-            if (bathroomTimer >= bathroomRate && currSpawn == 3)
+            if (bathroomTimer >= bathroomRate )
             {
                 if (waveCount >= bathroomStart)
                 {
@@ -514,6 +514,7 @@ public class spawnGlobal : MonoBehaviour {
         bathroomTimer = timer;
         //waveText.text = "Wave: " + (waveCount + 1) + "";
         flameHealth.fillAmount = 1;
+        currSpawn = 0;
        
         Wave.CrossFadeAlpha(1f, 0.2f, true);
         Ready.CrossFadeAlpha(1f, 0.2f, true);
@@ -599,5 +600,15 @@ public class spawnGlobal : MonoBehaviour {
         mainCam.scrollSpeed = mainCam.scrollSpeed / speedUpPower;
         fast = false;
         
+    }
+
+    public void refillPowers()
+    {
+        speedCurrent = speedMax;
+        roomScareCurrent = roomScareMax;
+        stopTimeCurrent = stopTimeMax;
+        speedUI.fillAmount = (float)speedCurrent / (float)speedMax;
+        roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
+        stopTimeUI.fillAmount = (float)stopTimeCurrent / (float)stopTimeMax;
     }
 }

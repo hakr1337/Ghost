@@ -39,14 +39,14 @@ public class NavAgent : MonoBehaviour {
     public float walkDelay;
 
 	Vector3 point0;
-	Vector3 target;
+	public Vector3 target;
 	int fearLevel;
     bool exiting = false;
 	bool first = true;
     bool idle;
     int state;
-    AIPath[] pathPoints;
-    public int[] pointCount;
+    public AIPath pathPoints;
+    public int pointCount;
     NavMeshAgent agent;
     Vector3 exit;
     Slider fearMeter; //REPLEACE WITH STATIC REFERENCE LATER BY MAKING PUBLIC
@@ -60,7 +60,7 @@ public class NavAgent : MonoBehaviour {
     float deathTimer;
     int health;
     public int maxHealth;
-    Image healthBar;
+    public Image healthBar;
 	bool active; /////////////////NEW 
     bool scaredNow;
     bool isDead;
@@ -80,10 +80,16 @@ public class NavAgent : MonoBehaviour {
 
         //spawnController = GameObject.Find("AI_spawn_point").GetComponent<spawnAI>(); 
         agent = GetComponent<NavMeshAgent>();
-        target = GetComponent<Transform>().position;
+        //target = GameObject.Find("AINode9").GetComponent<Transform>().position;
 		anim = GetComponent<Animator> ();
-		Image[] bars = GetComponentsInChildren<Image> ();
-
+        Image[] bars = GetComponentsInChildren<Image>();
+        foreach (Image i in bars)
+        {
+            if (i.gameObject.name == "Health")
+            {
+                healthBar = i;
+            }
+        }
         sg = GameObject.Find("MetaSpawn").GetComponent<spawnGlobal>();
         viewTarget = point0;
         idle = true;
@@ -99,31 +105,7 @@ public class NavAgent : MonoBehaviour {
         
         agent.avoidancePriority = Random.Range(1, 100);
 
-        //GameObject[] tempPoints;
-        //pointCount = new int[totalWaves];
-        
-        //pathPoints = new AIPath[totalWaves];
-        //for (int m = 0; m < totalWaves; m++)
-        //{
-        //    string tag;
-        //    tag = "AI_Path" + m;
-        //    //find all AI path points and then put there transforms into an array
-        //    tempPoints = GameObject.FindGameObjectsWithTag(tag);
-            
-
-
-        //    pointCount[m] = tempPoints.Length;
-        //    pathPoints[m] = new AIPath(pointCount[m]);
-            
-
-        //    for (int i = 0; i < pointCount[m]; i++)
-        //    {
-        //        pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
-
-        //    }
-            
-            
-        //}
+        setSpawnTag();
         
         
     }
@@ -249,13 +231,13 @@ public class NavAgent : MonoBehaviour {
 			first = false;
             scaredNow = false;
             int waveCount = sg.getWaveCount();
-			float fstate = Random.Range (0, pointCount[waveCount]);
+			float fstate = Random.Range (0, pointCount);
 
             state = (int)fstate;
 
             
-            setTarget(pathPoints[waveCount].getPoint(state));
-            setView(pathPoints[waveCount].getPoint(state));
+            setTarget(pathPoints.getPoint(state));
+            setView(pathPoints.getPoint(state));
 
             anim.SetBool("Walk", true);
             anim.SetBool("Scared", false);
@@ -305,25 +287,27 @@ public class NavAgent : MonoBehaviour {
 
 
         health -= scareVal;
+        if (healthBar != null)
+        {
+            healthBar.fillAmount = (float)health / (float)maxHealth;
+            scaredNow = true;
 
-        healthBar.fillAmount = (float)health / (float)maxHealth;
-        scaredNow = true;
+            //float time = 0;
+            anim.SetBool("Scared", true);
+            anim.SetBool("Walk", false);
+            anim.SetBool("Idle", false);
 
-		//float time = 0;
-		anim.SetBool ("Scared", true);
-		anim.SetBool ("Walk", false);
-        anim.SetBool("Idle", false);
+            idle = false;
+            active = true;
 
-        idle = false;
-		active = true;
+            changeView();
+            //while (time < 10) {
+            //	time += Time.deltaTime;
+            //}
 
-        changeView();
-        //while (time < 10) {
-        //	time += Time.deltaTime;
-        //}
-
-        //idle = true;
-        //active = true;
+            //idle = true;
+            //active = true;
+        }
 
     }
 
@@ -331,45 +315,37 @@ public class NavAgent : MonoBehaviour {
         return exiting;
     }
 
-    public void setSpawnTag(int stag)
+    public void setSpawnTag()
     {
 
 
         totalWaves = 10;
         GameObject[] tempPoints;
-        pointCount = new int[totalWaves];
+        pointCount = 0;
 
-        pathPoints = new AIPath[totalWaves];
-        for (int m = 0; m < totalWaves; m++)
-        {
+        pathPoints = new AIPath();
+        
             string tag;
-            tag = stag+"AI_Path" + m;
-            //find all AI path points and then put there transforms into an array
-            try
-            {
-                tempPoints = GameObject.FindGameObjectsWithTag(tag);
-            }
 
-            catch
-            {
-                tag = "0AI_Path1";
-                tempPoints = GameObject.FindGameObjectsWithTag(tag);
-            }
+ 
+            tag = "0AI_Path1";
+            tempPoints = GameObject.FindGameObjectsWithTag(tag);
+            
 
             
 
-            pointCount[m] = tempPoints.Length;
-            pathPoints[m] = new AIPath(pointCount[m]);
+            pointCount = tempPoints.Length;
+            pathPoints = new AIPath(pointCount);
 
 
-            for (int i = 0; i < pointCount[m]; i++)
+            for (int i = 0; i < pointCount; i++)
             {
-                pathPoints[m].setPoint(i, tempPoints[i].GetComponent<Transform>().position);
+                pathPoints.setPoint(i, tempPoints[i].GetComponent<Transform>().position);
 
             }
 
 
-        }
+        
     }
 
     public Vector3 getCenter()
