@@ -7,11 +7,11 @@ public class lamp : MonoBehaviour {
 
     // Use this for initialization
 
-	public AudioClip lampclick;
+	//public AudioClip lampclick;
 	//public AudioClip bulbbreak;
 
 
-	private AudioSource source;
+	//private AudioSource source;
 
 
 
@@ -20,7 +20,7 @@ public class lamp : MonoBehaviour {
     void Start () {
         posessScript = this.GetComponentInChildren<Posessable>();
 
-		source = GetComponent<AudioSource>();
+		//source = GetComponent<AudioSource>();
 
     }
 	
@@ -28,18 +28,24 @@ public class lamp : MonoBehaviour {
 	void Update () {
 		if (posessScript.posessed) {
 			if((Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))){
-				source.PlayOneShot(lampclick, 1f);
 
 
-				Light[] temp = this.GetComponentsInChildren<Light> ();
-
-				foreach(Light l in temp){
-					l.enabled = !l.enabled;
-				}
-
-                
+                stupidLamp();
             }
 		}
 	}
+
+    public void stupidLamp()
+    {
+        //source.PlayOneShot(lampclick, 1f);
+
+
+        Light[] temp = this.GetComponentsInChildren<Light>();
+
+        foreach (Light l in temp)
+        {
+            l.enabled = !l.enabled;
+        }
+    }
 
 }

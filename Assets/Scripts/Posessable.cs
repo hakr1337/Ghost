@@ -29,42 +29,50 @@ public class Posessable : MonoBehaviour {
         //exit posession
 		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed){
 
-            //re-enable player
-			SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
-			foreach(SkinnedMeshRenderer s in skins){
-				s.enabled = true;
-			}
-			//player.GetComponentInChildren<MeshRenderer>().enabled = true;
-            player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = true;//turn on control
-            player.GetComponent<Rigidbody>().isKinematic = false;//unfix
-			player.GetComponent<player>().control = true;
-            player.GetComponent<CapsuleCollider>().enabled = true;//turn on collider
-            player.GetComponent<posess>().one = false;//enable posession of another object
-			player.GetComponentInChildren<ParticleSystem>().Play();
-
-            //disable object
-            this.GetComponent<Collider>().isTrigger = true;//turn trigger back on 
-            this.lit = false;//mark unlit
-			posessed = false;
-
-            //turn off and scale circle
-            radiusTrans = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
-
-     
-            
-            radiusTrans.gameObject.GetComponent<MeshRenderer>().enabled = false;
-
-            //if ball call deposess function in ball
-            if (gameObject.tag == "balltrigger"){
-				gameObject.GetComponentInParent<ball>().deposess();
-            }
-            else if(gameObject.tag == "plane"){
-                gameObject.GetComponentInParent<plane>().deposess();
-            }
+            deposess();
 		
 		}
 
 	}
+
+    public void deposess()
+    {
+        //re-enable player
+        SkinnedMeshRenderer[] skins = player.GetComponentsInChildren<SkinnedMeshRenderer>();//turn on mesh renderer
+        foreach (SkinnedMeshRenderer s in skins)
+        {
+            s.enabled = true;
+        }
+        //player.GetComponentInChildren<MeshRenderer>().enabled = true;
+        player.GetComponent<UnityStandardAssets.Characters.ThirdPerson.ThirdPersonUserControl>().enabled = true;//turn on control
+        player.GetComponent<Rigidbody>().isKinematic = false;//unfix
+        player.GetComponent<player>().control = true;
+        player.GetComponent<CapsuleCollider>().enabled = true;//turn on collider
+        player.GetComponent<posess>().one = false;//enable posession of another object
+                                                  //player.GetComponentInChildren<ParticleSystem>().Play();//turn flame head back on
+
+        //disable object
+        this.GetComponent<Collider>().isTrigger = true;//turn trigger back on 
+        this.lit = false;//mark unlit
+        posessed = false;
+
+        //turn off and scale circle
+        radiusTrans = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
+
+
+
+        radiusTrans.gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+        //if ball call deposess function in ball
+        if (gameObject.tag == "balltrigger")
+        {
+            gameObject.GetComponentInParent<ball>().deposess();
+        }
+        else if (gameObject.tag == "plane")
+        {
+            gameObject.GetComponentInParent<plane>().deposess();
+        }
+    }
 
 
 }

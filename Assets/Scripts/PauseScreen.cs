@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PauseScreen : MonoBehaviour {
 
 	public Canvas PauseMenu;
@@ -54,8 +55,9 @@ public class PauseScreen : MonoBehaviour {
 		if (usingController) {
 			resumeText.Select ();
 		}
-		c.pause (true);
-		p.canFly = false;
+        resumeText.Select();
+        c.pause (true);
+        p.canFly = false;
 
 	}
 
@@ -73,7 +75,7 @@ public class PauseScreen : MonoBehaviour {
 	public void ReStartLevel()
 	{
 		Time.timeScale = 1.0f;
-		Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
 	}
 	public void ExitLevel()
 	{
@@ -86,6 +88,7 @@ public class PauseScreen : MonoBehaviour {
 		exitText.gameObject.SetActive (false);
 		restartText.gameObject.SetActive (false);
 		controlsText.gameObject.SetActive (false);
+        PauseMenu.GetComponent<Image>().enabled = false;
 	}
 
 	void showButtons(){
@@ -93,7 +96,8 @@ public class PauseScreen : MonoBehaviour {
 		exitText.gameObject.SetActive (true);
 		restartText.gameObject.SetActive (true);
 		controlsText.gameObject.SetActive (true);
-	}
+        PauseMenu.GetComponent<Image>().enabled = true;
+    }
 
 	public void ShowControl()
 	{
@@ -113,6 +117,7 @@ public class PauseScreen : MonoBehaviour {
 		ControlsImage.enabled = false;
 		//Time.timeScale = 1.0f;
 		showButtons();
+        controlsText.Select();
 	}
 	// Update is called once per frame
 

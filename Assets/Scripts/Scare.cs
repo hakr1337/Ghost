@@ -32,18 +32,26 @@ public class Scare : MonoBehaviour {
 
     Animator anim;
     ParticleSystem parts;
+    AudioSource scareSound;
 
     bool started;
     bool reverse;
+    bool playing;
+    
 
     public bool hasParticle;
+
+    //variable when scare tirggered
+    //use to change the shader glow to gray and then blue 
+    //again when scare is available
+    bool change;
 
     void Start() {
         used = false;
         target = GameObject.Find("Target").GetComponent<Transform>();
         //parts =  GetComponentInChildren<ParticleSystem>();
         posessScript = this.gameObject.GetComponent<Posessable>();
-        
+        scareSound = this.gameObject.GetComponent<AudioSource>();
         usedWindow = false;
         cooldown = cooldownTime;
         cooldownBool = false;
@@ -51,14 +59,12 @@ public class Scare : MonoBehaviour {
         anim = GetComponentInParent<Animator>();
         animTimer = 0;
 
-        scareHash = Animator.StringToHash("goScare");
-        reverseHash = Animator.StringToHash("goReverse");
-        idleHash = Animator.StringToHash("goIdle");
 
+        playing = false;
         started = false;
         reverse = false;
 
-      
+        change = false;
 
         
 
@@ -84,6 +90,16 @@ public class Scare : MonoBehaviour {
         cooldown += Time.deltaTime;
         if (cooldownBool && (timer > coolWindow))//allow window so one object can scare multiple people at once, could be cleaner
             setCooldown();
+        //changes glow color back to blue when cooldown is done
+        if (cooldown > cooldownTime && change)
+        {
+            shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
+            sg.glowColor = Color.blue;
+            sg.lightOff();
+            change = false;
+            if(posessScript.posessed)
+                sg.lightOn();
+        }
 
         if (posessScript.posessed)
         {
@@ -92,74 +108,105 @@ public class Scare : MonoBehaviour {
 
                 if (canScareNow())
                 {
-                    if (anim != null)
-                    {
-                        anim.SetTrigger(scareHash);
-                        started = true;
-                    }
-                    if(parts!= null)
-                    {
-                        parts.gameObject.SetActive(true);
-                        //parts.enableEmission = true;
-                        
-                    }
-                    //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
-                    people = GameObject.FindGameObjectsWithTag("Enemy");
-                    foreach (GameObject p in people)
-                    {
-                        NavAgent person = p.GetComponent<NavAgent>();
-                        if (person != null)
-                        {
-
-                            Transform tempLoc = p.GetComponent<Transform>();
-                            //weird vooddoo to get the range circle
-                            Transform radiusLocation = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
-                            
-                            
-                            //set a range on how it can work
-                            if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
-                            {
-                                if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
-                                {
-                                    scareLocation(person);
-                                    scarePerson(person);
-                                }
-                            }
-                        
-
-                        }
-                    }
+                    startScare();
                 }
 
 
             }
-            if (anim != null)
+           
+        }
+
+        if (anim != null && playing)
+        {
+            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+            if (started || reverse)
+                animTimer += Time.deltaTime;
+            //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
+            if (started && animTimer > stateInfo.length)
             {
-                AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+                started = false;
+                reverse = true;
+                animTimer = 0;
 
-                if (started || reverse)
-                    animTimer += Time.deltaTime;
-                //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
-                if (started && timer > stateInfo.length)
-                {
-                    started = false;
-                    reverse = true;
-                    animTimer = 0;
-                    anim.SetTrigger(reverseHash);
-                }
+                anim.SetBool("ReverseBool", true);
+                anim.SetBool("ScareBool", false);
+            }
 
-                if (reverse && timer > stateInfo.length)
-                {
-                    started = false;
-                    reverse = false;
-                    animTimer = 0;
-                    anim.SetTrigger(idleHash);
-                }
+            if (reverse && animTimer > stateInfo.length)
+            {
+                started = false;
+                reverse = false;
+                animTimer = 0;
+                anim.SetBool("IdleBool", true);
+                anim.SetBool("ReverseBool", false);
+                playing = false;
             }
         }
 
     }
 
+
+    public void startScare()
+    {
+        if(scareSound != null)
+        {
+            scareSound.Play();
+        }
+        if (anim != null && !playing)
+        {
+
+            started = true;
+            anim.SetBool("IdleBool", false);
+            anim.SetBool("ScareBool", true);
+            playing = true;
+        }
+        if (parts != null)
+        {
+            parts.gameObject.SetActive(true);
+            //ensure all subparticles activate to get full effect
+            //ParticleSystem[] subp = this.transform.parent.parent.GetComponentsInChildren<ParticleSystem>();
+            //foreach (ParticleSystem ps in subp)
+            //{
+            //    //Debug.Log(ps.name);
+            //    ps.enableEmission = true;
+            //}
+
+
+        }
+        //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
+        people = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject p in people)
+        {
+            NavAgent person = p.GetComponent<NavAgent>();
+            if (person != null)
+            {
+
+                Transform tempLoc = p.GetComponent<Transform>();
+                //weird vooddoo to get the range circle
+                Transform radiusLocation = this.gameObject.transform.parent.transform.parent.FindChild("Circle");
+
+
+                //set a range on how it can work
+                if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
+                {
+                    if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
+                    {
+                        scareLocation(person);
+                        scarePerson(person);
+                        //change outline color
+                        shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
+                        sg.changeColor(Color.red);
+                        sg.lightOff();
+                        sg.lightOn();
+                        change = true;
+                    }
+                }
+
+
+            }
+        }
+    }
     public void scareLocation(NavAgent person) {
         //target.position = coords;
         //target.position = new Vector3(8.18F, 11.35F, 0.59F);

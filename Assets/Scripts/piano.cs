@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class piano : MonoBehaviour {
-    AudioSource march;
+    //AudioSource march;
     Posessable p;
     GameObject pianoRef;
     Animator anim;
@@ -15,23 +15,19 @@ public class piano : MonoBehaviour {
     int idleHash;
 	// Use this for initialization
 	void Start () {
-       p = GetComponentInChildren<Posessable>();
-       march = GetComponent<AudioSource>();
+        p = GetComponentInChildren<Posessable>();
+       //march = GetComponent<AudioSource>();
         pianoRef = GameObject.Find("coloredpiano");
         started = false;
         reverse = false;
         anim = pianoRef.GetComponent<Animator>();
-        scareHash = Animator.StringToHash("goScare");
-        reverseHash = Animator.StringToHash("goReverse");
-        idleHash = Animator.StringToHash("goIdle");
+
     }
 
     // Update is called once per frame
     void Update() {
 		if (!started && !reverse && p.posessed && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0))) {
-            march.Play();
-            anim.SetTrigger(scareHash);
-            started = true;
+            stupidPiano();
         }
 
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
@@ -44,7 +40,8 @@ public class piano : MonoBehaviour {
             started = false;
             reverse = true;
             timer = 0;
-            anim.SetTrigger(reverseHash);
+            anim.SetBool("ReverseBool", true);
+            anim.SetBool("ScareBool", false);
         }
 
         if (reverse && timer > stateInfo.length)
@@ -52,13 +49,22 @@ public class piano : MonoBehaviour {
             started = false;
             reverse = false;
             timer = 0;
-            anim.SetTrigger(idleHash);
+            anim.SetBool("IdleBool", true);
+            anim.SetBool("ReverseBool", false);
         }
 
-        if (march.isPlaying) {
-            p.shouldScare = true;
-        } else {
-            p.shouldScare = false;
-        }
+        //if (march.isPlaying) {
+        //    p.shouldScare = true;
+        //} else {
+        //    p.shouldScare = false;
+        //}
+    }
+
+    public void stupidPiano()
+    {
+        //march.Play();
+        anim.SetBool("IdleBool", false);
+        anim.SetBool("ScareBool", true);
+        started = true;
     }
 }

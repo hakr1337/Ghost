@@ -14,16 +14,22 @@ public class player : MonoBehaviour {
     float flyCon;
     float idleTimer;
     bool isIdle;
+    bool dead = false;
     int headHash;
+    Light deathLight;
+    string roomLocation;
+    spawnGlobal spawn;
     //int stopHeadHash;
 
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		//score_text = GameObject.Find("Score").GetComponent<Text>();
+        spawn = GameObject.Find("MetaSpawn").GetComponent<spawnGlobal>();
         headHash = Animator.StringToHash("tossHead");
-		Time.timeScale = 1;
+        deathLight = gameObject.GetComponentInChildren<Light>();
+        deathLight.enabled = false;
+		
         //stopHeadHash = Animator.StringToHash("stopHead");
     }
 	
@@ -31,6 +37,8 @@ public class player : MonoBehaviour {
 	void Update () {
 		float vert = Input.GetAxis("Vertical");
 		float hori = Input.GetAxis("Horizontal");
+        float Dx = Input.GetAxis("DPadX");
+        float Dy = Input.GetAxis("DPadY");
         bool moving = false;
         bool left = false;
         bool right = false;
@@ -48,14 +56,14 @@ public class player : MonoBehaviour {
 
 		//in and out
 		if (control) {
-			if (vert > 0) {
+			if (vert > 0 && !dead) {
 				transform.position = new Vector3 (transform.position.x + Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
 				moving = true;
 				inward = true;
                 idleTimer = 0;
-			} else if (vert < 0) {
+			} else if (vert < 0 && !dead) {
 				transform.position = new Vector3 (transform.position.x - Time.deltaTime * speed,
 			                                 transform.position.y, 
 			                                 transform.position.z);
@@ -65,14 +73,14 @@ public class player : MonoBehaviour {
             }
 
 			//left and right
-			if (hori > 0 && transform.position.z > 7.3f) {
+			if (hori > 0 && transform.position.z > 7.3f && !dead) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z - Time.deltaTime * speed);
 				moving = true;
 				right = true;
                 idleTimer = 0;
-            } else if (hori < 0 && transform.position.z < 27.9f) {
+            } else if (hori < 0 && transform.position.z < 27.9f && !dead) {
 				transform.position = new Vector3 (transform.position.x,
 			                                 transform.position.y, 
 			                                 transform.position.z + Time.deltaTime * speed);
@@ -83,14 +91,14 @@ public class player : MonoBehaviour {
 
             if(canFly)
             {
-                if (flyCon < 0 && transform.position.y < 17f)
+                if (flyCon < 0 && transform.position.y < 17f && !dead)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
                                              transform.position.z);
                     idleTimer = 0;
                 }
-                if (flyCon > 0 && transform.position.y > 12.32f)
+                if (flyCon > 0 && transform.position.y > 12.32f && !dead)
                 {
                     transform.position = new Vector3(transform.position.x,
 						transform.position.y - (flyCon * flySpeed),
@@ -101,8 +109,32 @@ public class player : MonoBehaviour {
 
             }
 
+            if(Dx > 0 && !dead)
+            {
+                //full room scare
+                if (spawn.canFullRoomScare())
+                    spawn.fullRoomScare(roomLocation);
+            }
+            if (Dx < 0 && !dead)
+            {
+                //stop time
+                if (spawn.canStopTime())
+                    spawn.stopTimer();
+            }
+            if (Dy < 0 && !dead)
+            {
+                //speed up
+                if (spawn.canSpeedUp())
+                    spawn.speedPlayer();
+            }
+            if (Dy > 0 && !dead)
+            {
+                //refill power ups
+                spawn.refillPowers();
+            }
 
-		}
+
+        }
 	}
 
 	public bool moveCenterFromLeft = false;
@@ -150,6 +182,7 @@ public class player : MonoBehaviour {
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
+            roomLocation = c.name;
 
 		} else if (c.name == "BottomRight") {
 			bottomLeft = false;
@@ -158,41 +191,56 @@ public class player : MonoBehaviour {
 			bottomRight = true;
 			bottomCenter = false;
 			topCenter = false;
-		} else if (c.name == "TopRight") {
+            roomLocation = c.name;
+        } else if (c.name == "TopRight") {
 			bottomLeft = false;
 			topLeft = false;
 			topRight = true;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
-		} else if (c.name == "TopLeft") {
+            roomLocation = c.name;
+        } else if (c.name == "TopLeft") {
 			bottomLeft = false;
 			topLeft = true;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = false;
-		}else if(c.name == "BottomCenter"){
+            roomLocation = c.name;
+        }
+        else if(c.name == "BottomCenter"){
 			bottomLeft = false;
 			topLeft = false;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = true;
 			topCenter = false;
-		}else if(c.name == "TopCenter"){
+            roomLocation = c.name;
+        }
+        else if(c.name == "TopCenter"){
 			bottomLeft = false;
 			topLeft = false;
 			topRight = false;
 			bottomRight = false;
 			bottomCenter = false;
 			topCenter = true;
-		}
+            roomLocation = c.name;
+        }
 	}
 
 	public void CollectFear(){
 		//score += 1;
 		//score_text.text = "Score: " + score;
 	}
+
+    public void killPlayer()
+    {
+        dead = true;
+        anim.SetBool("die", true);
+        GameObject.Find("Lights").gameObject.SetActive(false);
+        deathLight.enabled = true;
+    }
 
 
 }
