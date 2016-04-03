@@ -6,6 +6,7 @@ public class PauseScreen : MonoBehaviour {
 
 	public Canvas PauseMenu;
 	public Image ControlsImage;
+	public Button mainMenuText;
 	public Button resumeText;
 	public Button restartText;
 	public Button exitText;
@@ -25,6 +26,7 @@ public class PauseScreen : MonoBehaviour {
 		p = GameObject.Find ("Player").GetComponent<player> ();
 		c = Camera.main.GetComponent<Cam> ();
 		PauseMenu = PauseMenu.GetComponent<Canvas> ();
+		mainMenuText = mainMenuText.GetComponent<Button> ();
 		resumeText = resumeText.GetComponent<Button> ();
 		exitText = exitText.GetComponent<Button> ();
 		restartText = exitText.GetComponent<Button> ();
@@ -61,6 +63,13 @@ public class PauseScreen : MonoBehaviour {
 
 	}
 
+
+	public void MainMenuPress()
+	{
+		SceneManager.LoadScene(0);
+
+	}
+
 	public void ResumePress()
 
 	{
@@ -84,6 +93,7 @@ public class PauseScreen : MonoBehaviour {
 	}
 
 	void hideButtons(){
+		mainMenuText.gameObject.SetActive (false);
 		resumeText.gameObject.SetActive (false);
 		exitText.gameObject.SetActive (false);
 		restartText.gameObject.SetActive (false);
@@ -92,6 +102,7 @@ public class PauseScreen : MonoBehaviour {
 	}
 
 	void showButtons(){
+		mainMenuText.gameObject.SetActive (true);
 		resumeText.gameObject.SetActive (true);
 		exitText.gameObject.SetActive (true);
 		restartText.gameObject.SetActive (true);
