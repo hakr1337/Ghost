@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{17B8BC32-FDAF-FA3D-1486-BFC427C6F3C2}</ProjectGuid>
+    <ProjectGuid>{920E7231-EB3F-4C3C-51FD-4AC0E7E0507A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -70,9 +70,8 @@
      <Compile Include="Assets\JMO Assets\Cartoon FX\Spawn System\CFX_SpawnSystem.cs" />
      <Compile Include="Assets\Scripts\Cam.cs" />
      <Compile Include="Assets\Scripts\CameraFacingBillboard.cs" />
-     <Compile Include="Assets\Scripts\DetectScary.cs" />
-     <Compile Include="Assets\Scripts\Door.cs" />
      <Compile Include="Assets\Scripts\FearBubble.cs" />
+     <Compile Include="Assets\Scripts\GameModeControl.cs" />
      <Compile Include="Assets\Scripts\GameOverScreen.cs" />
      <Compile Include="Assets\Scripts\MenuScript.cs" />
      <Compile Include="Assets\Scripts\NavAgent.cs" />
@@ -85,11 +84,8 @@
      <Compile Include="Assets\Scripts\bookshelf.cs" />
      <Compile Include="Assets\Scripts\cameraStuff.cs" />
      <Compile Include="Assets\Scripts\ceilingLight.cs" />
-     <Compile Include="Assets\Scripts\exitScript.cs" />
      <Compile Include="Assets\Scripts\fearMeter.cs" />
-     <Compile Include="Assets\Scripts\fireplace.cs" />
      <Compile Include="Assets\Scripts\lamp.cs" />
-     <Compile Include="Assets\Scripts\piano.cs" />
      <Compile Include="Assets\Scripts\plane.cs" />
      <Compile Include="Assets\Scripts\planeControl.cs" />
      <Compile Include="Assets\Scripts\player.cs" />
@@ -210,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{79BC3CB5-C672-B8A0-26A1-BBCF24C1E28F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{6704ED6C-0BA2-3B87-B5CA-0ED44E6DB363}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

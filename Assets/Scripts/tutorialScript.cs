@@ -27,7 +27,7 @@ public class tutorialScript : MonoBehaviour {
         nextCut = GameObject.Find("NextCut").GetComponent<Image>();
         nextText = GameObject.Find("Next").GetComponent<Text>();
         backText = GameObject.Find("Back").GetComponent<Text>();
-        totalImages = 4;
+        totalImages = 5;
         tutCount = 0;
         totalCutCount = 9;
         tutImages = new Sprite[totalImages];
@@ -109,9 +109,10 @@ public class tutorialScript : MonoBehaviour {
         {
             tutCount++;
 
-            if(tutCount >= totalImages)
+            if(tutCount >= totalImages-1)
             {
                 //load scene
+                changeImage(tutCount);
                 SceneManager.LoadScene(1);
             }
             else
@@ -119,7 +120,7 @@ public class tutorialScript : MonoBehaviour {
                 //load next image
                 changeImage(tutCount);
 
-                if (tutCount == totalImages - 1)
+                if (tutCount == totalImages - 2)
                     nextText.text = "StartGame";
             }
         }

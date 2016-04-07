@@ -87,8 +87,6 @@ public class spawnGlobal : MonoBehaviour {
     public float speedLength;
     float speedWindow;
     bool fast;
-    public int floodTime;
-    public int floodScare;
     public float speedMod;
     Image speedUI;
     Image roomScareUI;
@@ -392,31 +390,57 @@ public class spawnGlobal : MonoBehaviour {
             kidCount--;
             if (speedCurrent < speedMax)
             {
-                speedCurrent++;
-                //image fill
-                speedUI.fillAmount = (float)speedCurrent / (float)speedMax;
-
+                
+                //flood mode power ups
                 if(GameModeControl.mode == 1)
                 {
-                    stopTimeCurrent+= floodTime;
+                    stopTimeCurrent++;
                     //image fill
                     stopTimeUI.fillAmount = (float)stopTimeCurrent / (float)stopTimeMax;
 
-                    roomScareCurrent += floodScare;
+                    roomScareCurrent++;
                     //image fill
                     roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
                 }
+                //double speed power ups
+                if (GameModeControl.mode == 2)
+                {
+                    speedCurrent += 2;
+                    //image fill
+                    speedUI.fillAmount = (float)speedCurrent / (float)speedMax;
+                }
+                //normal mode power up
+                else
+                {
+                    speedCurrent++;
+                    //image fill
+                    speedUI.fillAmount = (float)speedCurrent / (float)speedMax;
+                }
 
             }
+
+
+
         }
         else if (type == 1)
         {
             momCount--;
             if (stopTimeCurrent < stopTimeMax)
             {
-                stopTimeCurrent++;
-                //image fill
-                stopTimeUI.fillAmount = (float)stopTimeCurrent / (float)stopTimeMax;
+                //double speed mode
+                if (GameModeControl.mode == 2)
+                {
+                    stopTimeCurrent+=2;
+                    //image fill
+                    stopTimeUI.fillAmount = (float)stopTimeCurrent / (float)stopTimeMax;
+                }
+                //normal mode
+                else
+                {
+                    stopTimeCurrent++;
+                    //image fill
+                    stopTimeUI.fillAmount = (float)stopTimeCurrent / (float)stopTimeMax;
+                }
             }
         }
         else if (type == 2)
@@ -424,9 +448,20 @@ public class spawnGlobal : MonoBehaviour {
             dadCount--;
             if (roomScareCurrent < roomScareMax)
             {
-                roomScareCurrent++;
-                //image fill
-                roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
+                //double speed mode
+                if (GameModeControl.mode == 2)
+                {
+                    roomScareCurrent+=2;
+                    //image fill
+                    roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
+                }
+                //normal mode
+                else
+                {
+                    roomScareCurrent++;
+                    //image fill
+                    roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
+                }
             }
         }
         kidText.text = "" + kidCount;
@@ -442,15 +477,15 @@ public class spawnGlobal : MonoBehaviour {
         if (mode == 1)
         {
             waveEnemyCountKid[0] = 10;
-            waveEnemyCountKid[1] = 20;
-            waveEnemyCountKid[2] = 30;
-            waveEnemyCountKid[3] = 35;
-            waveEnemyCountKid[4] = 40;
-            waveEnemyCountKid[5] = 45;
-            waveEnemyCountKid[6] = 50;
-            waveEnemyCountKid[7] = 55;
-            waveEnemyCountKid[8] = 60;
-            waveEnemyCountKid[9] = 65;
+            waveEnemyCountKid[1] = 13;
+            waveEnemyCountKid[2] = 16;
+            waveEnemyCountKid[3] = 19;
+            waveEnemyCountKid[4] = 21;
+            waveEnemyCountKid[5] = 23;
+            waveEnemyCountKid[6] = 26;
+            waveEnemyCountKid[7] = 29;
+            waveEnemyCountKid[8] = 32;
+            waveEnemyCountKid[9] = 35;
             momRatio = 0;
             dadRatio = 0;
             kitchenStart = 0;
@@ -460,15 +495,15 @@ public class spawnGlobal : MonoBehaviour {
         else
         {
             waveEnemyCountKid[0] = 1;
-            waveEnemyCountKid[1] = 3;
-            waveEnemyCountKid[2] = 4;
-            waveEnemyCountKid[3] = 5;
-            waveEnemyCountKid[4] = 7;
-            waveEnemyCountKid[5] = 9;
-            waveEnemyCountKid[6] = 10;
-            waveEnemyCountKid[7] = 11;
-            waveEnemyCountKid[8] = 12;
-            waveEnemyCountKid[9] = 13;
+            waveEnemyCountKid[1] = 2;
+            waveEnemyCountKid[2] = 3;
+            waveEnemyCountKid[3] = 4;
+            waveEnemyCountKid[4] = 5;
+            waveEnemyCountKid[5] = 6;
+            waveEnemyCountKid[6] = 7;
+            waveEnemyCountKid[7] = 8;
+            waveEnemyCountKid[8] = 9;
+            waveEnemyCountKid[9] = 10;
         }
 
         if (momRatio != 0)
@@ -568,27 +603,26 @@ public class spawnGlobal : MonoBehaviour {
         foreach(GameObject g in roomScares)
         {
             //stupid fix for the piano and lamp being different than all other objects
-            if(g.transform.parent.name == "pianobench")
-            {
-                g.transform.parent.GetComponent<piano>().stupidPiano();
-            }
             if (g.transform.parent.name == "lamp")
             {
                 g.transform.parent.GetComponent<lamp>().stupidLamp();
             }
             g.GetComponent<Scare>().startScare();
+            g.GetComponent<Scare>().startAnimation();
         }
         roomScareCurrent = 0;
         roomScareUI.fillAmount = (float)roomScareCurrent / (float)roomScareMax;
     }
     //increase the players speed.
-    public void speedPlayer()
+    public void speedPlayer(string room)
     {
-        Ghoul.speed = Ghoul.speed * speedUpPower;
-        Ghoul.flySpeed = Ghoul.flySpeed * speedUpPower;
-        mainCam.scrollSpeed = mainCam.scrollSpeed * speedUpPower;
-        speedWindow = timer + speedLength;
-        fast = true;
+        GameObject[] roomScares = GameObject.FindGameObjectsWithTag(room);
+
+        foreach (GameObject g in roomScares)
+        {
+
+            g.GetComponent<Scare>().resetCooldown();
+        }
         speedCurrent = 0;
         speedUI.fillAmount = (float)speedCurrent / (float)speedMax;
     }

@@ -18,6 +18,8 @@ public class player : MonoBehaviour {
     int headHash;
     Light deathLight;
     string roomLocation;
+    //reference for an array of camera positions in the camera script rooms correspond to 0,1,2 along bottom and 3,4,5 on top floor inorder
+    int locationKey; 
     spawnGlobal spawn;
     //int stopHeadHash;
 
@@ -34,7 +36,7 @@ public class player : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		float vert = Input.GetAxis("Vertical");
 		float hori = Input.GetAxis("Horizontal");
         float Dx = Input.GetAxis("DPadX");
@@ -125,7 +127,7 @@ public class player : MonoBehaviour {
             {
                 //speed up
                 if (spawn.canSpeedUp())
-                    spawn.speedPlayer();
+                    spawn.speedPlayer(roomLocation);
             }
             if (Dy > 0 && !dead)
             {
@@ -183,6 +185,7 @@ public class player : MonoBehaviour {
 			bottomCenter = false;
 			topCenter = false;
             roomLocation = c.name;
+            locationKey = 0;
 
 		} else if (c.name == "BottomRight") {
 			bottomLeft = false;
@@ -192,6 +195,7 @@ public class player : MonoBehaviour {
 			bottomCenter = false;
 			topCenter = false;
             roomLocation = c.name;
+            locationKey = 2;
         } else if (c.name == "TopRight") {
 			bottomLeft = false;
 			topLeft = false;
@@ -200,6 +204,7 @@ public class player : MonoBehaviour {
 			bottomCenter = false;
 			topCenter = false;
             roomLocation = c.name;
+            locationKey = 5;
         } else if (c.name == "TopLeft") {
 			bottomLeft = false;
 			topLeft = true;
@@ -208,6 +213,7 @@ public class player : MonoBehaviour {
 			bottomCenter = false;
 			topCenter = false;
             roomLocation = c.name;
+            locationKey = 3;
         }
         else if(c.name == "BottomCenter"){
 			bottomLeft = false;
@@ -217,6 +223,7 @@ public class player : MonoBehaviour {
 			bottomCenter = true;
 			topCenter = false;
             roomLocation = c.name;
+            locationKey = 1;
         }
         else if(c.name == "TopCenter"){
 			bottomLeft = false;
@@ -226,6 +233,7 @@ public class player : MonoBehaviour {
 			bottomCenter = false;
 			topCenter = true;
             roomLocation = c.name;
+            locationKey = 4;
         }
 	}
 
@@ -233,6 +241,12 @@ public class player : MonoBehaviour {
 		//score += 1;
 		//score_text.text = "Score: " + score;
 	}
+
+    //function to find out what room the palyer is in
+    public int currentLocation()
+    {
+        return locationKey;
+    }
 
     public void killPlayer()
     {

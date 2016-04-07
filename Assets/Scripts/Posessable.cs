@@ -5,6 +5,7 @@ public class Posessable : MonoBehaviour {
 	public bool posessed = false;
 	public bool shouldScare = false;
     public bool lit = false;
+    bool stayIn;
     Scare sr;
     Transform radiusTrans;
 
@@ -13,6 +14,7 @@ public class Posessable : MonoBehaviour {
 	void Start () {
         player = GameObject.Find("Player");
         sr = gameObject.GetComponent<Scare>();
+        stayIn = true;
 
     }
 	
@@ -27,7 +29,7 @@ public class Posessable : MonoBehaviour {
 		}
 
         //exit posession
-		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed){
+		if ((Input.GetButtonDown("B") ||Input.GetMouseButtonDown(1)) && posessed && (!stayIn || !this.gameObject.GetComponent<Scare>().scaring)){
 
             deposess();
 		

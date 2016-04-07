@@ -16,6 +16,7 @@ public class Scare : MonoBehaviour {
     bool cooldownBool;
     float cooldown;
     float coolWindow;
+    float exitWindow;
     public int cooldownTime = 10;
 
     float timer2;
@@ -37,9 +38,14 @@ public class Scare : MonoBehaviour {
     bool started;
     bool reverse;
     bool playing;
-    
+    public bool scaring;
+    bool stayIn;
+    bool continueScare;
+    bool scared;
+    string scareName;
 
     public bool hasParticle;
+    AnimatorStateInfo stateInfo;
 
     //variable when scare tirggered
     //use to change the shader glow to gray and then blue 
@@ -55,7 +61,7 @@ public class Scare : MonoBehaviour {
         usedWindow = false;
         cooldown = cooldownTime;
         cooldownBool = false;
-
+        scareName = this.transform.parent.name;
         anim = GetComponentInParent<Animator>();
         animTimer = 0;
 
@@ -64,7 +70,13 @@ public class Scare : MonoBehaviour {
         started = false;
         reverse = false;
 
+        //bool for handeling the glow color change
         change = false;
+
+        //bool for determining if the object is currently scaring
+        scaring = false;
+        stayIn = true;
+        continueScare = true;
 
         
 
@@ -101,14 +113,23 @@ public class Scare : MonoBehaviour {
                 sg.lightOn();
         }
 
+        //handle the initiation of the scare
         if (posessScript.posessed)
         {
-			if (!started && !reverse && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)))
+			if (!started && !reverse && !scaring && (Input.GetButtonDown("A") || Input.GetMouseButtonDown(0)))
             {
 
                 if (canScareNow())
                 {
-                    startScare();
+                    if(!started)
+                        startAnimation();
+                    if (!continueScare)
+                        startScare();
+                    else
+                    {
+                        scaring = true;
+                        exitWindow = timer + 0.5f;//need to account for transition time in the animation controller
+                    }
                 }
 
 
@@ -116,10 +137,19 @@ public class Scare : MonoBehaviour {
            
         }
 
+        if (continueScare && scaring)
+        {
+            startScare();
+        }
+
+        
+        if (anim != null)
+             stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
         if (anim != null && playing)
         {
-            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-
+            
+           
             if (started || reverse)
                 animTimer += Time.deltaTime;
             //playing = pianoRef.GetComponent<Animation>().IsPlaying("Take 001");
@@ -142,14 +172,50 @@ public class Scare : MonoBehaviour {
                 anim.SetBool("ReverseBool", false);
                 playing = false;
             }
+
+           
         }
+
+        //revert all things back to normal after scare is done
+        if (scaring && stateInfo.IsName("Idle") && timer > exitWindow)
+        {
+            endScare();
+        }
+
+        if (scaring && (scareName.Equals("lamp") || scareName.Equals("bedlamp")) && timer > exitWindow)
+        {
+            endScare();
+        }
+
+       
 
     }
 
-
-    public void startScare()
+    //resets the scare object back to default
+    void endScare()
     {
-        if(scareSound != null)
+        scaring = false;
+
+        people = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject p in people)
+        {
+            NavAgent person = p.GetComponent<NavAgent>();
+            if (person != null)
+            {
+                if (person.getCurrentScare().Equals(scareName))
+                    person.setCurrentScare("none");
+
+            }
+        }
+
+        if (stayIn)
+            this.gameObject.GetComponent<Posessable>().deposess();
+    }
+
+    //initiate the animation loop
+    public void startAnimation()
+    {
+        if (scareSound != null)
         {
             scareSound.Play();
         }
@@ -174,6 +240,12 @@ public class Scare : MonoBehaviour {
 
 
         }
+    }
+
+    //initiating the variables and functions for scaring
+    public void startScare()
+    {
+        
         //Universal Script for a scare with wide reach, should place somewhere more accessible to all things
         people = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject p in people)
@@ -190,15 +262,16 @@ public class Scare : MonoBehaviour {
                 //set a range on how it can work
                 if (Vector3.Distance(tempLoc.position, radiusLocation.position) < scareRadius)
                 {
-                    if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5))//check that the scare happens on the right floor
+                    if ((upstairs && tempLoc.position.y > 14) || (!upstairs && tempLoc.position.y < 13.5) && (!person.getCurrentScare().Equals(scareName) || !continueScare))//check that the scare happens on the right floor
                     {
                         scareLocation(person);
-                        scarePerson(person);
+                        scarePerson(person,scareName);
                         //change outline color
                         shaderGlow sg = gameObject.transform.parent.GetComponent<shaderGlow>();
                         sg.changeColor(Color.red);
                         sg.lightOff();
-                        sg.lightOn();
+                        if(posessScript.posessed)
+                            sg.lightOn();
                         change = true;
                     }
                 }
@@ -232,46 +305,44 @@ public class Scare : MonoBehaviour {
 
     }
 
-    public void scarePerson(NavAgent person) {
+    public void scarePerson(NavAgent person, string scareObject) {
         
-            person.scared(scareVal);
+            person.scared(scareVal,scareObject);
             timing = true;
-            usedTime = timer + 0.01f;
-            coolWindow = timer + 0.01f;
-            usedWindow = true;
-            cooldownBool = true;
-        
+            
+            //set a window to scare multiple people if not using the constant scare
+            if (!continueScare)
+            {
+                //usedTime = timer + 0.01f;
+                //usedWindow = true;
+                cooldownBool = true;
+                coolWindow = timer + 0.01f;
+            }
+            else
+            {
+                cooldownBool = true;
+                setCooldown();
+            }
+
     }
 
-
+    //start the cooldwon timing of the object
     void setCooldown()
     {
         cooldown = 0;
         cooldownBool = false;
     }
 
+    //takes the item off cooldown
+    public void resetCooldown()
+    {
+        cooldown = cooldownTime+0.1f;
+        change = true;
+    }
+
     public bool canScareNow()
     {
-        return (timer > 1) && (cooldown > cooldownTime);
+        return !scaring && (cooldown > cooldownTime);
     }
 
-    public void resetScareTimer()
-    {
-        //timer = 0;
-    }
-
-    public void wasUsed()
-    {
-        used = true;
-    }
-
-    public void resetUsed()
-    {
-        used = false;
-        usedWindow = false;
-        cooldownBool = false;
-        usedTime = 0;
-        cooldown = cooldownTime + 0.5f;//reset the timer with some grace for error
-        timer = 0;
-    }
 }

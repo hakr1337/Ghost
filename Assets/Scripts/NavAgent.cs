@@ -71,7 +71,7 @@ public class NavAgent : MonoBehaviour {
     int totalWaves;
     public int type;
 
-    
+    string currentScare;
 
 
     // Use this for initialization
@@ -100,7 +100,7 @@ public class NavAgent : MonoBehaviour {
         scaredNow = false;
         dying = false;
 		anim.SetBool ("Walk", true);
-        
+        currentScare = "none";
         deathTimer = 0;
         
         agent.avoidancePriority = Random.Range(1, 100);
@@ -283,7 +283,7 @@ public class NavAgent : MonoBehaviour {
         target = newTarget;
     }
 
-    public void scared(int scareVal) {
+    public void scared(int scareVal, string scareObject) {
 
 
         health -= scareVal;
@@ -291,7 +291,7 @@ public class NavAgent : MonoBehaviour {
         {
             healthBar.fillAmount = (float)health / (float)maxHealth;
             scaredNow = true;
-
+            setCurrentScare(scareObject);
             //float time = 0;
             anim.SetBool("Scared", true);
             anim.SetBool("Walk", false);
@@ -346,6 +346,16 @@ public class NavAgent : MonoBehaviour {
 
 
         
+    }
+
+    public string getCurrentScare()
+    {
+        return currentScare;
+    }
+
+    public void setCurrentScare(string newScare)
+    {
+        currentScare = newScare;
     }
 
     public Vector3 getCenter()
